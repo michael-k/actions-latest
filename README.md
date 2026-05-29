@@ -2,9 +2,9 @@
 
 Keeping track of the latest versions of various GitHub Actions
 
-https://acidghost.github.io/actions-latest/versions.txt
+https://michael-k.github.io/actions-latest/versions.txt
 
-https://acidghost.github.io/actions-latest/versions-sha.txt
+https://michael-k.github.io/actions-latest/versions-sha.txt
 
 Access that URL for a list of all of the official Actions belonging to the [GitHub Actions](https://github.com/actions) organization along with their latest version tags.
 
@@ -37,7 +37,7 @@ The script generates the following files:
 
 An `index.json` file is available at:
 
-https://acidghost.github.io/actions-latest/index.json
+https://michael-k.github.io/actions-latest/index.json
 
 This file lists all available bundles and their download URLs.
 
@@ -47,14 +47,14 @@ This file lists all available bundles and their download URLs.
 {
   "bundles": {
     "default": {
-      "versions_url": "https://acidghost.github.io/actions-latest/versions.txt",
-      "versions_sha_url": "https://acidghost.github.io/actions-latest/versions-sha.txt"
+      "versions_url": "https://michael-k.github.io/actions-latest/versions.txt",
+      "versions_sha_url": "https://michael-k.github.io/actions-latest/versions-sha.txt"
     }
   },
   "orgs": {
     "aws-actions": {
-      "versions_url": "https://acidghost.github.io/actions-latest/aws-actions-versions.txt",
-      "versions_sha_url": "https://acidghost.github.io/actions-latest/aws-actions-versions-sha.txt"
+      "versions_url": "https://michael-k.github.io/actions-latest/aws-actions-versions.txt",
+      "versions_sha_url": "https://michael-k.github.io/actions-latest/aws-actions-versions-sha.txt"
     }
   }
 }
@@ -64,18 +64,18 @@ This file lists all available bundles and their download URLs.
 
 ```bash
 # Fetch index to discover available bundles
-curl -s https://acidghost.github.io/actions-latest/index.json | jq '.'
+curl -s https://michael-k.github.io/actions-latest/index.json | jq '.'
 
 # Get default bundle versions
-curl -s https://acidghost.github.io/actions-latest/versions.txt
+curl -s https://michael-k.github.io/actions-latest/versions.txt
 
 # Get AWS-specific versions
-curl -s https://acidghost.github.io/actions-latest/aws-actions-versions.txt
+curl -s https://michael-k.github.io/actions-latest/aws-actions-versions.txt
 ```
 
 ## Fork Note
 
-This is a personal fork of the [actions-latest](https://github.com/simonw/actions-latest) project by [Simon Willison](https://github.com/simonw). Contributions to this fork may not be considered or merged.
+This is a personal fork of [acidghost/actions-latest](https://github.com/acidghost/actions-latest), itself a fork of the [actions-latest](https://github.com/simonw/actions-latest) project by [Simon Willison](https://github.com/simonw). Contributions to this fork may not be considered or merged.
 
 <!-- VERSIONS_START -->
 ## Latest versions

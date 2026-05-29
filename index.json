@@ -1,14 +1,14 @@
 {
   "bundles": {
     "default": {
-      "versions_url": "https://acidghost.github.io/actions-latest/versions.txt",
-      "versions_sha_url": "https://acidghost.github.io/actions-latest/versions-sha.txt"
+      "versions_url": "https://michael-k.github.io/actions-latest/versions.txt",
+      "versions_sha_url": "https://michael-k.github.io/actions-latest/versions-sha.txt"
     }
   },
   "orgs": {
     "aws-actions": {
-      "versions_url": "https://acidghost.github.io/actions-latest/aws-actions-versions.txt",
-      "versions_sha_url": "https://acidghost.github.io/actions-latest/aws-actions-versions-sha.txt"
+      "versions_url": "https://michael-k.github.io/actions-latest/aws-actions-versions.txt",
+      "versions_sha_url": "https://michael-k.github.io/actions-latest/aws-actions-versions-sha.txt"
     }
   }
 }

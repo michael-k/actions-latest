@@ -18,7 +18,7 @@ from pathlib import Path
 
 
 # Base URL with fallback
-BASE_URL = "https://acidghost.github.io/actions-latest/"
+BASE_URL = "https://michael-k.github.io/actions-latest/"
 
 # Markers for the README section
 README_START_MARKER = "<!-- VERSIONS_START -->"

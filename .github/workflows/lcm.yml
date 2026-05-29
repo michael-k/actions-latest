@@ -19,7 +19,7 @@ jobs:
       pull-requests: write # needed to approve the PR
     if: |
       github.event.pull_request.user.login == 'renovate[bot]' &&
-      github.repository == 'acidghost/actions-latest' &&
+      github.repository == 'michael-k/actions-latest' &&
       contains(github.event.pull_request.labels.*.name, 'lcm/approve')
     steps:
       - name: Approve PR
