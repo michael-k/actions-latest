@@ -6,7 +6,7 @@ https://michael-k.github.io/actions-latest/versions.txt
 
 https://michael-k.github.io/actions-latest/versions-sha.txt
 
-Access that URL for a list of all of the official Actions belonging to the [GitHub Actions](https://github.com/actions) organization along with their latest version tags.
+Access that URL for a list of all of the official Actions belonging to the [GitHub Actions](https://github.com/actions) organization along with their latest version tags that have cleared a 14-day quarantine.
 
 You can point coding agents such as Claude Code and Codex CLI at this URL so they know the most recent Actions versions to use in their workflow files.
 
@@ -27,11 +27,18 @@ The token is optional - without it, the script works with lower API rate limits 
 
 The script generates the following files:
 
-- **`versions.txt`** - Default bundle with actions org + additional repos
+- **`versions.txt`** - Default bundle, exact `vX.Y.Z` tags that have been observed unchanged for at least 14 days (supply-chain quarantine)
 - **`versions-sha.txt`** - SHA-pinned format for default bundle
 - **`{org}-versions.txt`** - Per-org version files (e.g., `aws-actions-versions.txt`)
 - **`{org}-versions-sha.txt`** - Per-org SHA-pinned files
 - **`index.json`** - Discovery file listing all available bundles
+- **`seen-versions.json`** - Quarantine ledger: every observed `vX.Y.Z` tag, its commit SHA, and the date first seen
+
+Only versions first seen at least 14 days ago, whose commit SHA has stayed
+unchanged since, are offered, so a freshly-published (or tampered) release is
+never recommended until it has had time to be vetted. If an immutable `vX.Y.Z` tag's
+SHA ever changes, that version is permanently withdrawn and a `tag-moved` issue
+is opened.
 
 ## API
 

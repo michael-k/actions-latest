@@ -49,6 +49,6 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git add *.txt index.json README.md
+          git add *.txt index.json README.md seen-versions.json
           git diff --staged --quiet || git commit -m 'chore: update versions' -m "Link: $LINK"
           git push

@@ -5,11 +5,11 @@
 This is a personal fork of the [actions-latest](https://github.com/simonw/actions-latest) project by Simon Willison. It's a simple Python 3.12+ script that:
 
 - Fetches all repos from the GitHub `actions` organization via the GitHub REST API
-- Extracts the latest `vINTEGER` tag (e.g., `v1`, `v2`, `v10`) from each repo
-- Writes results to `versions.txt` (one line per repo: `org/repo@tag`)
-- Writes SHA-pinned results to `versions-sha.txt` (one line per repo: `org/repo@sha # v.X.Y.Z`)
+- Extracts exact `vX.Y.Z` semver tags from each repo and offers the latest that has been observed unchanged for at least 14 days (supply-chain quarantine)
+- Writes results to `versions.txt` (one line per repo: `org/repo@vX.Y.Z`)
+- Writes SHA-pinned results to `versions-sha.txt` (one line per repo: `org/repo@sha # vX.Y.Z`)
 - Updates the README.md with the latest versions
-- Caches repos known to have no vINTEGER tags to avoid repeated API calls
+- Records observed versions in `seen-versions.json` (the quarantine ledger) and caches repos with no version tags to avoid repeated API calls
 
 **Note**: This is a personal fork. Contributions may not be considered or merged.
 
@@ -45,16 +45,16 @@ GITHUB_TOKEN=$(gh auth token) python3 fetch_versions.py
 - **`test_fetch_versions.py`** - Unit tests
 
 - **`versions.txt`** - Output file (auto-generated)
-  - Format: one line per repo: `org/repo@tag`
+  - Format: one line per repo: `org/repo@vX.Y.Z`
   - Sorted alphabetically by repo name
 
 - **`versions-sha.txt`** - SHA-pinned output file (auto-generated)
-  - Format: one line per repo: `org/repo@commit-sha # v.X.Y.Z`
+  - Format: one line per repo: `org/repo@commit-sha # vX.Y.Z`
   - Includes full commit SHA and semantic version tag
   - Sorted alphabetically by repo name
 
 - **`unversioned.txt`** - Cache file (auto-generated)
-  - List of repos known to have no vINTEGER tags
+  - List of repos known to have no version tags
   - Sorted alphabetically, one per line
 
 - **`README.md`** - Documentation
@@ -79,7 +79,7 @@ GITHUB_TOKEN=$(gh auth token) python3 fetch_versions.py
 
 ### Caching Strategy
 
-- `unversioned.txt` caches repos without vINTEGER tags
+- `unversioned.txt` caches repos without version tags
 - Reduces API calls on subsequent runs
 - Cache is loaded at start and updated at end of run
 - Sorted alphabetically before saving
