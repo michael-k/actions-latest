@@ -14,6 +14,7 @@ import os
 import re
 import subprocess
 import sys
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 
@@ -57,6 +58,13 @@ SKIP_REPOS: list[str] = [
 ]
 GITHUB_API_URL = "https://api.github.com"
 
+# Minimum age, in days, before an observed version is offered to consumers.
+QUARANTINE_DAYS = 14
+
+# first_seen value used to grandfather versions already published before the
+# ledger existed, so they remain available without a 14-day blackout.
+GRANDFATHER_DATE = date(2000, 1, 1)
+
 
 SCRIPT_DIR = Path(__file__).parent.resolve()
 
@@ -94,6 +102,10 @@ def get_readme_file() -> Path:
 
 def get_index_file() -> Path:
     return SCRIPT_DIR / "index.json"
+
+
+def get_ledger_file() -> Path:
+    return SCRIPT_DIR / "seen-versions.json"
 
 
 def parse_repo(repo_ref: str) -> tuple[str, str]:
@@ -475,57 +487,131 @@ def fetch_tags(org: str, repo_name: str) -> list[tuple[str, str]]:
     return tags
 
 
-def get_latest_version_tag(tags: list[tuple[str, str]]) -> str | None:
-    """Get the latest vINTEGER tag from a list of (tag_name, commit_sha) tuples.
+SEMVER_RE = re.compile(r"^v(\d+)\.(\d+)\.(\d+)$")
 
-    Returns only the tag name.
+
+def parse_semver_tags(
+    tags: list[tuple[str, str]],
+) -> list[tuple[tuple[int, int, int], str, str]]:
+    """Return exact vX.Y.Z tags as (version, tag_name, sha), newest first.
+
+    Bare major (v5) and two-part (v4.1) tags are excluded: they are mutable
+    pointers and cannot carry the quarantine guarantee.
     """
-    # Filter to vINTEGER tags (e.g., v1, v2, v10)
-    version_pattern = re.compile(r"^v(\d+)$")
-    version_tags = []
-
-    for tag_name, _ in tags:
-        match = version_pattern.match(tag_name.strip())
+    out: list[tuple[tuple[int, int, int], str, str]] = []
+    for name, sha in tags:
+        name = name.strip()
+        match = SEMVER_RE.match(name)
         if match:
-            version_tags.append((int(match.group(1)), tag_name.strip()))
-
-    if not version_tags:
-        return None
-
-    # Sort by version number descending and return the latest tag name
-    version_tags.sort(reverse=True, key=lambda x: x[0])
-    return version_tags[0][1]
+            version = (int(match[1]), int(match[2]), int(match[3]))
+            out.append((version, name, sha))
+    out.sort(reverse=True, key=lambda x: x[0])
+    return out
 
 
-def get_latest_semver_tag(tags: list[tuple[str, str]]) -> tuple[str, str] | None:
-    """Get the latest semantic version tag from a list of (tag_name, commit_sha) tuples.
+ANY_VERSION_RE = re.compile(r"^v\d+(\.\d+){0,2}$")
 
-    Returns a tuple of (tag_name, commit_sha) or None if no semver tag found.
 
-    Supports semver format: vX.Y.Z where X, Y, Z are integers.
+def has_version_tag(tags: list[tuple[str, str]]) -> bool:
+    """True if any tag looks like a version (v1, v1.2, v1.2.3)."""
+    return any(ANY_VERSION_RE.match(name.strip()) for name, _ in tags)
+
+
+def record_observation(
+    ledger: dict, repo_ref: str, tag: str, sha: str, today: date
+) -> bool:
+    """Record one (repo, tag, sha) observation. Mutates `ledger` in place.
+
+    Returns True only on the run that newly poisons an entry (an immutable tag
+    whose SHA moved), so the caller can open a single tag-moved issue.
     """
-    # Filter to semver tags (e.g., v1.2.3, v2.0.0)
-    version_pattern = re.compile(r"^v(\d+)\.(\d+)\.(\d+)$")
-    version_major_pattern = re.compile(r"^v(\d+)$")
-    version_tags = []
+    repo = ledger.setdefault(repo_ref, {})
+    entry = repo.get(tag)
+    if entry is None:
+        repo[tag] = {"sha": sha, "first_seen": today.isoformat()}
+        return False
+    if entry.get("bad"):
+        return False
+    if entry["sha"] != sha:
+        entry["bad"] = True
+        return True
+    return False
 
-    for tag_name, commit_sha in tags:
-        tname = tag_name.strip()
-        if match := version_pattern.match(tname):
-            major = int(match.group(1))
-            minor = int(match.group(2))
-            patch = int(match.group(3))
-            version_tags.append(((major, minor, patch), tname, commit_sha))
-        elif match := version_major_pattern.match(tname):
-            major = int(match.group(1))
-            version_tags.append(((major, 0, 0), tname, commit_sha))
 
-    if not version_tags:
+def select_quarantined_version(
+    ledger: dict,
+    repo_ref: str,
+    upstream_semver: list[tuple[tuple[int, int, int], str, str]],
+    today: date,
+) -> tuple[str, str] | None:
+    """Return the (tag, sha) to offer, or None if nothing qualifies.
+
+    A tag qualifies when its ledger entry is not `bad`, its `first_seen` is at
+    least QUARANTINE_DAYS old, and the ledger SHA still matches upstream.
+    `upstream_semver` is the output of `parse_semver_tags` (newest first).
+    """
+    cutoff = today - timedelta(days=QUARANTINE_DAYS)
+    repo = ledger.get(repo_ref, {})
+    candidates: list[tuple[tuple[int, int, int], str, str]] = []
+    for version, tag, upstream_sha in upstream_semver:
+        entry = repo.get(tag)
+        if entry is None or entry.get("bad"):
+            continue
+        if date.fromisoformat(entry["first_seen"]) > cutoff:
+            continue
+        if entry["sha"] != upstream_sha:
+            continue
+        candidates.append((version, tag, upstream_sha))
+    if not candidates:
         return None
+    candidates.sort(reverse=True, key=lambda x: x[0])
+    _, tag, sha = candidates[0]
+    return (tag, sha)
 
-    # Sort by version number descending (major, minor, patch)
-    version_tags.sort(reverse=True, key=lambda x: x[0])
-    return (version_tags[0][1], version_tags[0][2])
+
+GRANDFATHER_LINE_RE = re.compile(r"^(\S+)@([0-9a-fA-F]+)\s*#\s*(\S+)\s*$")
+
+
+def grandfather_ledger() -> dict:
+    """Seed a ledger from the committed *-versions-sha.txt files.
+
+    Treats every already-published version as trusted (first_seen far in the
+    past) so the first run after introducing the ledger has no 14-day blackout.
+    """
+    ledger: dict = {}
+    sha_files = [get_versions_sha_file()] + [
+        get_org_versions_sha_file(org) for org in ADDITIONAL_ORGS
+    ]
+    for path in sha_files:
+        if not path.exists():
+            continue
+        for line in path.read_text().splitlines():
+            match = GRANDFATHER_LINE_RE.match(line.strip())
+            if not match:
+                continue
+            repo_ref, sha, tag = match[1], match[2], match[3]
+            ledger.setdefault(repo_ref, {})[tag] = {
+                "sha": sha,
+                "first_seen": GRANDFATHER_DATE.isoformat(),
+            }
+    return ledger
+
+
+def load_ledger() -> dict:
+    """Load seen-versions.json, or grandfather-seed it when absent."""
+    path = get_ledger_file()
+    if path.exists():
+        return json.loads(path.read_text())
+    return grandfather_ledger()
+
+
+def save_ledger(ledger: dict) -> None:
+    """Write seen-versions.json with repos and tags sorted for stable diffs."""
+    ordered = {
+        repo: dict(sorted(tags.items()))
+        for repo, tags in sorted(ledger.items())
+    }
+    get_ledger_file().write_text(json.dumps(ordered, indent=2) + "\n")
 
 
 def get_base_url() -> str:
@@ -831,6 +917,109 @@ def load_tracked_repos() -> list[tuple[str, str, str]]:
     return work
 
 
+def create_tag_moved_issue(repo_ref: str, tag: str) -> None:
+    """Alert that an immutable tag's SHA moved (a supply-chain tamper signal).
+
+    Only runs in CI (GITHUB_ACTIONS=true); otherwise reports to stderr.
+    Skips if an open tag-moved issue already exists for this repo+tag.
+    """
+    title = f"Tag moved: {repo_ref}@{tag}"
+    if os.environ.get("GITHUB_ACTIONS") != "true":
+        print(f"Tamper signal: {title} (SHA changed on an immutable tag)",
+              file=sys.stderr)
+        return
+
+    try:
+        result = subprocess.run(
+            [
+                "gh",
+                "issue",
+                "list",
+                "--label",
+                "tag-moved",
+                "--state",
+                "open",
+                "--search",
+                title,
+            ],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        if result.stdout.strip():
+            print(f"Skipping {repo_ref}@{tag}: existing open tag-moved issue found")
+            return
+
+        # Ensure label exists
+        subprocess.run(
+            [
+                "gh",
+                "label",
+                "create",
+                "tag-moved",
+                "--color",
+                "B60205",
+                "--description",
+                "Immutable tag SHA changed (possible tampering)",
+                "--force",
+            ],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+
+        # Build workflow run link
+        run_link = ""
+        if (
+            os.environ.get("GITHUB_SERVER_URL")
+            and os.environ.get("GITHUB_REPOSITORY")
+            and os.environ.get("GITHUB_RUN_ID")
+        ):
+            run_link = (
+                f"{os.environ['GITHUB_SERVER_URL']}/"
+                f"{os.environ['GITHUB_REPOSITORY']}/actions/runs/"
+                f"{os.environ['GITHUB_RUN_ID']}"
+            )
+
+        body = (
+            f"The immutable tag `{tag}` of `{repo_ref}` now points at a\n"
+            f"different commit than first recorded in `seen-versions.json`.\n"
+            f"\n"
+            f"This is a supply-chain tamper signal. The version has been marked\n"
+            f"`bad` in the ledger and will never be offered again.\n"
+            f"\n"
+            f"**To resolve:**\n"
+            f"1. Investigate why the tag moved.\n"
+            f"2. If legitimate, remove the `bad` entry from `seen-versions.json`\n"
+            f"   so the tag re-enters quarantine, then close this issue.\n"
+        )
+        if run_link:
+            body += f"\n**Workflow run:** {run_link}\n"
+
+        subprocess.run(
+            [
+                "gh",
+                "issue",
+                "create",
+                "--title",
+                title,
+                "--body",
+                body,
+                "--label",
+                "tag-moved",
+            ],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        print(f"Created tag-moved issue for {repo_ref}@{tag}")
+    except (subprocess.CalledProcessError, FileNotFoundError) as e:
+        print(
+            f"Warning: failed to create tag-moved issue for {repo_ref}@{tag}: {e}",
+            file=sys.stderr,
+        )
+
+
 def main(discover: bool = True):
     """Main function to fetch repos, get tags via API, and generate versions.txt."""
     # Load cached unversioned repos
@@ -878,6 +1067,11 @@ def main(discover: bool = True):
     org_versions: dict[str, list[tuple[str, str]]] = {}
     org_versions_sha: dict[str, list[tuple[str, str, str]]] = {}
 
+    # Quarantine ledger and tamper signals.
+    ledger = load_ledger()
+    today = datetime.now(timezone.utc).date()
+    poisoned: list[tuple[str, str]] = []
+
     for repo_ref, org, repo_name in repos_to_process:
         # Determine which unversioned cache to use
         if org in ADDITIONAL_ORGS:
@@ -898,59 +1092,43 @@ def main(discover: bool = True):
 
         print(f"Fetching tags for {repo_ref}...", end=" ")
         tags = fetch_tags(org, repo_name)
-        latest_tag = get_latest_version_tag(tags)
-        latest_semver = get_latest_semver_tag(tags)
+        semver_tags = parse_semver_tags(tags)
 
-        # Bundle orgs may contain non-action repos; keep only real actions.
-        if discover and org in ADDITIONAL_ORGS and (latest_tag or latest_semver):
+        # Bundle orgs may contain non-action repos; keep only real actions
+        # (discovery only — refresh trusts the already-tracked set).
+        if discover and org in ADDITIONAL_ORGS and semver_tags:
             if not is_action_repo(org, repo_name):
                 print("not an action")
                 continue
 
-        if latest_tag:
-            # Use vINTEGER tag (preferred)
-            print(f"{latest_tag}")
+        # Record observations and collect newly-poisoned tags.
+        for _, tag, sha in semver_tags:
+            if record_observation(ledger, repo_ref, tag, sha, today):
+                poisoned.append((repo_ref, tag))
 
-            # Add to appropriate collection based on org
-            if org in ADDITIONAL_ORGS:
-                if org not in org_versions:
-                    org_versions[org] = []
-                if org not in org_versions_sha:
-                    org_versions_sha[org] = []
-                org_versions[org].append((repo_ref, latest_tag))
-                if latest_semver:
-                    semver_tag, commit_sha = latest_semver
-                    org_versions_sha[org].append((repo_ref, commit_sha, semver_tag))
-            else:
-                versions.append((repo_ref, latest_tag))
-                if latest_semver:
-                    semver_tag, commit_sha = latest_semver
-                    versions_sha.append((repo_ref, commit_sha, semver_tag))
-        elif latest_semver:
-            # Fallback to semver tag when no vINTEGER tag exists
-            semver_tag, commit_sha = latest_semver
-            print(f"{semver_tag} (semver fallback)")
+        selected = select_quarantined_version(ledger, repo_ref, semver_tags, today)
 
-            # Add to appropriate collection based on org
+        if selected:
+            tag, commit_sha = selected
+            print(f"{tag} (cleared quarantine)")
             if org in ADDITIONAL_ORGS:
-                if org not in org_versions:
-                    org_versions[org] = []
-                if org not in org_versions_sha:
-                    org_versions_sha[org] = []
-                org_versions[org].append((repo_ref, semver_tag))
-                org_versions_sha[org].append((repo_ref, commit_sha, semver_tag))
+                org_versions.setdefault(org, []).append((repo_ref, tag))
+                org_versions_sha.setdefault(org, []).append(
+                    (repo_ref, commit_sha, tag))
             else:
-                versions.append((repo_ref, semver_tag))
-                versions_sha.append((repo_ref, commit_sha, semver_tag))
-        else:
-            # No version tags at all
+                versions.append((repo_ref, tag))
+                versions_sha.append((repo_ref, commit_sha, tag))
+        elif not has_version_tag(tags):
+            # No version-shaped tags at all (e.g. only 'latest', 'main').
+            # Cache as unversioned so future runs skip the API call.
             print("no version tag")
             if org in ADDITIONAL_ORGS:
-                if org not in new_org_unversioned:
-                    new_org_unversioned[org] = set()
-                new_org_unversioned[org].add(repo_ref)
+                new_org_unversioned.setdefault(org, set()).add(repo_ref)
             else:
                 new_unversioned.add(repo_ref)
+        else:
+            # Has versions but none cleared quarantine yet; re-check next run.
+            print("no quarantined version yet")
 
     # Sort alphabetically by repo reference
     versions.sort(key=lambda x: x[0].lower())
@@ -1044,6 +1222,12 @@ def main(discover: bool = True):
 
     # Generate index.json
     generate_index_json()
+
+    # Persist the ledger and alert on any tags poisoned this run.
+    save_ledger(ledger)
+    print(f"Ledger saved to {get_ledger_file()}")
+    for repo_ref, tag in poisoned:
+        create_tag_moved_issue(repo_ref, tag)
 
     # Detect and report regressions
     if discover:

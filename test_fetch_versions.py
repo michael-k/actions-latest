@@ -4,9 +4,11 @@ Unit tests for fetch_versions.py
 """
 
 import json
+import os
 import subprocess
 import tempfile
 import unittest
+from datetime import date, datetime, timezone
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
@@ -143,63 +145,24 @@ class TestFetchTags(unittest.TestCase):
         self.assertEqual(len(tags), 0)
 
 
-class TestGetLatestVersionTag(unittest.TestCase):
-    """Tests for the get_latest_version_tag function."""
-
-    def test_get_latest_version_tag(self):
-        """Test getting the latest vINTEGER tag."""
-        tags = [
-            ("v1", "sha1"),
-            ("v2", "sha2"),
-            ("v3", "sha3"),
-            ("v10", "sha10"),
-            ("v2.1.0", "sha2.1.0"),
-        ]
-        result = fetch_versions.get_latest_version_tag(tags)
-
-        self.assertEqual(result, "v10")
-
-    def test_get_latest_version_tag_no_vinteger(self):
-        """Test when repo has no vINTEGER tags."""
-        tags = [
-            ("v1.0.0", "sha1.0.0"),
-            ("v2.0.0", "sha2.0.0"),
-            ("release-1", "sha-rel1"),
-        ]
-        result = fetch_versions.get_latest_version_tag(tags)
-
-        self.assertIsNone(result)
-
-    def test_get_latest_version_tag_empty(self):
-        """Test when repo has no tags at all."""
-        tags: list[tuple[str, str]] = []
-        result = fetch_versions.get_latest_version_tag(tags)
-
-        self.assertIsNone(result)
-
-    def test_version_ordering(self):
-        """Test that version ordering is numeric, not lexicographic."""
-        tags = [("v9", "sha9"), ("v10", "sha10"), ("v2", "sha2"), ("v1", "sha1")]
-        result = fetch_versions.get_latest_version_tag(tags)
-
-        # v10 should be latest, not v9 (which would be latest lexicographically)
-        self.assertEqual(result, "v10")
-
-
 class TestMain(unittest.TestCase):
     """Integration tests for the main function."""
 
-    @patch("fetch_versions.get_latest_version_tag")
     @patch("fetch_versions.fetch_tags")
     @patch("fetch_versions.fetch_repos")
     def test_main_integration(
         self,
         mock_fetch_repos,
         mock_fetch_tags,
-        mock_get_tag,
     ):
         """Test the main function with mocked dependencies."""
         with tempfile.TemporaryDirectory() as tmpdir:
+            # Pre-populate ledger with well-aged semver entries.
+            Path(tmpdir, "seen-versions.json").write_text(json.dumps({
+                "actions/setup-python": {"v5.0.0": {"sha": "sha5", "first_seen": "2000-01-01"}},
+                "actions/setup-node": {"v4.0.0": {"sha": "sha4", "first_seen": "2000-01-01"}},
+            }))
+
             # Mock fetch_repos to return test data
             mock_fetch_repos.return_value = [
                 {"name": "setup-python"},
@@ -210,35 +173,23 @@ class TestMain(unittest.TestCase):
             # Mock fetch_tags to return tags for each repo
             def fetch_tags_side_effect(org, repo_name):
                 if repo_name == "setup-python":
-                    return [("v1", "sha1"), ("v2", "sha2"), ("v5", "sha5")]
+                    return [("v5", "sha5"), ("v5.0.0", "sha5"), ("v2.0.0", "sha2")]
                 elif repo_name == "setup-node":
-                    return [
-                        ("v1", "sha1"),
-                        ("v2", "sha2"),
-                        ("v3", "sha3"),
-                        ("v4", "sha4"),
-                    ]
+                    return [("v4", "sha4"), ("v4.0.0", "sha4"), ("v3.0.0", "sha3")]
                 else:
                     return []  # no-tags-repo has no tags
 
             mock_fetch_tags.side_effect = fetch_tags_side_effect
 
-            # Mock get_latest_version_tag to return versions for some repos
-            def get_tag_side_effect(tags):
-                tag_names = [tag_name for tag_name, _ in tags]
-                if "v5" in tag_names:
-                    return "v5"
-                elif "v4" in tag_names:
-                    return "v4"
-                else:
-                    return None
-
-            mock_get_tag.side_effect = get_tag_side_effect
-
-            with patch.object(fetch_versions, "SCRIPT_DIR", Path(tmpdir)):
-                with patch.object(fetch_versions, "ADDITIONAL_ORGS", []):
-                    with patch.object(fetch_versions, "ADDITIONAL_REPOS", []):
-                        fetch_versions.main()
+            fake_dt = MagicMock()
+            fake_dt.now.return_value = datetime(2026, 5, 29, tzinfo=timezone.utc)
+            with patch.object(fetch_versions, "SCRIPT_DIR", Path(tmpdir)), \
+                 patch.object(fetch_versions, "ADDITIONAL_ORGS", []), \
+                 patch.object(fetch_versions, "ADDITIONAL_REPOS", []), \
+                 patch.object(fetch_versions, "datetime", fake_dt), \
+                 patch.object(fetch_versions, "update_readme"), \
+                 patch.object(fetch_versions, "update_readme_sha"):
+                fetch_versions.main()
 
             # Verify the versions file was written correctly
             versions_file = Path(tmpdir) / "versions.txt"
@@ -246,26 +197,24 @@ class TestMain(unittest.TestCase):
             lines = content.strip().split("\n")
 
             self.assertEqual(len(lines), 2)
-            self.assertIn("actions/setup-node@v4", lines)
-            self.assertIn("actions/setup-python@v5", lines)
+            self.assertIn("actions/setup-node@v4.0.0", lines)
+            self.assertIn("actions/setup-python@v5.0.0", lines)
 
             # Verify alphabetical ordering (setup-node before setup-python)
-            self.assertEqual(lines[0], "actions/setup-node@v4")
-            self.assertEqual(lines[1], "actions/setup-python@v5")
+            self.assertEqual(lines[0], "actions/setup-node@v4.0.0")
+            self.assertEqual(lines[1], "actions/setup-python@v5.0.0")
 
             # Verify unversioned repos were saved
             unversioned_file = Path(tmpdir) / "unversioned.txt"
             unversioned_content = unversioned_file.read_text()
             self.assertIn("actions/no-tags-repo", unversioned_content)
 
-    @patch("fetch_versions.get_latest_version_tag")
     @patch("fetch_versions.fetch_tags")
     @patch("fetch_versions.fetch_repos")
     def test_main_skips_cached_unversioned(
         self,
         mock_fetch_repos,
         mock_fetch_tags,
-        mock_get_tag,
     ):
         """Test that cached unversioned repos are skipped."""
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -281,7 +230,6 @@ class TestMain(unittest.TestCase):
 
             # Mock fetch_tags - should only be called for setup-python
             mock_fetch_tags.return_value = [("v1", "sha1"), ("v5", "sha5")]
-            mock_get_tag.return_value = "v5"
 
             with patch.object(fetch_versions, "SCRIPT_DIR", Path(tmpdir)):
                 with patch.object(fetch_versions, "ADDITIONAL_ORGS", []):
@@ -415,19 +363,24 @@ class TestUnversionedCache(unittest.TestCase):
 class TestSemverFallback(unittest.TestCase):
     """Tests for semantic version fallback functionality."""
 
-    @patch("fetch_versions.get_latest_semver_tag")
-    @patch("fetch_versions.get_latest_version_tag")
     @patch("fetch_versions.fetch_tags")
     @patch("fetch_versions.fetch_repos")
     def test_semver_fallback_no_vinteger(
         self,
         mock_fetch_repos,
         mock_fetch_tags,
-        mock_get_tag,
-        mock_get_semver,
     ):
-        """Test semver fallback when repo has no vINTEGER tags."""
+        """Test that a repo with only semver tags (no vINTEGER) is still versioned."""
         with tempfile.TemporaryDirectory() as tmpdir:
+            # Pre-populate ledger with well-aged semver entries.
+            Path(tmpdir, "seen-versions.json").write_text(json.dumps({
+                "actions/setup-ruby": {
+                    "v1.4.0": {"sha": "sha1", "first_seen": "2000-01-01"},
+                    "v1.5.0": {"sha": "sha2", "first_seen": "2000-01-01"},
+                    "v1.5.1": {"sha": "sha3", "first_seen": "2000-01-01"},
+                },
+            }))
+
             # Mock fetch_repos to return a repo with only semver tags
             mock_fetch_repos.return_value = [{"name": "setup-ruby"}]
 
@@ -438,16 +391,17 @@ class TestSemverFallback(unittest.TestCase):
                 ("v1.5.1", "sha3"),
             ]
 
-            # No vINTEGER tag, but latest semver available
-            mock_get_tag.return_value = None
-            mock_get_semver.return_value = ("v1.5.1", "sha3")
+            fake_dt = MagicMock()
+            fake_dt.now.return_value = datetime(2026, 5, 29, tzinfo=timezone.utc)
+            with patch.object(fetch_versions, "SCRIPT_DIR", Path(tmpdir)), \
+                 patch.object(fetch_versions, "ADDITIONAL_ORGS", []), \
+                 patch.object(fetch_versions, "ADDITIONAL_REPOS", []), \
+                 patch.object(fetch_versions, "datetime", fake_dt), \
+                 patch.object(fetch_versions, "update_readme"), \
+                 patch.object(fetch_versions, "update_readme_sha"):
+                fetch_versions.main()
 
-            with patch.object(fetch_versions, "SCRIPT_DIR", Path(tmpdir)):
-                with patch.object(fetch_versions, "ADDITIONAL_ORGS", []):
-                    with patch.object(fetch_versions, "ADDITIONAL_REPOS", []):
-                        fetch_versions.main()
-
-            # Verify the semver tag was used as fallback
+            # Verify the latest semver tag was selected
             versions_file = Path(tmpdir) / "versions.txt"
             content = versions_file.read_text()
             lines = content.strip().split("\n")
@@ -465,19 +419,24 @@ class TestSemverFallback(unittest.TestCase):
             unversioned_content = unversioned_file.read_text()
             self.assertNotIn("actions/setup-ruby", unversioned_content)
 
-    @patch("fetch_versions.get_latest_semver_tag")
-    @patch("fetch_versions.get_latest_version_tag")
     @patch("fetch_versions.fetch_tags")
     @patch("fetch_versions.fetch_repos")
-    def test_vinteger_takes_precedence(
+    def test_highest_semver_selected(
         self,
         mock_fetch_repos,
         mock_fetch_tags,
-        mock_get_tag,
-        mock_get_semver,
     ):
-        """Test that vINTEGER tag is preferred over semver when both exist."""
+        """Test that the highest aged semver tag is selected when multiple exist."""
         with tempfile.TemporaryDirectory() as tmpdir:
+            # Pre-populate ledger with well-aged semver entries.
+            Path(tmpdir, "seen-versions.json").write_text(json.dumps({
+                "actions/setup-node": {
+                    "v1.0.0": {"sha": "sha1", "first_seen": "2000-01-01"},
+                    "v2.1.0": {"sha": "sha2", "first_seen": "2000-01-01"},
+                    "v3.5.2": {"sha": "sha3", "first_seen": "2000-01-01"},
+                },
+            }))
+
             # Mock fetch_repos
             mock_fetch_repos.return_value = [{"name": "setup-node"}]
 
@@ -491,33 +450,30 @@ class TestSemverFallback(unittest.TestCase):
                 ("v3.5.2", "sha3"),
             ]
 
-            # Both types available
-            mock_get_tag.return_value = "v3"
-            mock_get_semver.return_value = ("v3.5.2", "sha3")
+            fake_dt = MagicMock()
+            fake_dt.now.return_value = datetime(2026, 5, 29, tzinfo=timezone.utc)
+            with patch.object(fetch_versions, "SCRIPT_DIR", Path(tmpdir)), \
+                 patch.object(fetch_versions, "ADDITIONAL_ORGS", []), \
+                 patch.object(fetch_versions, "ADDITIONAL_REPOS", []), \
+                 patch.object(fetch_versions, "datetime", fake_dt), \
+                 patch.object(fetch_versions, "update_readme"), \
+                 patch.object(fetch_versions, "update_readme_sha"):
+                fetch_versions.main()
 
-            with patch.object(fetch_versions, "SCRIPT_DIR", Path(tmpdir)):
-                with patch.object(fetch_versions, "ADDITIONAL_ORGS", []):
-                    with patch.object(fetch_versions, "ADDITIONAL_REPOS", []):
-                        fetch_versions.main()
-
-            # Verify vINTEGER tag was used (not semver)
+            # Verify the highest semver was selected
             versions_file = Path(tmpdir) / "versions.txt"
             content = versions_file.read_text()
             lines = content.strip().split("\n")
 
             self.assertEqual(len(lines), 1)
-            self.assertEqual(lines[0], "actions/setup-node@v3")
+            self.assertEqual(lines[0], "actions/setup-node@v3.5.2")
 
-    @patch("fetch_versions.get_latest_semver_tag")
-    @patch("fetch_versions.get_latest_version_tag")
     @patch("fetch_versions.fetch_tags")
     @patch("fetch_versions.fetch_repos")
     def test_no_version_tags_marks_unversioned(
         self,
         mock_fetch_repos,
         mock_fetch_tags,
-        mock_get_tag,
-        mock_get_semver,
     ):
         """Test that repos with no version tags are still marked as unversioned."""
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -526,8 +482,6 @@ class TestSemverFallback(unittest.TestCase):
 
             # No tags at all
             mock_fetch_tags.return_value = []
-            mock_get_tag.return_value = None
-            mock_get_semver.return_value = None
 
             with patch.object(fetch_versions, "SCRIPT_DIR", Path(tmpdir)):
                 with patch.object(fetch_versions, "ADDITIONAL_ORGS", []):
@@ -548,19 +502,21 @@ class TestSemverFallback(unittest.TestCase):
 class TestSkipRepos(unittest.TestCase):
     """Tests for skipping repos from ORG_NAME."""
 
-    @patch("fetch_versions.get_latest_semver_tag")
-    @patch("fetch_versions.get_latest_version_tag")
     @patch("fetch_versions.fetch_tags")
     @patch("fetch_versions.fetch_repos")
     def test_skip_repos_filters_out_specified_repos(
         self,
         mock_fetch_repos,
         mock_fetch_tags,
-        mock_get_tag,
-        mock_get_semver,
     ):
         """Test that repos in SKIP_REPOS are not processed."""
         with tempfile.TemporaryDirectory() as tmpdir:
+            # Pre-populate ledger with well-aged semver entries.
+            Path(tmpdir, "seen-versions.json").write_text(json.dumps({
+                "actions/setup-python": {"v5.0.0": {"sha": "sha5", "first_seen": "2000-01-01"}},
+                "actions/setup-node": {"v5.0.0": {"sha": "sha5", "first_seen": "2000-01-01"}},
+            }))
+
             # Mock fetch_repos to return multiple repos
             mock_fetch_repos.return_value = [
                 {"name": "setup-python"},
@@ -570,17 +526,18 @@ class TestSkipRepos(unittest.TestCase):
             ]
 
             # Mock fetch_tags and version tags
-            mock_fetch_tags.return_value = [("v1", "sha1"), ("v5", "sha5")]
-            mock_get_tag.return_value = "v5"
-            mock_get_semver.return_value = None
+            mock_fetch_tags.return_value = [("v5", "sha5"), ("v5.0.0", "sha5")]
 
-            with patch.object(fetch_versions, "SCRIPT_DIR", Path(tmpdir)):
-                with patch.object(fetch_versions, "ADDITIONAL_ORGS", []):
-                    with patch.object(fetch_versions, "ADDITIONAL_REPOS", []):
-                        with patch.object(
-                            fetch_versions, "SKIP_REPOS", ["skip-me", "also-skip"]
-                        ):
-                            fetch_versions.main()
+            fake_dt = MagicMock()
+            fake_dt.now.return_value = datetime(2026, 5, 29, tzinfo=timezone.utc)
+            with patch.object(fetch_versions, "SCRIPT_DIR", Path(tmpdir)), \
+                 patch.object(fetch_versions, "ADDITIONAL_ORGS", []), \
+                 patch.object(fetch_versions, "ADDITIONAL_REPOS", []), \
+                 patch.object(fetch_versions, "datetime", fake_dt), \
+                 patch.object(fetch_versions, "update_readme"), \
+                 patch.object(fetch_versions, "update_readme_sha"), \
+                 patch.object(fetch_versions, "SKIP_REPOS", ["skip-me", "also-skip"]):
+                fetch_versions.main()
 
             # Verify only non-skipped repos are in versions.txt
             versions_file = Path(tmpdir) / "versions.txt"
@@ -588,8 +545,8 @@ class TestSkipRepos(unittest.TestCase):
             lines = content.strip().split("\n")
 
             self.assertEqual(len(lines), 2)
-            self.assertIn("actions/setup-python@v5", lines)
-            self.assertIn("actions/setup-node@v5", lines)
+            self.assertIn("actions/setup-python@v5.0.0", lines)
+            self.assertIn("actions/setup-node@v5.0.0", lines)
             self.assertNotIn("actions/skip-me", content)
             self.assertNotIn("actions/also-skip", content)
 
@@ -603,50 +560,43 @@ class TestSkipRepos(unittest.TestCase):
 class TestAdditionalRepos(unittest.TestCase):
     """Tests for additional repos functionality."""
 
-    @patch("fetch_versions.get_latest_semver_tag")
-    @patch("fetch_versions.get_latest_version_tag")
     @patch("fetch_versions.fetch_tags")
     @patch("fetch_versions.fetch_repos")
     def test_main_with_additional_repos(
         self,
         mock_fetch_repos,
         mock_fetch_tags,
-        mock_get_tag,
-        mock_get_semver,
     ):
         """Test main function with additional repos."""
         with tempfile.TemporaryDirectory() as tmpdir:
+            # Pre-populate ledger with well-aged semver entries.
+            Path(tmpdir, "seen-versions.json").write_text(json.dumps({
+                "actions/setup-python": {"v5.0.0": {"sha": "sha5", "first_seen": "2000-01-01"}},
+                "other/some-action": {"v3.0.0": {"sha": "sha3", "first_seen": "2000-01-01"}},
+            }))
+
             # Mock fetch_repos for main org
             mock_fetch_repos.return_value = [{"name": "setup-python"}]
 
             # Mock fetch_tags responses
             def fetch_tags_side_effect(org, repo_name):
                 if org == "actions" and repo_name == "setup-python":
-                    return [("v1", "sha1"), ("v5", "sha5")]
+                    return [("v5", "sha5"), ("v5.0.0", "sha5")]
                 elif org == "other" and repo_name == "some-action":
-                    return [("v2", "sha2"), ("v3", "sha3")]
+                    return [("v3.0.0", "sha3")]
                 return []
 
             mock_fetch_tags.side_effect = fetch_tags_side_effect
 
-            # Mock get_latest_version_tag
-            def get_tag_side_effect(tags):
-                tag_names = [tag for tag, sha in tags]
-                if "v5" in tag_names:
-                    return "v5"
-                elif "v3" in tag_names:
-                    return "v3"
-                return None
-
-            mock_get_tag.side_effect = get_tag_side_effect
-            mock_get_semver.return_value = None
-
-            with patch.object(fetch_versions, "SCRIPT_DIR", Path(tmpdir)):
-                with patch.object(
-                    fetch_versions, "ADDITIONAL_REPOS", ["other/some-action"]
-                ):
-                    with patch.object(fetch_versions, "ADDITIONAL_ORGS", []):
-                        fetch_versions.main()
+            fake_dt = MagicMock()
+            fake_dt.now.return_value = datetime(2026, 5, 29, tzinfo=timezone.utc)
+            with patch.object(fetch_versions, "SCRIPT_DIR", Path(tmpdir)), \
+                 patch.object(fetch_versions, "ADDITIONAL_REPOS", ["other/some-action"]), \
+                 patch.object(fetch_versions, "ADDITIONAL_ORGS", []), \
+                 patch.object(fetch_versions, "datetime", fake_dt), \
+                 patch.object(fetch_versions, "update_readme"), \
+                 patch.object(fetch_versions, "update_readme_sha"):
+                fetch_versions.main()
 
             # Verify the versions file contains both repos
             versions_file = Path(tmpdir) / "versions.txt"
@@ -654,8 +604,8 @@ class TestAdditionalRepos(unittest.TestCase):
             lines = content.strip().split("\n")
 
             self.assertEqual(len(lines), 2)
-            self.assertIn("actions/setup-python@v5", lines)
-            self.assertIn("other/some-action@v3", lines)
+            self.assertIn("actions/setup-python@v5.0.0", lines)
+            self.assertIn("other/some-action@v3.0.0", lines)
 
 
 class TestOrgFileHelpers(unittest.TestCase):
@@ -818,21 +768,23 @@ class TestAdditionalOrgs(unittest.TestCase):
     """Tests for additional orgs functionality in main()."""
 
     @patch("fetch_versions.is_action_repo", return_value=True)
-    @patch("fetch_versions.get_latest_semver_tag")
-    @patch("fetch_versions.get_latest_version_tag")
     @patch("fetch_versions.fetch_tags")
     @patch("fetch_versions.fetch_repos")
     def test_main_with_additional_orgs(
         self,
         mock_fetch_repos,
         mock_fetch_tags,
-        mock_get_tag,
-        mock_get_semver,
         mock_is_action,
     ):
         """Test main function with additional orgs."""
         with tempfile.TemporaryDirectory() as tmpdir:
-            # No cached unversioned repos
+            # Pre-populate ledger with well-aged semver entries.
+            Path(tmpdir, "seen-versions.json").write_text(json.dumps({
+                "actions/setup-python": {"v5.0.0": {"sha": "sha5", "first_seen": "2000-01-01"}},
+                "aws-actions/configure-aws-credentials": {
+                    "v4.0.0": {"sha": "sha4", "first_seen": "2000-01-01"},
+                },
+            }))
 
             # Mock fetch_repos to return test data for main org and additional orgs
             def fetch_repos_side_effect(org):
@@ -847,51 +799,29 @@ class TestAdditionalOrgs(unittest.TestCase):
             # Mock fetch_tags to return tags for each repo
             def fetch_tags_side_effect(org, repo_name):
                 if org == "actions" and repo_name == "setup-python":
-                    return [
-                        ("v1", "sha1"),
-                        ("v2", "sha2"),
-                        ("v5", "sha5"),
-                        ("v5.0.0", "sha5"),
-                    ]
+                    return [("v5", "sha5"), ("v5.0.0", "sha5")]
                 elif org == "aws-actions" and repo_name == "configure-aws-credentials":
-                    return [("v1", "sha1"), ("v4", "sha4"), ("v4.0.0", "sha4")]
+                    return [("v4", "sha4"), ("v4.0.0", "sha4")]
                 return []
 
             mock_fetch_tags.side_effect = fetch_tags_side_effect
 
-            # Mock get_latest_version_tag
-            def get_tag_side_effect(tags):
-                tag_names = [tag_name for tag_name, _ in tags]
-                if "v5" in tag_names:
-                    return "v5"
-                elif "v4" in tag_names:
-                    return "v4"
-                return None
-
-            mock_get_tag.side_effect = get_tag_side_effect
-
-            # Mock get_latest_semver_tag to provide semver info
-            def get_semver_side_effect(tags):
-                tag_names = [tag_name for tag_name, _ in tags]
-                if "v5.0.0" in tag_names:
-                    return ("v5.0.0", "sha5")
-                elif "v4.0.0" in tag_names:
-                    return ("v4.0.0", "sha4")
-                return None
-
-            mock_get_semver.side_effect = get_semver_side_effect
-
-            with patch.object(fetch_versions, "SCRIPT_DIR", Path(tmpdir)):
-                with patch.object(fetch_versions, "ADDITIONAL_ORGS", ["aws-actions"]):
-                    with patch.object(fetch_versions, "ADDITIONAL_REPOS", []):
-                        fetch_versions.main()
+            fake_dt = MagicMock()
+            fake_dt.now.return_value = datetime(2026, 5, 29, tzinfo=timezone.utc)
+            with patch.object(fetch_versions, "SCRIPT_DIR", Path(tmpdir)), \
+                 patch.object(fetch_versions, "ADDITIONAL_ORGS", ["aws-actions"]), \
+                 patch.object(fetch_versions, "ADDITIONAL_REPOS", []), \
+                 patch.object(fetch_versions, "datetime", fake_dt), \
+                 patch.object(fetch_versions, "update_readme"), \
+                 patch.object(fetch_versions, "update_readme_sha"):
+                fetch_versions.main()
 
             # Verify the main versions file contains only actions org repos (not from ADDITIONAL_ORGS)
             versions_file = Path(tmpdir) / "versions.txt"
             content = versions_file.read_text()
             lines = content.strip().split("\n")
             self.assertEqual(len(lines), 1)
-            self.assertIn("actions/setup-python@v5", lines)
+            self.assertIn("actions/setup-python@v5.0.0", lines)
             self.assertNotIn("aws-actions/configure-aws-credentials", content)
 
             # Verify the org-specific versions file contains only aws-actions repos
@@ -899,7 +829,7 @@ class TestAdditionalOrgs(unittest.TestCase):
             aws_content = aws_versions_file.read_text()
             aws_lines = aws_content.strip().split("\n")
             self.assertEqual(len(aws_lines), 1)
-            self.assertEqual(aws_lines[0], "aws-actions/configure-aws-credentials@v4")
+            self.assertEqual(aws_lines[0], "aws-actions/configure-aws-credentials@v4.0.0")
 
 
 class TestIndexJson(unittest.TestCase):
@@ -1321,6 +1251,11 @@ class TestOrgBundles(unittest.TestCase):
     ):
         with tempfile.TemporaryDirectory() as tmpdir:
             tmp = Path(tmpdir)
+            # Aged ledger entry so the version clears quarantine.
+            (tmp / "seen-versions.json").write_text(json.dumps({
+                "docker/build-push-action": {
+                    "v1.0.0": {"sha": "sha1", "first_seen": "2000-01-01"},
+                }}))
             mock_fetch_repos.return_value = []
             mock_search.return_value = [
                 {"name": "build-push-action",
@@ -1338,7 +1273,7 @@ class TestOrgBundles(unittest.TestCase):
                  patch.object(fetch_versions, "SKIP_REPOS", []):
                 fetch_versions.main()
             docker_versions = (tmp / "docker-versions.txt").read_text()
-            self.assertIn("docker/build-push-action@v1", docker_versions)
+            self.assertIn("docker/build-push-action@v1.0.0", docker_versions)
             self.assertNotIn("actions-toolkit", docker_versions)
             self.assertNotIn("docker/", (tmp / "versions.txt").read_text())
             mock_search.assert_called_once_with("q")
@@ -1351,6 +1286,11 @@ class TestOrgBundles(unittest.TestCase):
     ):
         with tempfile.TemporaryDirectory() as tmpdir:
             tmp = Path(tmpdir)
+            # Aged ledger entry so the version clears quarantine.
+            (tmp / "seen-versions.json").write_text(json.dumps({
+                "astral-sh/setup-uv": {
+                    "v1.0.0": {"sha": "sha1", "first_seen": "2000-01-01"},
+                }}))
             def repos(org):
                 if org == "astral-sh":
                     return [{"name": "setup-uv"}, {"name": "uv"}]
@@ -1367,7 +1307,7 @@ class TestOrgBundles(unittest.TestCase):
                  patch.object(fetch_versions, "SKIP_REPOS", []):
                 fetch_versions.main()
             astral = (tmp / "astral-sh-versions.txt").read_text()
-            self.assertIn("astral-sh/setup-uv@v1", astral)
+            self.assertIn("astral-sh/setup-uv@v1.0.0", astral)
             self.assertNotIn("astral-sh/uv", astral)
 
 
@@ -1381,9 +1321,18 @@ class TestRefreshMode(unittest.TestCase):
     ):
         with tempfile.TemporaryDirectory() as tmpdir:
             tmp = Path(tmpdir)
-            (tmp / "versions.txt").write_text("actions/checkout@v5\n")
+            (tmp / "versions.txt").write_text("actions/checkout@v5.0.0\n")
             (tmp / "aws-actions-versions.txt").write_text(
-                "aws-actions/configure-aws-credentials@v4\n")
+                "aws-actions/configure-aws-credentials@v4.0.0\n")
+            # Aged ledger entries so the refreshed versions clear quarantine.
+            (tmp / "seen-versions.json").write_text(json.dumps({
+                "actions/checkout": {
+                    "v6.0.0": {"sha": "sha6", "first_seen": "2000-01-01"},
+                },
+                "aws-actions/configure-aws-credentials": {
+                    "v5.0.0": {"sha": "sha5", "first_seen": "2000-01-01"},
+                },
+            }))
             def tags(org, repo):
                 if repo == "checkout":
                     return [("v6", "sha6"), ("v6.0.0", "sha6")]
@@ -1404,9 +1353,287 @@ class TestRefreshMode(unittest.TestCase):
             mock_is_action.assert_not_called()
             # versions refreshed from the tracked set
             self.assertEqual((tmp / "versions.txt").read_text(),
-                             "actions/checkout@v6\n")
-            self.assertIn("aws-actions/configure-aws-credentials@v5",
+                             "actions/checkout@v6.0.0\n")
+            self.assertIn("aws-actions/configure-aws-credentials@v5.0.0",
                           (tmp / "aws-actions-versions.txt").read_text())
+
+
+class LedgerPathTests(unittest.TestCase):
+    def test_get_ledger_file_under_script_dir(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            with patch.object(fetch_versions, "SCRIPT_DIR", Path(tmpdir)):
+                self.assertEqual(
+                    fetch_versions.get_ledger_file(),
+                    Path(tmpdir) / "seen-versions.json",
+                )
+
+    def test_quarantine_days_constant(self):
+        self.assertEqual(fetch_versions.QUARANTINE_DAYS, 14)
+
+
+class ParseSemverTagsTests(unittest.TestCase):
+    def test_returns_only_exact_semver_sorted_descending(self):
+        tags = [
+            ("v5", "aaa"),          # bare major: excluded (floating)
+            ("v4.1.2", "bbb"),
+            ("v4.10.0", "ccc"),
+            ("v4.2.0", "ddd"),
+            ("nightly", "eee"),     # non-semver: excluded
+            ("v4.1", "fff"),        # two-part: excluded
+        ]
+        result = fetch_versions.parse_semver_tags(tags)
+        self.assertEqual(
+            result,
+            [
+                ((4, 10, 0), "v4.10.0", "ccc"),
+                ((4, 2, 0), "v4.2.0", "ddd"),
+                ((4, 1, 2), "v4.1.2", "bbb"),
+            ],
+        )
+
+    def test_empty_when_no_semver(self):
+        self.assertEqual(fetch_versions.parse_semver_tags([("v1", "x")]), [])
+
+
+class RecordObservationTests(unittest.TestCase):
+    def setUp(self):
+        self.today = date(2026, 5, 29)
+
+    def test_new_tag_inserted_with_today(self):
+        ledger: dict = {}
+        poisoned = fetch_versions.record_observation(
+            ledger, "actions/checkout", "v5.0.0", "sha1", self.today
+        )
+        self.assertFalse(poisoned)
+        self.assertEqual(
+            ledger["actions/checkout"]["v5.0.0"],
+            {"sha": "sha1", "first_seen": "2026-05-29"},
+        )
+
+    def test_same_sha_keeps_first_seen(self):
+        ledger = {"a/b": {"v1.0.0": {"sha": "s", "first_seen": "2026-01-01"}}}
+        poisoned = fetch_versions.record_observation(
+            ledger, "a/b", "v1.0.0", "s", self.today
+        )
+        self.assertFalse(poisoned)
+        self.assertEqual(ledger["a/b"]["v1.0.0"]["first_seen"], "2026-01-01")
+
+    def test_changed_sha_poisons_and_signals(self):
+        ledger = {"a/b": {"v1.0.0": {"sha": "old", "first_seen": "2026-01-01"}}}
+        poisoned = fetch_versions.record_observation(
+            ledger, "a/b", "v1.0.0", "new", self.today
+        )
+        self.assertTrue(poisoned)
+        self.assertTrue(ledger["a/b"]["v1.0.0"]["bad"])
+
+    def test_already_bad_is_ignored(self):
+        ledger = {"a/b": {"v1.0.0": {"sha": "old", "first_seen": "x", "bad": True}}}
+        poisoned = fetch_versions.record_observation(
+            ledger, "a/b", "v1.0.0", "old", self.today
+        )
+        self.assertFalse(poisoned)
+        self.assertEqual(
+            ledger["a/b"]["v1.0.0"],
+            {"sha": "old", "first_seen": "x", "bad": True},
+        )
+
+    def test_already_bad_with_different_sha_stays_ignored(self):
+        ledger = {"a/b": {"v1.0.0": {"sha": "old", "first_seen": "x", "bad": True}}}
+        poisoned = fetch_versions.record_observation(
+            ledger, "a/b", "v1.0.0", "different", self.today
+        )
+        self.assertFalse(poisoned)
+        self.assertEqual(
+            ledger["a/b"]["v1.0.0"],
+            {"sha": "old", "first_seen": "x", "bad": True},
+        )
+
+
+class SelectQuarantinedVersionTests(unittest.TestCase):
+    def setUp(self):
+        self.today = date(2026, 5, 29)  # cutoff = 2026-05-15
+
+    def _upstream(self):
+        return [
+            ((5, 0, 0), "v5.0.0", "sha5"),
+            ((4, 1, 2), "v4.1.2", "sha4"),
+        ]
+
+    def test_skips_too_new_picks_older_aged(self):
+        ledger = {"a/b": {
+            "v5.0.0": {"sha": "sha5", "first_seen": "2026-05-27"},  # 2 days
+            "v4.1.2": {"sha": "sha4", "first_seen": "2026-05-01"},  # 28 days
+        }}
+        self.assertEqual(
+            fetch_versions.select_quarantined_version(
+                ledger, "a/b", self._upstream(), self.today),
+            ("v4.1.2", "sha4"),
+        )
+
+    def test_picks_highest_when_both_aged(self):
+        ledger = {"a/b": {
+            "v5.0.0": {"sha": "sha5", "first_seen": "2026-05-01"},
+            "v4.1.2": {"sha": "sha4", "first_seen": "2026-05-01"},
+        }}
+        self.assertEqual(
+            fetch_versions.select_quarantined_version(
+                ledger, "a/b", self._upstream(), self.today),
+            ("v5.0.0", "sha5"),
+        )
+
+    def test_exactly_14_days_is_eligible(self):
+        ledger = {"a/b": {"v4.1.2": {"sha": "sha4", "first_seen": "2026-05-15"}}}
+        self.assertEqual(
+            fetch_versions.select_quarantined_version(
+                ledger, "a/b", [((4, 1, 2), "v4.1.2", "sha4")], self.today),
+            ("v4.1.2", "sha4"),
+        )
+
+    def test_bad_entry_skipped(self):
+        ledger = {"a/b": {
+            "v5.0.0": {"sha": "sha5", "first_seen": "2026-05-01", "bad": True},
+            "v4.1.2": {"sha": "sha4", "first_seen": "2026-05-01"},
+        }}
+        self.assertEqual(
+            fetch_versions.select_quarantined_version(
+                ledger, "a/b", self._upstream(), self.today),
+            ("v4.1.2", "sha4"),
+        )
+
+    def test_sha_mismatch_with_upstream_skipped(self):
+        ledger = {"a/b": {"v4.1.2": {"sha": "OLD", "first_seen": "2026-05-01"}}}
+        self.assertIsNone(
+            fetch_versions.select_quarantined_version(
+                ledger, "a/b", [((4, 1, 2), "v4.1.2", "sha4")], self.today))
+
+    def test_none_when_nothing_eligible(self):
+        ledger = {"a/b": {"v5.0.0": {"sha": "sha5", "first_seen": "2026-05-28"}}}
+        self.assertIsNone(
+            fetch_versions.select_quarantined_version(
+                ledger, "a/b", [((5, 0, 0), "v5.0.0", "sha5")], self.today))
+
+
+class LedgerIOTests(unittest.TestCase):
+    def test_grandfather_seeds_from_versions_sha_when_absent(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            (tmp / "versions-sha.txt").write_text(
+                "actions/checkout@deadbeef # v4.1.2\n"
+                "actions/setup-node@cafef00d # v5.0.0\n"
+            )
+            with patch.object(fetch_versions, "SCRIPT_DIR", tmp):
+                with patch.object(fetch_versions, "ADDITIONAL_ORGS", []):
+                    ledger = fetch_versions.load_ledger()
+        self.assertEqual(
+            ledger["actions/checkout"]["v4.1.2"],
+            {"sha": "deadbeef", "first_seen": "2000-01-01"},
+        )
+        self.assertEqual(ledger["actions/setup-node"]["v5.0.0"]["sha"], "cafef00d")
+
+    def test_load_existing_ledger_verbatim(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            payload = {"a/b": {"v1.0.0": {"sha": "s", "first_seen": "2026-01-01"}}}
+            (tmp / "seen-versions.json").write_text(json.dumps(payload))
+            with patch.object(fetch_versions, "SCRIPT_DIR", tmp):
+                self.assertEqual(fetch_versions.load_ledger(), payload)
+
+    def test_save_round_trips_and_sorts(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            ledger = {"b/b": {"v1.0.0": {"sha": "s", "first_seen": "x", "bad": True}},
+                      "a/a": {"v2.0.0": {"sha": "t", "first_seen": "y"}}}
+            with patch.object(fetch_versions, "SCRIPT_DIR", tmp):
+                fetch_versions.save_ledger(ledger)
+                reloaded = fetch_versions.load_ledger()
+            self.assertEqual(reloaded, ledger)
+            text = (tmp / "seen-versions.json").read_text()
+            self.assertLess(text.index("a/a"), text.index("b/b"))
+
+
+class TagMovedIssueTests(unittest.TestCase):
+    @patch.dict(os.environ, {}, clear=True)
+    @patch("fetch_versions.subprocess.run")
+    def test_reports_to_stderr_when_not_in_ci(self, mock_run):
+        fetch_versions.create_tag_moved_issue("a/b", "v1.0.0")
+        mock_run.assert_not_called()
+
+    @patch.dict(os.environ, {"GITHUB_ACTIONS": "true"}, clear=True)
+    @patch("fetch_versions.subprocess.run")
+    def test_creates_issue_in_ci_when_none_exists(self, mock_run):
+        mock_run.side_effect = [
+            MagicMock(stdout="", returncode=0),   # issue list -> empty
+            MagicMock(stdout="", returncode=0),   # label create
+            MagicMock(stdout="", returncode=0),   # issue create
+        ]
+        fetch_versions.create_tag_moved_issue("a/b", "v1.0.0")
+        create_call = mock_run.call_args_list[-1].args[0]
+        self.assertIn("issue", create_call)
+        self.assertIn("create", create_call)
+        self.assertIn("tag-moved", create_call)
+
+    @patch.dict(os.environ, {"GITHUB_ACTIONS": "true"}, clear=True)
+    @patch("fetch_versions.subprocess.run")
+    def test_skips_when_issue_already_open(self, mock_run):
+        mock_run.return_value = MagicMock(stdout="#42 existing", returncode=0)
+        fetch_versions.create_tag_moved_issue("a/b", "v1.0.0")
+        self.assertEqual(mock_run.call_count, 1)
+
+
+class MainQuarantineTests(unittest.TestCase):
+    def _run_main(self, tmp, tags_by_repo, today):
+        """Run main() with fetch_repos/fetch_tags/date mocked, in tmp dir."""
+        def fake_fetch_repos(org):
+            return [{"name": n.split("/", 1)[1]}
+                    for n in tags_by_repo if n.startswith(org + "/")]
+
+        def fake_fetch_tags(org, repo_name):
+            return tags_by_repo[f"{org}/{repo_name}"]
+
+        fake_dt = MagicMock()
+        fake_dt.now.return_value = datetime(today.year, today.month, today.day,
+                                            tzinfo=timezone.utc)
+        with patch.object(fetch_versions, "SCRIPT_DIR", tmp), \
+             patch.object(fetch_versions, "ORG_NAME", "actions"), \
+             patch.object(fetch_versions, "ADDITIONAL_ORGS", []), \
+             patch.object(fetch_versions, "ADDITIONAL_REPOS", []), \
+             patch.object(fetch_versions, "SKIP_REPOS", []), \
+             patch.object(fetch_versions, "fetch_repos", fake_fetch_repos), \
+             patch.object(fetch_versions, "fetch_tags", fake_fetch_tags), \
+             patch.object(fetch_versions, "datetime", fake_dt), \
+             patch.object(fetch_versions, "update_readme"), \
+             patch.object(fetch_versions, "update_readme_sha"):
+            fetch_versions.main()
+
+    def test_too_new_version_held_back_to_aged_one(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            (tmp / "seen-versions.json").write_text(json.dumps({
+                "actions/checkout": {
+                    "v4.1.2": {"sha": "sha4", "first_seen": "2026-05-01"},
+                    "v5.0.0": {"sha": "sha5", "first_seen": "2026-05-28"},
+                }}))
+            self._run_main(tmp, {
+                "actions/checkout": [("v5", "sha5"), ("v5.0.0", "sha5"),
+                                     ("v4.1.2", "sha4")],
+            }, date(2026, 5, 29))
+            self.assertEqual((tmp / "versions.txt").read_text(),
+                             "actions/checkout@v4.1.2\n")
+            self.assertEqual((tmp / "versions-sha.txt").read_text(),
+                             "actions/checkout@sha4 # v4.1.2\n")
+            self.assertNotIn("v5.0.0", (tmp / "versions.txt").read_text())
+            self.assertNotIn("v5.0.0", (tmp / "versions-sha.txt").read_text())
+
+    def test_repo_without_semver_omitted(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            (tmp / "seen-versions.json").write_text("{}")
+            self._run_main(tmp, {
+                "actions/floaty": [("v1", "shaX")],  # only floating major
+            }, date(2026, 5, 29))
+            self.assertEqual((tmp / "versions.txt").read_text(), "\n")
+            self.assertNotIn("actions/floaty",
+                             (tmp / "unversioned.txt").read_text())
 
 
 if __name__ == "__main__":
