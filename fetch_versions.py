@@ -601,7 +601,15 @@ def load_ledger() -> dict:
     """Load seen-versions.json, or grandfather-seed it when absent."""
     path = get_ledger_file()
     if path.exists():
-        return json.loads(path.read_text())
+        try:
+            return json.loads(path.read_text())
+        except json.JSONDecodeError as e:
+            print(
+                f"Error: {path} is not valid JSON ({e}). "
+                "Fix or remove the file and re-run.",
+                file=sys.stderr,
+            )
+            sys.exit(1)
     return grandfather_ledger()
 
 

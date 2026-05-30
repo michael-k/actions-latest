@@ -1550,6 +1550,15 @@ class LedgerIOTests(unittest.TestCase):
             text = (tmp / "seen-versions.json").read_text()
             self.assertLess(text.index("a/a"), text.index("b/b"))
 
+    def test_load_ledger_corrupt_json_exits_cleanly(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            (tmp / "seen-versions.json").write_text("{ not valid json")
+            with patch.object(fetch_versions, "SCRIPT_DIR", tmp):
+                with self.assertRaises(SystemExit) as ctx:
+                    fetch_versions.load_ledger()
+            self.assertEqual(ctx.exception.code, 1)
+
 
 class TagMovedIssueTests(unittest.TestCase):
     @patch.dict(os.environ, {}, clear=True)
@@ -1634,6 +1643,48 @@ class MainQuarantineTests(unittest.TestCase):
             self.assertEqual((tmp / "versions.txt").read_text(), "\n")
             self.assertNotIn("actions/floaty",
                              (tmp / "unversioned.txt").read_text())
+
+    def test_moved_tag_poisoned_and_omitted_through_main(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            # Aged, trusted entry — but upstream now reports a DIFFERENT sha.
+            (tmp / "seen-versions.json").write_text(json.dumps({
+                "actions/checkout": {
+                    "v1.0.0": {"sha": "OLD", "first_seen": "2026-05-01"},
+                }}))
+            with patch.object(fetch_versions, "create_tag_moved_issue") as mock_issue:
+                self._run_main(tmp, {
+                    "actions/checkout": [("v1.0.0", "NEW")],  # immutable tag moved
+                }, date(2026, 5, 29))
+            # Permanently poisoned in the ledger.
+            ledger = json.loads((tmp / "seen-versions.json").read_text())
+            self.assertTrue(ledger["actions/checkout"]["v1.0.0"]["bad"])
+            # Omitted from output (the only semver tag is poisoned).
+            self.assertEqual((tmp / "versions.txt").read_text(), "\n")
+            # Exactly one tamper issue opened, for the moved tag.
+            mock_issue.assert_called_once_with("actions/checkout", "v1.0.0")
+
+    def test_grandfather_with_brand_new_tag_in_same_run(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            # No ledger yet -> grandfather from versions-sha.txt at startup.
+            # SHAs must be hex strings to satisfy GRANDFATHER_LINE_RE.
+            (tmp / "versions-sha.txt").write_text(
+                "actions/checkout@dead0004 # v4.1.2\n")
+            self._run_main(tmp, {
+                # Upstream also has a brand-new v5.0.0 not yet in the ledger.
+                "actions/checkout": [("v5.0.0", "dead0005"), ("v4.1.2", "dead0004")],
+            }, date(2026, 5, 29))
+            # Grandfathered version offered; brand-new one held back.
+            self.assertEqual((tmp / "versions.txt").read_text(),
+                             "actions/checkout@v4.1.2\n")
+            self.assertEqual((tmp / "versions-sha.txt").read_text(),
+                             "actions/checkout@dead0004 # v4.1.2\n")
+            ledger = json.loads((tmp / "seen-versions.json").read_text())
+            self.assertEqual(ledger["actions/checkout"]["v4.1.2"]["first_seen"],
+                             "2000-01-01")
+            self.assertEqual(ledger["actions/checkout"]["v5.0.0"]["first_seen"],
+                             "2026-05-29")
 
 
 if __name__ == "__main__":
