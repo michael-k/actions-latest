@@ -679,6 +679,14 @@ def main():
                 f"Loaded {len(org_unversioned[org])} known unversioned repos for {org}"
             )
 
+    # Capture the previously-versioned repos before this run overwrites the
+    # version files, so regression detection compares against the prior run
+    # rather than its own fresh output.
+    old_versioned = load_versioned_repos(
+        get_versions_file(),
+        *(get_org_versions_file(org) for org in ADDITIONAL_ORGS),
+    )
+
     # Fetch repos from the main organization
     print(f"Fetching repos for {ORG_NAME}...")
     org_repos = fetch_repos(ORG_NAME)
@@ -894,12 +902,6 @@ def main():
 
     # Generate index.json
     generate_index_json()
-
-    # Load old versioned repos for regression detection
-    old_versioned_files = [get_versions_file()] + [
-        get_org_versions_file(org) for org in ADDITIONAL_ORGS
-    ]
-    old_versioned = load_versioned_repos(*old_versioned_files)
 
     # Detect and report regressions
     regressions = detect_regressions(

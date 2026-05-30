@@ -292,6 +292,26 @@ class TestMain(unittest.TestCase):
             self.assertEqual(mock_fetch_tags.call_count, 1)
             mock_fetch_tags.assert_called_with("actions", "setup-python")
 
+    @patch("fetch_versions.create_regression_issue")
+    @patch("fetch_versions.fetch_tags")
+    @patch("fetch_versions.fetch_repos")
+    def test_regression_compared_against_previous_run(
+        self, mock_fetch_repos, mock_fetch_tags, mock_issue
+    ):
+        """A repo versioned last run but now tagless is flagged as a regression."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            # Previous run had this repo versioned.
+            (tmp / "versions.txt").write_text("actions/setup-foo@v1\n")
+            mock_fetch_repos.return_value = [{"name": "setup-foo"}]
+            mock_fetch_tags.return_value = []  # now no tags -> unversioned
+            with patch.object(fetch_versions, "SCRIPT_DIR", tmp), \
+                 patch.object(fetch_versions, "ADDITIONAL_ORGS", []), \
+                 patch.object(fetch_versions, "ADDITIONAL_REPOS", []), \
+                 patch.object(fetch_versions, "SKIP_REPOS", []):
+                fetch_versions.main()
+            mock_issue.assert_called_once_with("actions/setup-foo")
+
 
 class TestVersionPatternMatching(unittest.TestCase):
     """Tests for the version tag pattern matching."""
