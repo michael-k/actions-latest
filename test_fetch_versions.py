@@ -817,6 +817,7 @@ aws-actions/old@v1
 class TestAdditionalOrgs(unittest.TestCase):
     """Tests for additional orgs functionality in main()."""
 
+    @patch("fetch_versions.is_action_repo", return_value=True)
     @patch("fetch_versions.get_latest_semver_tag")
     @patch("fetch_versions.get_latest_version_tag")
     @patch("fetch_versions.fetch_tags")
@@ -827,6 +828,7 @@ class TestAdditionalOrgs(unittest.TestCase):
         mock_fetch_tags,
         mock_get_tag,
         mock_get_semver,
+        mock_is_action,
     ):
         """Test main function with additional orgs."""
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -1289,43 +1291,84 @@ class TestFetchReposBySearch(unittest.TestCase):
         self.assertEqual(fetch_versions.fetch_repos_by_search("q"), [])
 
 
-class TestSearchOrgs(unittest.TestCase):
+class TestIsActionRepo(unittest.TestCase):
+    @patch("fetch_versions.subprocess.run")
+    def test_action_yml_present(self, mock_run):
+        mock_run.return_value = MagicMock(stdout="200", returncode=0)
+        self.assertTrue(fetch_versions.is_action_repo("docker", "build-push-action"))
+
+    @patch("fetch_versions.subprocess.run")
+    def test_neither_present(self, mock_run):
+        mock_run.return_value = MagicMock(stdout="404", returncode=0)
+        self.assertFalse(fetch_versions.is_action_repo("docker", "actions-toolkit"))
+
+    @patch("fetch_versions.subprocess.run")
+    def test_action_yaml_fallback(self, mock_run):
+        mock_run.side_effect = [
+            MagicMock(stdout="404", returncode=0),  # action.yml
+            MagicMock(stdout="200", returncode=0),  # action.yaml
+        ]
+        self.assertTrue(fetch_versions.is_action_repo("some", "repo"))
+
+
+class TestOrgBundles(unittest.TestCase):
+    @patch("fetch_versions.is_action_repo")
     @patch("fetch_versions.fetch_tags")
     @patch("fetch_versions.fetch_repos_by_search")
     @patch("fetch_versions.fetch_repos")
-    def test_search_org_bundle_excludes_non_actions(
-        self, mock_fetch_repos, mock_search, mock_tags
+    def test_search_bundle_filters_non_actions(
+        self, mock_fetch_repos, mock_search, mock_tags, mock_is_action
     ):
         with tempfile.TemporaryDirectory() as tmpdir:
             tmp = Path(tmpdir)
-            mock_fetch_repos.return_value = []  # main "actions" org empty
+            mock_fetch_repos.return_value = []
             mock_search.return_value = [
                 {"name": "build-push-action",
                  "full_name": "docker/build-push-action"},
-                {"name": "github-builder", "full_name": "docker/github-builder"},
+                {"name": "actions-toolkit", "full_name": "docker/actions-toolkit"},
             ]
             mock_tags.return_value = [("v1", "sha1"), ("v1.0.0", "sha1")]
+            mock_is_action.side_effect = lambda org, repo: repo == "build-push-action"
             with patch.object(fetch_versions, "SCRIPT_DIR", tmp), \
                  patch.object(fetch_versions, "ORG_NAME", "actions"), \
                  patch.object(fetch_versions, "ADDITIONAL_REPOS", []), \
                  patch.object(fetch_versions, "ADDITIONAL_ORGS", ["docker"]), \
-                 patch.object(fetch_versions, "SEARCH_ORGS", {"docker": "q"}), \
-                 patch.object(fetch_versions, "SEARCH_ORG_EXCLUDE",
-                              {"docker/github-builder"}), \
+                 patch.object(fetch_versions, "ORG_BUNDLES",
+                              {"docker": {"source": "search", "query": "q"}}), \
                  patch.object(fetch_versions, "SKIP_REPOS", []):
                 fetch_versions.main()
             docker_versions = (tmp / "docker-versions.txt").read_text()
             self.assertIn("docker/build-push-action@v1", docker_versions)
-            self.assertNotIn("github-builder", docker_versions)
-            # excluded repo is filtered before tag lookup
-            self.assertNotIn(
-                ("docker", "github-builder"),
-                [c.args for c in mock_tags.call_args_list],
-            )
-            # docker is NOT in the default bundle
+            self.assertNotIn("actions-toolkit", docker_versions)
             self.assertNotIn("docker/", (tmp / "versions.txt").read_text())
-            # the search query was used
             mock_search.assert_called_once_with("q")
+
+    @patch("fetch_versions.is_action_repo")
+    @patch("fetch_versions.fetch_tags")
+    @patch("fetch_versions.fetch_repos")
+    def test_full_bundle_filters_non_actions(
+        self, mock_fetch_repos, mock_tags, mock_is_action
+    ):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            def repos(org):
+                if org == "astral-sh":
+                    return [{"name": "setup-uv"}, {"name": "uv"}]
+                return []
+            mock_fetch_repos.side_effect = repos
+            mock_tags.return_value = [("v1", "sha1"), ("v1.0.0", "sha1")]
+            mock_is_action.side_effect = lambda org, repo: repo == "setup-uv"
+            with patch.object(fetch_versions, "SCRIPT_DIR", tmp), \
+                 patch.object(fetch_versions, "ORG_NAME", "actions"), \
+                 patch.object(fetch_versions, "ADDITIONAL_REPOS", []), \
+                 patch.object(fetch_versions, "ADDITIONAL_ORGS", ["astral-sh"]), \
+                 patch.object(fetch_versions, "ORG_BUNDLES",
+                              {"astral-sh": {"source": "full"}}), \
+                 patch.object(fetch_versions, "SKIP_REPOS", []):
+                fetch_versions.main()
+            astral = (tmp / "astral-sh-versions.txt").read_text()
+            self.assertIn("astral-sh/setup-uv@v1", astral)
+            self.assertNotIn("astral-sh/uv", astral)
 
 
 if __name__ == "__main__":

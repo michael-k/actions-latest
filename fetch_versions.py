@@ -26,30 +26,22 @@ README_END_MARKER = "<!-- VERSIONS_END -->"
 README_SHA_START_MARKER = "<!-- VERSIONS_SHA_START -->"
 README_SHA_END_MARKER = "<!-- VERSIONS_SHA_END -->"
 ORG_NAME = "actions"
-ADDITIONAL_REPOS: list[str] = [
-    "astral-sh/setup-uv",
-    "dependabot/fetch-metadata",
-    "dorny/paths-filter",
-    "golangci/golangci-lint-action",
-    "goreleaser/goreleaser-action",
-    "jdx/mise-action",
-    "ruby/setup-ruby",
-    "taiki-e/install-action",
-]
-ADDITIONAL_ORGS: list[str] = [
-    "aws-actions",
-    "docker",
-]
-# Bundle orgs sourced from a GitHub topic search instead of a full-org listing,
-# for orgs that also contain many non-action repos (e.g. docker).
-SEARCH_ORGS: dict[str, str] = {
-    "docker": "org:docker topic:github-actions",
+ADDITIONAL_REPOS: list[str] = []
+
+# Org bundles: each gets its own *-versions.txt and index.json entry (like the
+# default bundle). "full" lists every repo in the org; "search" narrows via a
+# GitHub search query, for orgs that also contain many non-action repos. In both
+# modes only repos with a root action.yml/action.yaml are kept (see
+# is_action_repo), so no per-org exclude list is needed.
+ORG_BUNDLES: dict[str, dict] = {
+    "aws-actions": {"source": "full"},
+    "astral-sh": {"source": "full"},
+    "google-github-actions": {"source": "full"},
+    "docker": {"source": "search", "query": "org:docker topic:github-actions"},
+    "hashicorp": {"source": "search", "query": "org:hashicorp topic:github-actions"},
+    "Azure": {"source": "search", "query": "org:Azure topic:github-actions"},
 }
-# Repos that match a SEARCH_ORGS query but are not usable actions.
-SEARCH_ORG_EXCLUDE: set[str] = {
-    "docker/github-builder",   # reusable workflow, not an action
-    "docker/actions-toolkit",  # TypeScript library, not an action
-}
+ADDITIONAL_ORGS: list[str] = list(ORG_BUNDLES)
 SKIP_REPOS: list[str] = [
     "action-versions",
     "actions-runner-controller",
@@ -404,6 +396,39 @@ def fetch_repos_by_search(query: str) -> list[dict]:
     return repos
 
 
+def is_action_repo(org: str, repo_name: str) -> bool:
+    """Return True if the repo has a root action.yml/action.yaml.
+
+    That is what makes a repo usable as `uses: org/repo@tag`, so it filters out
+    libraries, reusable workflows, and tools that merely carry version tags or
+    the github-actions topic.
+    """
+    for filename in ("action.yml", "action.yaml"):
+        headers = ["-H", "Accept: application/vnd.github+json"]
+        token = os.environ.get("GITHUB_TOKEN")
+        if token:
+            headers.extend(["-H", f"Authorization: token {token}"])
+
+        result = subprocess.run(
+            ["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}"]
+            + headers
+            + [f"{GITHUB_API_URL}/repos/{org}/{repo_name}/contents/{filename}"],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        status = result.stdout.strip()
+        if status == "200":
+            return True
+        if status != "404":
+            print(
+                f"Warning: unexpected HTTP {status} checking "
+                f"{org}/{repo_name}/{filename}; treating as not an action",
+                file=sys.stderr,
+            )
+    return False
+
+
 def fetch_tags(org: str, repo_name: str) -> list[tuple[str, str]]:
     """Fetch all tags for a repository using the GitHub API.
 
@@ -755,20 +780,15 @@ def main():
     org_repos = fetch_repos(ORG_NAME)
     print(f"Found {len(org_repos)} repos")
 
-    # Fetch repos from additional orgs (search-sourced ones are filtered by an
-    # exclude list; the rest are full-org listings).
+    # Fetch repos from additional orgs. "search" orgs are narrowed by a query;
+    # the rest are full-org listings. Non-action repos are dropped later by
+    # is_action_repo().
     additional_orgs_repos: dict[str, list[dict]] = {}
     for additional_org in ADDITIONAL_ORGS:
-        if additional_org in SEARCH_ORGS:
-            found = fetch_repos_by_search(SEARCH_ORGS[additional_org])
-            org_repos_list = [
-                repo for repo in found
-                if repo.get("full_name") not in SEARCH_ORG_EXCLUDE
-            ]
-            print(
-                f"Found {len(org_repos_list)} repos for {additional_org} via search"
-                f" ({len(found) - len(org_repos_list)} excluded)"
-            )
+        bundle = ORG_BUNDLES.get(additional_org, {"source": "full"})
+        if bundle.get("source") == "search":
+            org_repos_list = fetch_repos_by_search(bundle["query"])
+            print(f"Found {len(org_repos_list)} repos for {additional_org} via search")
         else:
             print(f"Fetching repos for {additional_org}...")
             org_repos_list = fetch_repos(additional_org)
@@ -840,6 +860,12 @@ def main():
         tags = fetch_tags(org, repo_name)
         latest_tag = get_latest_version_tag(tags)
         latest_semver = get_latest_semver_tag(tags)
+
+        # Bundle orgs may contain non-action repos; keep only real actions.
+        if org in ADDITIONAL_ORGS and (latest_tag or latest_semver):
+            if not is_action_repo(org, repo_name):
+                print("not an action")
+                continue
 
         if latest_tag:
             # Use vINTEGER tag (preferred)
