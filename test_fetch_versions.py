@@ -1259,5 +1259,74 @@ class TestCreateRegressionIssue(unittest.TestCase):
         )
 
 
+class TestFetchReposBySearch(unittest.TestCase):
+    @patch("fetch_versions.subprocess.run")
+    def test_single_page(self, mock_run):
+        payload = {"total_count": 2, "items": [
+            {"name": "a", "full_name": "docker/a"},
+            {"name": "b", "full_name": "docker/b"},
+        ]}
+        mock_run.return_value = MagicMock(stdout=json.dumps(payload), returncode=0)
+        repos = fetch_versions.fetch_repos_by_search("org:docker topic:github-actions")
+        self.assertEqual([r["full_name"] for r in repos], ["docker/a", "docker/b"])
+
+    @patch("fetch_versions.subprocess.run")
+    def test_pagination(self, mock_run):
+        page1 = {"items": [{"name": f"r{i}", "full_name": f"docker/r{i}"}
+                           for i in range(100)]}
+        page2 = {"items": [{"name": "last", "full_name": "docker/last"}]}
+        mock_run.side_effect = [
+            MagicMock(stdout=json.dumps(page1), returncode=0),
+            MagicMock(stdout=json.dumps(page2), returncode=0),
+        ]
+        repos = fetch_versions.fetch_repos_by_search("q")
+        self.assertEqual(len(repos), 101)
+
+    @patch("fetch_versions.subprocess.run")
+    def test_api_error_returns_empty(self, mock_run):
+        mock_run.return_value = MagicMock(
+            stdout='{"message": "API rate limit exceeded"}', returncode=0)
+        self.assertEqual(fetch_versions.fetch_repos_by_search("q"), [])
+
+
+class TestSearchOrgs(unittest.TestCase):
+    @patch("fetch_versions.fetch_tags")
+    @patch("fetch_versions.fetch_repos_by_search")
+    @patch("fetch_versions.fetch_repos")
+    def test_search_org_bundle_excludes_non_actions(
+        self, mock_fetch_repos, mock_search, mock_tags
+    ):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            mock_fetch_repos.return_value = []  # main "actions" org empty
+            mock_search.return_value = [
+                {"name": "build-push-action",
+                 "full_name": "docker/build-push-action"},
+                {"name": "github-builder", "full_name": "docker/github-builder"},
+            ]
+            mock_tags.return_value = [("v1", "sha1"), ("v1.0.0", "sha1")]
+            with patch.object(fetch_versions, "SCRIPT_DIR", tmp), \
+                 patch.object(fetch_versions, "ORG_NAME", "actions"), \
+                 patch.object(fetch_versions, "ADDITIONAL_REPOS", []), \
+                 patch.object(fetch_versions, "ADDITIONAL_ORGS", ["docker"]), \
+                 patch.object(fetch_versions, "SEARCH_ORGS", {"docker": "q"}), \
+                 patch.object(fetch_versions, "SEARCH_ORG_EXCLUDE",
+                              {"docker/github-builder"}), \
+                 patch.object(fetch_versions, "SKIP_REPOS", []):
+                fetch_versions.main()
+            docker_versions = (tmp / "docker-versions.txt").read_text()
+            self.assertIn("docker/build-push-action@v1", docker_versions)
+            self.assertNotIn("github-builder", docker_versions)
+            # excluded repo is filtered before tag lookup
+            self.assertNotIn(
+                ("docker", "github-builder"),
+                [c.args for c in mock_tags.call_args_list],
+            )
+            # docker is NOT in the default bundle
+            self.assertNotIn("docker/", (tmp / "versions.txt").read_text())
+            # the search query was used
+            mock_search.assert_called_once_with("q")
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -29,11 +29,6 @@ ORG_NAME = "actions"
 ADDITIONAL_REPOS: list[str] = [
     "astral-sh/setup-uv",
     "dependabot/fetch-metadata",
-    "docker/build-push-action",
-    "docker/login-action",
-    "docker/metadata-action",
-    "docker/setup-buildx-action",
-    "docker/setup-qemu-action",
     "dorny/paths-filter",
     "golangci/golangci-lint-action",
     "goreleaser/goreleaser-action",
@@ -43,7 +38,18 @@ ADDITIONAL_REPOS: list[str] = [
 ]
 ADDITIONAL_ORGS: list[str] = [
     "aws-actions",
+    "docker",
 ]
+# Bundle orgs sourced from a GitHub topic search instead of a full-org listing,
+# for orgs that also contain many non-action repos (e.g. docker).
+SEARCH_ORGS: dict[str, str] = {
+    "docker": "org:docker topic:github-actions",
+}
+# Repos that match a SEARCH_ORGS query but are not usable actions.
+SEARCH_ORG_EXCLUDE: set[str] = {
+    "docker/github-builder",   # reusable workflow, not an action
+    "docker/actions-toolkit",  # TypeScript library, not an action
+}
 SKIP_REPOS: list[str] = [
     "action-versions",
     "actions-runner-controller",
@@ -334,6 +340,63 @@ def fetch_repos(org: str) -> list[dict]:
         repos.extend(page_repos)
 
         if len(page_repos) < per_page:
+            break
+
+        page += 1
+
+    return repos
+
+
+def fetch_repos_by_search(query: str) -> list[dict]:
+    """Fetch repos matching a GitHub search query (e.g. an org plus a topic).
+
+    Returns a list of repo dicts (each with at least "name" and "full_name").
+    Used for bundle orgs that also contain many non-action repos, so we can
+    select by topic instead of listing the whole org.
+    """
+    repos: list[dict] = []
+    page = 1
+    per_page = 100
+
+    while True:
+        headers = ["-H", "Accept: application/vnd.github+json"]
+        token = os.environ.get("GITHUB_TOKEN")
+        if token:
+            headers.extend(["-H", f"Authorization: token {token}"])
+
+        result = subprocess.run(
+            ["curl", "-s", "-G"]
+            + headers
+            + [
+                f"{GITHUB_API_URL}/search/repositories",
+                "--data-urlencode",
+                f"q={query}",
+                "--data-urlencode",
+                f"per_page={per_page}",
+                "--data-urlencode",
+                f"page={page}",
+            ],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+
+        data = json.loads(result.stdout)
+
+        # Handle error responses (e.g., rate limiting, invalid query)
+        if not isinstance(data, dict) or "items" not in data:
+            message = data.get("message") if isinstance(data, dict) else None
+            if message:
+                print(f"Search API error: {message}", file=sys.stderr)
+            break
+
+        items = data["items"]
+        if not items:
+            break
+
+        repos.extend(items)
+
+        if len(items) < per_page:
             break
 
         page += 1
@@ -692,12 +755,24 @@ def main():
     org_repos = fetch_repos(ORG_NAME)
     print(f"Found {len(org_repos)} repos")
 
-    # Fetch repos from additional orgs
+    # Fetch repos from additional orgs (search-sourced ones are filtered by an
+    # exclude list; the rest are full-org listings).
     additional_orgs_repos: dict[str, list[dict]] = {}
     for additional_org in ADDITIONAL_ORGS:
-        print(f"Fetching repos for {additional_org}...")
-        org_repos_list = fetch_repos(additional_org)
-        print(f"Found {len(org_repos_list)} repos for {additional_org}")
+        if additional_org in SEARCH_ORGS:
+            found = fetch_repos_by_search(SEARCH_ORGS[additional_org])
+            org_repos_list = [
+                repo for repo in found
+                if repo.get("full_name") not in SEARCH_ORG_EXCLUDE
+            ]
+            print(
+                f"Found {len(org_repos_list)} repos for {additional_org} via search"
+                f" ({len(found) - len(org_repos_list)} excluded)"
+            )
+        else:
+            print(f"Fetching repos for {additional_org}...")
+            org_repos_list = fetch_repos(additional_org)
+            print(f"Found {len(org_repos_list)} repos for {additional_org}")
         additional_orgs_repos[additional_org] = org_repos_list
 
     # Build list of repos to process: combine org repos with additional repos
