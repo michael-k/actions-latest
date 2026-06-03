@@ -751,7 +751,87 @@ def create_regression_issue(repo_ref: str) -> None:
         )
 
 
-def main():
+def build_discovery_worklist() -> list[tuple[str, str, str]]:
+    """Build the (repo_ref, org, repo_name) work list via full org discovery.
+
+    Fetches every repo from ORG_NAME and each bundle org (using search or full
+    listing), then assembles the combined list. Used by discover runs.
+    """
+    # Fetch repos from the main organization
+    print(f"Fetching repos for {ORG_NAME}...")
+    org_repos = fetch_repos(ORG_NAME)
+    print(f"Found {len(org_repos)} repos")
+
+    # Fetch repos from additional orgs. "search" orgs are narrowed by a query;
+    # the rest are full-org listings. Non-action repos are dropped later by
+    # is_action_repo().
+    additional_orgs_repos: dict[str, list[dict]] = {}
+    for additional_org in ADDITIONAL_ORGS:
+        bundle = ORG_BUNDLES.get(additional_org, {"source": "full"})
+        if bundle.get("source") == "search":
+            org_repos_list = fetch_repos_by_search(bundle["query"])
+            print(f"Found {len(org_repos_list)} repos for {additional_org} via search")
+        else:
+            print(f"Fetching repos for {additional_org}...")
+            org_repos_list = fetch_repos(additional_org)
+            print(f"Found {len(org_repos_list)} repos for {additional_org}")
+        additional_orgs_repos[additional_org] = org_repos_list
+
+    # Build list of repos to process: combine org repos with additional repos
+    repos_to_process: list[tuple[str, str, str]] = []
+
+    # Add repos from main organization, excluding skipped ones
+    skipped_count = 0
+    for repo in org_repos:
+        repo_name = repo["name"]
+        if repo_name in SKIP_REPOS:
+            skipped_count += 1
+            continue
+        repos_to_process.append((f"{ORG_NAME}/{repo_name}", ORG_NAME, repo_name))
+
+    if skipped_count > 0:
+        print(f"Skipped {skipped_count} repos from {ORG_NAME}")
+
+    # Add additional repos
+    for additional_repo in ADDITIONAL_REPOS:
+        org, repo_name = parse_repo(additional_repo)
+        repos_to_process.append((additional_repo, org, repo_name))
+
+    # Add repos from additional orgs
+    for additional_org, org_repos_list in additional_orgs_repos.items():
+        for repo in org_repos_list:
+            repo_name = repo["name"]
+            repo_ref = f"{additional_org}/{repo_name}"
+            repos_to_process.append((repo_ref, additional_org, repo_name))
+
+    return repos_to_process
+
+
+def load_tracked_repos() -> list[tuple[str, str, str]]:
+    """Build the (repo_ref, org, repo_name) work list from the existing version
+    files. Used by refresh runs to re-check known repos without re-discovering."""
+    work: list[tuple[str, str, str]] = []
+    seen: set[str] = set()
+    files = [get_versions_file()] + [
+        get_org_versions_file(org) for org in ADDITIONAL_ORGS
+    ]
+    for path in files:
+        if not path.exists():
+            continue
+        for line in path.read_text().splitlines():
+            line = line.strip()
+            if not line or "@" not in line:
+                continue
+            repo_ref = line.split("@", 1)[0]
+            if repo_ref in seen:
+                continue
+            seen.add(repo_ref)
+            org, repo_name = parse_repo(repo_ref)
+            work.append((repo_ref, org, repo_name))
+    return work
+
+
+def main(discover: bool = True):
     """Main function to fetch repos, get tags via API, and generate versions.txt."""
     # Load cached unversioned repos
     unversioned = load_unversioned()
@@ -775,59 +855,19 @@ def main():
         *(get_org_versions_file(org) for org in ADDITIONAL_ORGS),
     )
 
-    # Fetch repos from the main organization
-    print(f"Fetching repos for {ORG_NAME}...")
-    org_repos = fetch_repos(ORG_NAME)
-    print(f"Found {len(org_repos)} repos")
-
-    # Fetch repos from additional orgs. "search" orgs are narrowed by a query;
-    # the rest are full-org listings. Non-action repos are dropped later by
-    # is_action_repo().
-    additional_orgs_repos: dict[str, list[dict]] = {}
-    for additional_org in ADDITIONAL_ORGS:
-        bundle = ORG_BUNDLES.get(additional_org, {"source": "full"})
-        if bundle.get("source") == "search":
-            org_repos_list = fetch_repos_by_search(bundle["query"])
-            print(f"Found {len(org_repos_list)} repos for {additional_org} via search")
-        else:
-            print(f"Fetching repos for {additional_org}...")
-            org_repos_list = fetch_repos(additional_org)
-            print(f"Found {len(org_repos_list)} repos for {additional_org}")
-        additional_orgs_repos[additional_org] = org_repos_list
-
-    # Build list of repos to process: combine org repos with additional repos
-    repos_to_process = []
-
-    # Add repos from main organization, excluding skipped ones
-    skipped_count = 0
-    for repo in org_repos:
-        repo_name = repo["name"]
-        if repo_name in SKIP_REPOS:
-            skipped_count += 1
-            continue
-        repos_to_process.append((f"{ORG_NAME}/{repo_name}", ORG_NAME, repo_name))
-
-    if skipped_count > 0:
-        print(f"Skipped {skipped_count} repos from {ORG_NAME}")
-
-    # Add additional repos
-    for additional_repo in ADDITIONAL_REPOS:
-        org, repo_name = parse_repo(additional_repo)
-        repos_to_process.append((additional_repo, org, repo_name))
-
-    # Add repos from additional orgs
-    for additional_org, org_repos in additional_orgs_repos.items():
-        for repo in org_repos:
-            repo_name = repo["name"]
-            repo_ref = f"{additional_org}/{repo_name}"
-            repos_to_process.append((repo_ref, additional_org, repo_name))
-
-    additional_orgs_repo_count = sum(
-        len(org_repos) for org_repos in additional_orgs_repos.values()
-    )
-    print(
-        f"Processing {len(repos_to_process)} repos total (including {len(ADDITIONAL_REPOS)} additional repos and {additional_orgs_repo_count} from additional orgs)"
-    )
+    if discover:
+        repos_to_process = build_discovery_worklist()
+    else:
+        print("Refresh mode: re-checking already-tracked repos")
+        repos_to_process = load_tracked_repos()
+        if not repos_to_process:
+            print(
+                "Refresh found no tracked repos (version files missing or empty); "
+                "skipping to avoid clobbering them. Run a discovery pass first.",
+                file=sys.stderr,
+            )
+            return
+    print(f"Processing {len(repos_to_process)} repos")
 
     versions = []
     versions_sha = []
@@ -862,7 +902,7 @@ def main():
         latest_semver = get_latest_semver_tag(tags)
 
         # Bundle orgs may contain non-action repos; keep only real actions.
-        if org in ADDITIONAL_ORGS and (latest_tag or latest_semver):
+        if discover and org in ADDITIONAL_ORGS and (latest_tag or latest_semver):
             if not is_action_repo(org, repo_name):
                 print("not an action")
                 continue
@@ -944,14 +984,15 @@ def main():
     # Update README.md with the SHA-pinned versions
     update_readme_sha(versions_sha_content)
 
-    # Update unversioned.txt
-    save_unversioned(new_unversioned)
-
     print(f"\nWrote {len(versions)} versions to {get_versions_file()}")
     print(f"Wrote {len(versions_sha)} versions with SHAs to {get_versions_sha_file()}")
-    print(
-        f"Cached {len(new_unversioned)} unversioned repos to {get_unversioned_file()}"
-    )
+
+    # Update unversioned.txt (discovery only; refresh must not clobber the cache)
+    if discover:
+        save_unversioned(new_unversioned)
+        print(
+            f"Cached {len(new_unversioned)} unversioned repos to {get_unversioned_file()}"
+        )
 
     # Write per-org files and update README sections
     for additional_org in ADDITIONAL_ORGS:
@@ -994,8 +1035,8 @@ def main():
             update_readme_for_org(additional_org, org_versions_content)
             update_readme_sha_for_org(additional_org, org_versions_sha_content)
 
-        # Update per-org unversioned cache
-        if additional_org in new_org_unversioned:
+        # Update per-org unversioned cache (discovery only)
+        if discover and additional_org in new_org_unversioned:
             save_org_unversioned(additional_org, new_org_unversioned[additional_org])
             print(
                 f"Cached {len(new_org_unversioned[additional_org])} unversioned repos for {additional_org}"
@@ -1005,19 +1046,20 @@ def main():
     generate_index_json()
 
     # Detect and report regressions
-    regressions = detect_regressions(
-        unversioned,
-        new_unversioned,
-        org_unversioned,
-        new_org_unversioned,
-        old_versioned,
-    )
-    if regressions:
-        print(f"\nDetected {len(regressions)} regressions:")
-        for repo_ref in regressions:
-            print(f"  - {repo_ref}")
-            create_regression_issue(repo_ref)
+    if discover:
+        regressions = detect_regressions(
+            unversioned,
+            new_unversioned,
+            org_unversioned,
+            new_org_unversioned,
+            old_versioned,
+        )
+        if regressions:
+            print(f"\nDetected {len(regressions)} regressions:")
+            for repo_ref in regressions:
+                print(f"  - {repo_ref}")
+                create_regression_issue(repo_ref)
 
 
 if __name__ == "__main__":
-    main()
+    main(discover="--refresh" not in sys.argv)

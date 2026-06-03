@@ -1371,5 +1371,43 @@ class TestOrgBundles(unittest.TestCase):
             self.assertNotIn("astral-sh/uv", astral)
 
 
+class TestRefreshMode(unittest.TestCase):
+    @patch("fetch_versions.is_action_repo")
+    @patch("fetch_versions.fetch_repos_by_search")
+    @patch("fetch_versions.fetch_repos")
+    @patch("fetch_versions.fetch_tags")
+    def test_refresh_uses_tracked_files_and_skips_discovery(
+        self, mock_tags, mock_fetch_repos, mock_search, mock_is_action
+    ):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            (tmp / "versions.txt").write_text("actions/checkout@v5\n")
+            (tmp / "aws-actions-versions.txt").write_text(
+                "aws-actions/configure-aws-credentials@v4\n")
+            def tags(org, repo):
+                if repo == "checkout":
+                    return [("v6", "sha6"), ("v6.0.0", "sha6")]
+                return [("v5", "sha5"), ("v5.0.0", "sha5")]
+            mock_tags.side_effect = tags
+            with patch.object(fetch_versions, "SCRIPT_DIR", tmp), \
+                 patch.object(fetch_versions, "ORG_NAME", "actions"), \
+                 patch.object(fetch_versions, "ADDITIONAL_ORGS", ["aws-actions"]), \
+                 patch.object(fetch_versions, "ADDITIONAL_REPOS", []), \
+                 patch.object(fetch_versions, "update_readme"), \
+                 patch.object(fetch_versions, "update_readme_sha"), \
+                 patch.object(fetch_versions, "update_readme_for_org"), \
+                 patch.object(fetch_versions, "update_readme_sha_for_org"):
+                fetch_versions.main(discover=False)
+            # discovery was skipped entirely
+            mock_fetch_repos.assert_not_called()
+            mock_search.assert_not_called()
+            mock_is_action.assert_not_called()
+            # versions refreshed from the tracked set
+            self.assertEqual((tmp / "versions.txt").read_text(),
+                             "actions/checkout@v6\n")
+            self.assertIn("aws-actions/configure-aws-credentials@v5",
+                          (tmp / "aws-actions-versions.txt").read_text())
+
+
 if __name__ == "__main__":
     unittest.main()
