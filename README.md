@@ -116,13 +116,7 @@ actions/upload-artifact@v7
 actions/upload-code-coverage@v1
 actions/upload-pages-artifact@v5
 actions/upload-release-asset@v1
-astral-sh/setup-uv@v7
 dependabot/fetch-metadata@v3
-docker/build-push-action@v7
-docker/login-action@v4
-docker/metadata-action@v6
-docker/setup-buildx-action@v4
-docker/setup-qemu-action@v4
 dorny/paths-filter@v4
 golangci/golangci-lint-action@v9
 goreleaser/goreleaser-action@v7
@@ -171,13 +165,7 @@ actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
 actions/upload-code-coverage@abb5995db9e0199b0e2bb9dbd136fce4cb1ec4d3 # v1.3.0
 actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
 actions/upload-release-asset@e8f9f06c4b078e705bd2ea027f0926603fc9b4d5 # v1.0.2
-astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
 dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0
-docker/build-push-action@f9f3042f7e2789586610d6e8b85c8f03e5195baf # v7.2.0
-docker/login-action@650006c6eb7dba73a995cc03b0b2d7f5ca915bee # v4.2.0
-docker/metadata-action@80c7e94dd9b9319bd5eb7a0e0fe9291e23a2a2e9 # v6.1.0
-docker/setup-buildx-action@d7f5e7f509e45cec5c76c4d5afdd7de93d0b3df5 # v4.1.0
-docker/setup-qemu-action@06116385d9baf250c9f4dcb4858b16962ea869c3 # v4.1.0
 dorny/paths-filter@fbd0ab8f3e69293af611ebaee6363fc25e6d187d # v4.0.1
 golangci/golangci-lint-action@82606bf257cbaff209d206a39f5134f0cfbfd2ee # v9.2.1
 goreleaser/goreleaser-action@5daf1e915a5f0af01ddbcd89a43b8061ff4f1a89 # v7.2.2
@@ -252,3 +240,55 @@ aws-actions/vulnerability-scan-github-action-for-amazon-inspector@e8668b62b5e6d6
 
 </details>
 <!-- AWS-ACTIONS_VERSIONS_SHA_END -->
+
+<!-- ASTRAL-SH_VERSIONS_START -->
+<details>
+<summary><h3><code>astral-sh</code></h3></summary>
+
+```
+astral-sh/setup-uv@v7
+```
+
+</details>
+<!-- ASTRAL-SH_VERSIONS_END -->
+
+<!-- ASTRAL-SH_VERSIONS_SHA_START -->
+<details>
+<summary><h3><code>astral-sh</code> (SHA-pinned)</h3></summary>
+
+```
+astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39 # v8.2.0
+```
+
+</details>
+<!-- ASTRAL-SH_VERSIONS_SHA_END -->
+
+<!-- DOCKER_VERSIONS_START -->
+<details>
+<summary><h3><code>docker</code></h3></summary>
+
+```
+docker/build-push-action@v7
+docker/login-action@v4
+docker/metadata-action@v6
+docker/setup-buildx-action@v4
+docker/setup-qemu-action@v4
+```
+
+</details>
+<!-- DOCKER_VERSIONS_END -->
+
+<!-- DOCKER_VERSIONS_SHA_START -->
+<details>
+<summary><h3><code>docker</code> (SHA-pinned)</h3></summary>
+
+```
+docker/build-push-action@f9f3042f7e2789586610d6e8b85c8f03e5195baf # v7.2.0
+docker/login-action@650006c6eb7dba73a995cc03b0b2d7f5ca915bee # v4.2.0
+docker/metadata-action@80c7e94dd9b9319bd5eb7a0e0fe9291e23a2a2e9 # v6.1.0
+docker/setup-buildx-action@d7f5e7f509e45cec5c76c4d5afdd7de93d0b3df5 # v4.1.0
+docker/setup-qemu-action@06116385d9baf250c9f4dcb4858b16962ea869c3 # v4.1.0
+```
+
+</details>
+<!-- DOCKER_VERSIONS_SHA_END -->

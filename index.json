@@ -9,6 +9,26 @@
     "aws-actions": {
       "versions_url": "https://michael-k.github.io/actions-latest/aws-actions-versions.txt",
       "versions_sha_url": "https://michael-k.github.io/actions-latest/aws-actions-versions-sha.txt"
+    },
+    "astral-sh": {
+      "versions_url": "https://michael-k.github.io/actions-latest/astral-sh-versions.txt",
+      "versions_sha_url": "https://michael-k.github.io/actions-latest/astral-sh-versions-sha.txt"
+    },
+    "google-github-actions": {
+      "versions_url": "https://michael-k.github.io/actions-latest/google-github-actions-versions.txt",
+      "versions_sha_url": "https://michael-k.github.io/actions-latest/google-github-actions-versions-sha.txt"
+    },
+    "docker": {
+      "versions_url": "https://michael-k.github.io/actions-latest/docker-versions.txt",
+      "versions_sha_url": "https://michael-k.github.io/actions-latest/docker-versions-sha.txt"
+    },
+    "hashicorp": {
+      "versions_url": "https://michael-k.github.io/actions-latest/hashicorp-versions.txt",
+      "versions_sha_url": "https://michael-k.github.io/actions-latest/hashicorp-versions-sha.txt"
+    },
+    "azure": {
+      "versions_url": "https://michael-k.github.io/actions-latest/azure-versions.txt",
+      "versions_sha_url": "https://michael-k.github.io/actions-latest/azure-versions-sha.txt"
     }
   }
 }
