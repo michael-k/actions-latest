@@ -878,6 +878,28 @@ class TestIndexJson(unittest.TestCase):
             self.assertIn("aws-actions", index["orgs"])
 
     @patch("fetch_versions.get_base_url")
+    def test_index_json_orgs_sorted(self, mock_base_url):
+        """Orgs are listed alphabetically, regardless of ORG_BUNDLES order."""
+        mock_base_url.return_value = "https://example.com/"
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            with patch.object(fetch_versions, "SCRIPT_DIR", Path(tmpdir)):
+                with patch.object(
+                    fetch_versions,
+                    "ADDITIONAL_ORGS",
+                    ["docker", "Azure", "aws-actions"],
+                ):
+                    fetch_versions.generate_index_json()
+
+            index_file = Path(tmpdir) / "index.json"
+            with open(index_file) as f:
+                index = json.load(f)
+
+            self.assertEqual(
+                list(index["orgs"]), ["aws-actions", "azure", "docker"]
+            )
+
+    @patch("fetch_versions.get_base_url")
     def test_index_json_urls_correct(self, mock_base_url):
         """Test that URLs are constructed correctly."""
         mock_base_url.return_value = "https://michael-k.github.io/quarantined-actions/"

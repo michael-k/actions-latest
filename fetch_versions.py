@@ -672,8 +672,8 @@ def generate_index_json() -> None:
         "versions_sha_url": f"{base_url}versions-sha.txt",
     }
 
-    # Add each additional org
-    for org in ADDITIONAL_ORGS:
+    # Add each additional org, sorted alphabetically
+    for org in sorted(ADDITIONAL_ORGS, key=str.lower):
         org_key = org.lower()
         index["orgs"][org_key] = {
             "versions_url": f"{base_url}{org_key}-versions.txt",
