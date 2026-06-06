@@ -83,17 +83,17 @@ def get_unversioned_file() -> Path:
 
 def get_org_versions_file(org: str) -> Path:
     """Get the versions file path for a specific org."""
-    return SCRIPT_DIR / f"{org}-versions.txt"
+    return SCRIPT_DIR / f"{org.lower()}-versions.txt"
 
 
 def get_org_versions_sha_file(org: str) -> Path:
     """Get the SHA-pinned versions file path for a specific org."""
-    return SCRIPT_DIR / f"{org}-versions-sha.txt"
+    return SCRIPT_DIR / f"{org.lower()}-versions-sha.txt"
 
 
 def get_org_unversioned_file(org: str) -> Path:
     """Get the unversioned cache file path for a specific org."""
-    return SCRIPT_DIR / f"{org}-unversioned.txt"
+    return SCRIPT_DIR / f"{org.lower()}-unversioned.txt"
 
 
 def get_readme_file() -> Path:

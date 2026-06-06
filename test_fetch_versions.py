@@ -635,6 +635,24 @@ class TestOrgFileHelpers(unittest.TestCase):
                 self.assertEqual(result.name, "golangci-unversioned.txt")
                 self.assertEqual(result.parent, Path(tmpdir))
 
+    def test_org_files_use_lowercase_names(self):
+        """Mixed-case org names (e.g. Azure) must map to lowercase file names,
+        matching the URLs generated in index.json."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            with patch.object(fetch_versions, "SCRIPT_DIR", Path(tmpdir)):
+                self.assertEqual(
+                    fetch_versions.get_org_versions_file("Azure").name,
+                    "azure-versions.txt",
+                )
+                self.assertEqual(
+                    fetch_versions.get_org_versions_sha_file("Azure").name,
+                    "azure-versions-sha.txt",
+                )
+                self.assertEqual(
+                    fetch_versions.get_org_unversioned_file("Azure").name,
+                    "azure-unversioned.txt",
+                )
+
     def test_get_org_readme_markers(self):
         """Test getting org-specific README markers."""
         start, end = fetch_versions.get_org_readme_markers("aws-actions")
