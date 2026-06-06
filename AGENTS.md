@@ -1,4 +1,4 @@
-# Agent Guide for actions-latest
+# Agent Guide for quarantined-actions
 
 ## Project Overview
 

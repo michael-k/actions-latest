@@ -1,34 +1,34 @@
 {
   "bundles": {
     "default": {
-      "versions_url": "https://michael-k.github.io/actions-latest/versions.txt",
-      "versions_sha_url": "https://michael-k.github.io/actions-latest/versions-sha.txt"
+      "versions_url": "https://michael-k.github.io/quarantined-actions/versions.txt",
+      "versions_sha_url": "https://michael-k.github.io/quarantined-actions/versions-sha.txt"
     }
   },
   "orgs": {
     "aws-actions": {
-      "versions_url": "https://michael-k.github.io/actions-latest/aws-actions-versions.txt",
-      "versions_sha_url": "https://michael-k.github.io/actions-latest/aws-actions-versions-sha.txt"
+      "versions_url": "https://michael-k.github.io/quarantined-actions/aws-actions-versions.txt",
+      "versions_sha_url": "https://michael-k.github.io/quarantined-actions/aws-actions-versions-sha.txt"
     },
     "astral-sh": {
-      "versions_url": "https://michael-k.github.io/actions-latest/astral-sh-versions.txt",
-      "versions_sha_url": "https://michael-k.github.io/actions-latest/astral-sh-versions-sha.txt"
+      "versions_url": "https://michael-k.github.io/quarantined-actions/astral-sh-versions.txt",
+      "versions_sha_url": "https://michael-k.github.io/quarantined-actions/astral-sh-versions-sha.txt"
     },
     "google-github-actions": {
-      "versions_url": "https://michael-k.github.io/actions-latest/google-github-actions-versions.txt",
-      "versions_sha_url": "https://michael-k.github.io/actions-latest/google-github-actions-versions-sha.txt"
+      "versions_url": "https://michael-k.github.io/quarantined-actions/google-github-actions-versions.txt",
+      "versions_sha_url": "https://michael-k.github.io/quarantined-actions/google-github-actions-versions-sha.txt"
     },
     "docker": {
-      "versions_url": "https://michael-k.github.io/actions-latest/docker-versions.txt",
-      "versions_sha_url": "https://michael-k.github.io/actions-latest/docker-versions-sha.txt"
+      "versions_url": "https://michael-k.github.io/quarantined-actions/docker-versions.txt",
+      "versions_sha_url": "https://michael-k.github.io/quarantined-actions/docker-versions-sha.txt"
     },
     "hashicorp": {
-      "versions_url": "https://michael-k.github.io/actions-latest/hashicorp-versions.txt",
-      "versions_sha_url": "https://michael-k.github.io/actions-latest/hashicorp-versions-sha.txt"
+      "versions_url": "https://michael-k.github.io/quarantined-actions/hashicorp-versions.txt",
+      "versions_sha_url": "https://michael-k.github.io/quarantined-actions/hashicorp-versions-sha.txt"
     },
     "azure": {
-      "versions_url": "https://michael-k.github.io/actions-latest/azure-versions.txt",
-      "versions_sha_url": "https://michael-k.github.io/actions-latest/azure-versions-sha.txt"
+      "versions_url": "https://michael-k.github.io/quarantined-actions/azure-versions.txt",
+      "versions_sha_url": "https://michael-k.github.io/quarantined-actions/azure-versions-sha.txt"
     }
   }
 }

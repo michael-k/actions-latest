@@ -862,7 +862,7 @@ class TestIndexJson(unittest.TestCase):
     @patch("fetch_versions.get_base_url")
     def test_index_json_urls_correct(self, mock_base_url):
         """Test that URLs are constructed correctly."""
-        mock_base_url.return_value = "https://michael-k.github.io/actions-latest/"
+        mock_base_url.return_value = "https://michael-k.github.io/quarantined-actions/"
 
         with tempfile.TemporaryDirectory() as tmpdir:
             with patch.object(fetch_versions, "SCRIPT_DIR", Path(tmpdir)):
@@ -878,34 +878,34 @@ class TestIndexJson(unittest.TestCase):
             # Verify default bundle URLs
             self.assertEqual(
                 index["bundles"]["default"]["versions_url"],
-                "https://michael-k.github.io/actions-latest/versions.txt",
+                "https://michael-k.github.io/quarantined-actions/versions.txt",
             )
             self.assertEqual(
                 index["bundles"]["default"]["versions_sha_url"],
-                "https://michael-k.github.io/actions-latest/versions-sha.txt",
+                "https://michael-k.github.io/quarantined-actions/versions-sha.txt",
             )
 
             # Verify org URLs
             self.assertEqual(
                 index["orgs"]["aws-actions"]["versions_url"],
-                "https://michael-k.github.io/actions-latest/aws-actions-versions.txt",
+                "https://michael-k.github.io/quarantined-actions/aws-actions-versions.txt",
             )
             self.assertEqual(
                 index["orgs"]["docker"]["versions_sha_url"],
-                "https://michael-k.github.io/actions-latest/docker-versions-sha.txt",
+                "https://michael-k.github.io/quarantined-actions/docker-versions-sha.txt",
             )
 
     @patch("fetch_versions.subprocess.run")
     def test_get_base_url_from_git(self, mock_run):
         """Test that base URL is derived from git config."""
         mock_run.return_value = MagicMock(
-            stdout="https://github.com/michael-k/actions-latest.git",
+            stdout="https://github.com/michael-k/quarantined-actions.git",
             returncode=0,
         )
 
         result = fetch_versions.get_base_url()
 
-        self.assertEqual(result, "https://michael-k.github.io/actions-latest/")
+        self.assertEqual(result, "https://michael-k.github.io/quarantined-actions/")
 
     @patch("fetch_versions.subprocess.run")
     def test_get_base_url_fallback(self, mock_run):
@@ -914,7 +914,7 @@ class TestIndexJson(unittest.TestCase):
 
         result = fetch_versions.get_base_url()
 
-        self.assertEqual(result, "https://michael-k.github.io/actions-latest/")
+        self.assertEqual(result, "https://michael-k.github.io/quarantined-actions/")
 
 
 class TestDetectRegressions(unittest.TestCase):
