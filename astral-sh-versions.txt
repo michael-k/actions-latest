@@ -1,1 +1,4 @@
+astral-sh/attest-action@v0.0.6
+astral-sh/pyx-auth-action@v0.0.10
+astral-sh/ruff-action@v3
 astral-sh/setup-uv@v7

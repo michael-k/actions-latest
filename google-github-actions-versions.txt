@@ -1,0 +1,17 @@
+google-github-actions/analyze-code-security-scc@v1
+google-github-actions/auth@v3
+google-github-actions/create-cloud-deploy-release@v2
+google-github-actions/deploy-appengine@v3
+google-github-actions/deploy-cloud-functions@v4
+google-github-actions/deploy-cloudrun@v3
+google-github-actions/deploy-gke@v0
+google-github-actions/get-gke-credentials@v3
+google-github-actions/get-secretmanager-secrets@v3
+google-github-actions/release-please-action@v4
+google-github-actions/run-gemini-cli@v0
+google-github-actions/run-vertexai-notebook@v1
+google-github-actions/send-google-chat-webhook@v0.0.4
+google-github-actions/setup-gcloud@v3
+google-github-actions/ssh-compute@v2
+google-github-actions/test-action@v2.0.1
+google-github-actions/upload-cloud-storage@v3

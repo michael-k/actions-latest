@@ -1,0 +1,17 @@
+Azure/aca-review-apps@edb566ff1c235496327839df6c82713cbe9e93ac # v0.2.1
+Azure/aks-set-context@60623acbdcbbdcf799ad50a1adf8703874339f8b # v5.0.0
+Azure/bicep-build-action@d2a88e5c7150cd562f3e8b8f361560db2cb4d5c5 # v1.0.1
+Azure/bicep-deploy@66910e9c5c7733c33a1cd605030d02234b3bc4ed # v2.3.0
+Azure/data-factory-deploy-action@390b7811bd2e99d4b8cef1bff69dab47bb5872ce # v1.2.0
+Azure/data-factory-export-action@64109498d635d1ad6b6d78bdae3c1460c8d42d06 # v1.2.1
+Azure/data-factory-validate-action@1a1e93960902bd7de128c22b985fb6256988af4b # v1.1.6
+Azure/deployment-what-if-action@7caef615e35c10abe2d2dd2ec811071697e9d723 # v1.0.0
+Azure/k8s-bake@5792a98d71472c1bedd8cae99205dc5e253dd58c # v4.0.0
+Azure/k8s-create-secret@5e49ad902ac755e0815974a44904c728da961747 # v6.0.0
+Azure/k8s-deploy@c7ebd0d5f39477a23f1b5dea0f52e6db04adf28e # v6.0.0
+Azure/k8s-lint@e4234c50ea835112e72b145bdecd00a94bad42fd # v4.0.0
+Azure/k8s-set-context@89b837d75b40a7bd2ddafde837473c212db8b313 # v5.0.0
+Azure/login@532459ea530d8321f2fb9bb10d1e0bcf23869a43 # v3.0.0
+Azure/setup-helm@dda3372f752e03dde6b3237bc9431cdc2f7a02a2 # v5.0.0
+Azure/setup-kubectl@829323503d1be3d00ca8346e5391ca0b07a9ab0d # v5.1.0
+Azure/sql-action@96cea35f2b24c72eb5b6ece33d45e6f60e6b7b87 # v2.2.1

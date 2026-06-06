@@ -33,10 +33,3 @@ actions/upload-artifact@v7
 actions/upload-code-coverage@v1
 actions/upload-pages-artifact@v5
 actions/upload-release-asset@v1
-dependabot/fetch-metadata@v3
-dorny/paths-filter@v4
-golangci/golangci-lint-action@v9
-goreleaser/goreleaser-action@v7
-jdx/mise-action@v4
-ruby/setup-ruby@v1.310.0
-taiki-e/install-action@v2
