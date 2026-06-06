@@ -15,8 +15,6 @@ actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
 actions/first-interaction@1c4688942c71f71d4f5502a26ea67c331730fa4d # v3.1.0
 actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
 actions/go-dependency-submission@f35d5c9af13ce9cc32f7930b171e315e878f6921 # v2.0.3
-actions/hello-world-docker-action@0b406c0e14ed4b1853113f84b89aa6cdf762e340 # v2
-actions/hello-world-javascript-action@ae53f59fd519c0006ceb494ecbfed5f05d4151cf # v1
 actions/javascript-action@4be183afbd08ddadedcf09f17e8e112326894107 # v1.0.1
 actions/jekyll-build-pages@44a6e6beabd48582f863aeeb6cb2151cc1716697 # v1.0.13
 actions/labeler@f27b608878404679385c85cfa523b85ccb86e213 # v6.1.0

@@ -1,6 +1,6 @@
-hashicorp/actions-slack-status@v2
+hashicorp/actions-slack-status@v2.0.1
 hashicorp/setup-boundary@v1.1.0
 hashicorp/setup-nomad@v1.0.0
-hashicorp/setup-packer@v3
-hashicorp/terraform-cdk-action@v11
-hashicorp/vault-action@v4
+hashicorp/setup-packer@v3.3.0
+hashicorp/terraform-cdk-action@v11.0.2
+hashicorp/vault-action@v4.0.0

@@ -88,41 +88,39 @@ This is a personal fork of [acidghost/actions-latest](https://github.com/acidgho
 ## Latest versions
 
 ```
-actions/add-to-project@v2
-actions/ai-inference@v2
-actions/attest@v4
-actions/attest-build-provenance@v4
-actions/attest-sbom@v4
-actions/cache@v5
-actions/checkout@v6
-actions/configure-pages@v6
-actions/create-github-app-token@v3
-actions/create-release@v1
-actions/delete-package-versions@v5
-actions/dependency-review-action@v3
-actions/deploy-pages@v5
-actions/download-artifact@v8
-actions/first-interaction@v3
-actions/github-script@v9
-actions/go-dependency-submission@v2
-actions/hello-world-docker-action@v2
-actions/hello-world-javascript-action@v1
-actions/javascript-action@v1
-actions/jekyll-build-pages@v1
-actions/labeler@v6
-actions/setup-dotnet@v5
-actions/setup-elixir@v1
-actions/setup-go@v6
-actions/setup-haskell@v1
-actions/setup-java@v5
-actions/setup-node@v6
-actions/setup-python@v6
-actions/setup-ruby@v1
-actions/stale@v10
-actions/upload-artifact@v7
-actions/upload-code-coverage@v1
-actions/upload-pages-artifact@v5
-actions/upload-release-asset@v1
+actions/add-to-project@v2.0.0
+actions/ai-inference@v2.1.1
+actions/attest@v4.1.0
+actions/attest-build-provenance@v4.1.0
+actions/attest-sbom@v4.1.0
+actions/cache@v5.0.5
+actions/checkout@v6.0.3
+actions/configure-pages@v6.0.0
+actions/create-github-app-token@v3.2.0
+actions/create-release@v1.1.4
+actions/delete-package-versions@v5.0.0
+actions/dependency-review-action@v5.0.0
+actions/deploy-pages@v5.0.0
+actions/download-artifact@v8.0.1
+actions/first-interaction@v3.1.0
+actions/github-script@v9.0.0
+actions/go-dependency-submission@v2.0.3
+actions/javascript-action@v1.0.1
+actions/jekyll-build-pages@v1.0.13
+actions/labeler@v6.1.0
+actions/setup-dotnet@v5.3.0
+actions/setup-elixir@v1.5.0
+actions/setup-go@v6.4.0
+actions/setup-haskell@v1.1.4
+actions/setup-java@v5.2.0
+actions/setup-node@v6.4.0
+actions/setup-python@v6.2.0
+actions/setup-ruby@v1.1.3
+actions/stale@v10.3.0
+actions/upload-artifact@v7.0.1
+actions/upload-code-coverage@v1.3.0
+actions/upload-pages-artifact@v5.0.0
+actions/upload-release-asset@v1.0.2
 ```
 <!-- VERSIONS_END -->
 
@@ -147,8 +145,6 @@ actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
 actions/first-interaction@1c4688942c71f71d4f5502a26ea67c331730fa4d # v3.1.0
 actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
 actions/go-dependency-submission@f35d5c9af13ce9cc32f7930b171e315e878f6921 # v2.0.3
-actions/hello-world-docker-action@0b406c0e14ed4b1853113f84b89aa6cdf762e340 # v2
-actions/hello-world-javascript-action@ae53f59fd519c0006ceb494ecbfed5f05d4151cf # v1
 actions/javascript-action@4be183afbd08ddadedcf09f17e8e112326894107 # v1.0.1
 actions/jekyll-build-pages@44a6e6beabd48582f863aeeb6cb2151cc1716697 # v1.0.13
 actions/labeler@f27b608878404679385c85cfa523b85ccb86e213 # v6.1.0
@@ -175,28 +171,24 @@ actions/upload-release-asset@e8f9f06c4b078e705bd2ea027f0926603fc9b4d5 # v1.0.2
 <summary><h3><code>aws-actions</code></h3></summary>
 
 ```
-aws-actions/amazon-ecr-login@v2
-aws-actions/amazon-ecs-deploy-express-service@v1
-aws-actions/amazon-ecs-deploy-task-definition@v2
-aws-actions/amazon-ecs-render-task-definition@v1
-aws-actions/amazon-eks-fargate@v0
-aws-actions/application-observability-for-aws@v1
-aws-actions/aws-cloudformation-github-deploy@v2
-aws-actions/aws-codebuild-run-build@v1
-aws-actions/aws-devicefarm-browser-testing@v3
-aws-actions/aws-devicefarm-mobile-device-testing@v3
+aws-actions/amazon-ecr-login@v2.1.5
+aws-actions/amazon-ecs-deploy-express-service@v1.2.1
+aws-actions/amazon-ecs-deploy-task-definition@v2.6.2
+aws-actions/amazon-ecs-render-task-definition@v1.8.5
+aws-actions/amazon-eks-fargate@v0.1.1
+aws-actions/application-observability-for-aws@v1.1.1
+aws-actions/aws-cloudformation-github-deploy@v2.2.0
+aws-actions/aws-codebuild-run-build@v1.0.19
 aws-actions/aws-elasticbeanstalk-deploy@v1.0.4
-aws-actions/aws-lambda-deploy@v1
-aws-actions/aws-secretsmanager-get-secrets@v3
-aws-actions/closed-issue-message@v2
+aws-actions/aws-lambda-deploy@v1.1.2
+aws-actions/aws-secretsmanager-get-secrets@v3.0.1
 aws-actions/cloudformation-aws-iam-policy-validator@v1.0.4
-aws-actions/codeguru-security@v1
-aws-actions/configure-aws-credentials@v6
-aws-actions/setup-sam@v3
-aws-actions/stale-issue-cleanup@v6
-aws-actions/sustainability-scanner@v1
+aws-actions/codeguru-security@v1.2.2
+aws-actions/configure-aws-credentials@v6.2.0
+aws-actions/stale-issue-cleanup@v7.1.1
+aws-actions/sustainability-scanner@v1.3.1
 aws-actions/terraform-aws-iam-policy-validator@v1.0.3
-aws-actions/vulnerability-scan-github-action-for-amazon-inspector@v1
+aws-actions/vulnerability-scan-github-action-for-amazon-inspector@v1.4.2
 ```
 
 </details>
@@ -215,16 +207,12 @@ aws-actions/amazon-eks-fargate@fa91b1ce6e342eb17a1d57df976506d02f074640 # v0.1.1
 aws-actions/application-observability-for-aws@95bb59e4538ba9ef746805d8a2bbbe531ba2a728 # v1.1.1
 aws-actions/aws-cloudformation-github-deploy@81e3b03d2266bcb76c4bcc37a7d71d9cb67838bb # v2.2.0
 aws-actions/aws-codebuild-run-build@7e46c3fa1c1f217e26a73712796b1f78938b534b # v1.0.19
-aws-actions/aws-devicefarm-browser-testing@08307129ceef7ad2999ce39e54fa9334df61bfb1 # v3
-aws-actions/aws-devicefarm-mobile-device-testing@5a6c9fbb66ca99cb92ce07381c8be038f654eff6 # v3
 aws-actions/aws-elasticbeanstalk-deploy@1f56e4e813ae4eb167e69ca324234c336c1df573 # v1.0.4
 aws-actions/aws-lambda-deploy@d496277188b89f0be02d7a2216fc912c0427702a # v1.1.2
 aws-actions/aws-secretsmanager-get-secrets@2cb1a461cbd4865ac4299648312e4704c646cd53 # v3.0.1
-aws-actions/closed-issue-message@10aaf6366131b673a7c8b7742f8b3849f1d44f18 # v2
 aws-actions/cloudformation-aws-iam-policy-validator@aa5ca59693ba89d200db1d2b3af4b60989627bdc # v1.0.4
 aws-actions/codeguru-security@44877802cfee29abce47f8ba12b8417d70d01a9b # v1.2.2
 aws-actions/configure-aws-credentials@e7f100cf4c008499ea8adda475de1042d6975c7b # v6.2.0
-aws-actions/setup-sam@89ddb14d60e682855e3fea4be85b3c56485de310 # v3
 aws-actions/stale-issue-cleanup@0604f2edf84a3a66bc0dfb4a30eb07814cbdf440 # v7.1.1
 aws-actions/sustainability-scanner@d6067411fc5290a836e3ebcf388c746d83cf0e9f # v1.3.1
 aws-actions/terraform-aws-iam-policy-validator@1cd3c484b95b6c3d9e42ca1797d89ae74eb29ede # v1.0.3
@@ -241,8 +229,8 @@ aws-actions/vulnerability-scan-github-action-for-amazon-inspector@e8668b62b5e6d6
 ```
 astral-sh/attest-action@v0.0.6
 astral-sh/pyx-auth-action@v0.0.10
-astral-sh/ruff-action@v3
-astral-sh/setup-uv@v7
+astral-sh/ruff-action@v4.0.0
+astral-sh/setup-uv@v8.2.0
 ```
 
 </details>
@@ -267,16 +255,16 @@ astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39 # v8.2.0
 <summary><h3><code>docker</code></h3></summary>
 
 ```
-docker/bake-action@v7
-docker/build-push-action@v7
+docker/bake-action@v7.2.0
+docker/build-push-action@v7.2.0
 docker/cagent-action@v1.5.4
-docker/login-action@v4
-docker/metadata-action@v6
-docker/scout-action@v1
-docker/setup-buildx-action@v4
-docker/setup-compose-action@v2
-docker/setup-docker-action@v5
-docker/setup-qemu-action@v4
+docker/login-action@v4.2.0
+docker/metadata-action@v6.1.0
+docker/scout-action@v1.21.0
+docker/setup-buildx-action@v4.1.0
+docker/setup-compose-action@v2.2.0
+docker/setup-docker-action@v5.2.0
+docker/setup-qemu-action@v4.1.0
 ```
 
 </details>
@@ -307,23 +295,23 @@ docker/setup-qemu-action@06116385d9baf250c9f4dcb4858b16962ea869c3 # v4.1.0
 <summary><h3><code>google-github-actions</code></h3></summary>
 
 ```
-google-github-actions/analyze-code-security-scc@v1
-google-github-actions/auth@v3
-google-github-actions/create-cloud-deploy-release@v2
-google-github-actions/deploy-appengine@v3
-google-github-actions/deploy-cloud-functions@v4
-google-github-actions/deploy-cloudrun@v3
-google-github-actions/deploy-gke@v0
-google-github-actions/get-gke-credentials@v3
-google-github-actions/get-secretmanager-secrets@v3
-google-github-actions/release-please-action@v4
-google-github-actions/run-gemini-cli@v0
-google-github-actions/run-vertexai-notebook@v1
+google-github-actions/analyze-code-security-scc@v1.0.0
+google-github-actions/auth@v3.0.0
+google-github-actions/create-cloud-deploy-release@v2.0.0
+google-github-actions/deploy-appengine@v3.0.1
+google-github-actions/deploy-cloud-functions@v4.0.0
+google-github-actions/deploy-cloudrun@v3.0.1
+google-github-actions/deploy-gke@v0.0.4
+google-github-actions/get-gke-credentials@v3.0.0
+google-github-actions/get-secretmanager-secrets@v3.0.0
+google-github-actions/release-please-action@v4.1.1
+google-github-actions/run-gemini-cli@v0.1.22
+google-github-actions/run-vertexai-notebook@v1.1.3
 google-github-actions/send-google-chat-webhook@v0.0.4
-google-github-actions/setup-gcloud@v3
-google-github-actions/ssh-compute@v2
+google-github-actions/setup-gcloud@v3.0.1
+google-github-actions/ssh-compute@v2.0.0
 google-github-actions/test-action@v2.0.1
-google-github-actions/upload-cloud-storage@v3
+google-github-actions/upload-cloud-storage@v3.0.0
 ```
 
 </details>
@@ -361,12 +349,12 @@ google-github-actions/upload-cloud-storage@6397bd7208e18d13ba2619ee21b9873edc944
 <summary><h3><code>hashicorp</code></h3></summary>
 
 ```
-hashicorp/actions-slack-status@v2
+hashicorp/actions-slack-status@v2.0.1
 hashicorp/setup-boundary@v1.1.0
 hashicorp/setup-nomad@v1.0.0
-hashicorp/setup-packer@v3
-hashicorp/terraform-cdk-action@v11
-hashicorp/vault-action@v4
+hashicorp/setup-packer@v3.3.0
+hashicorp/terraform-cdk-action@v11.0.2
+hashicorp/vault-action@v4.0.0
 ```
 
 </details>
@@ -393,23 +381,23 @@ hashicorp/vault-action@892a26828f195e65540a40b4768ae4571f51ebfc # v4.0.0
 <summary><h3><code>Azure</code></h3></summary>
 
 ```
-Azure/aca-review-apps@v0
-Azure/aks-set-context@v5
+Azure/aca-review-apps@v0.2.1
+Azure/aks-set-context@v5.0.0
 Azure/bicep-build-action@v1.0.1
-Azure/bicep-deploy@v2
+Azure/bicep-deploy@v2.3.0
 Azure/data-factory-deploy-action@v1.2.0
 Azure/data-factory-export-action@v1.2.1
 Azure/data-factory-validate-action@v1.1.6
 Azure/deployment-what-if-action@v1.0.0
-Azure/k8s-bake@v4
-Azure/k8s-create-secret@v6
-Azure/k8s-deploy@v6
-Azure/k8s-lint@v4
-Azure/k8s-set-context@v5
-Azure/login@v3
-Azure/setup-helm@v5
-Azure/setup-kubectl@v5
-Azure/sql-action@v2
+Azure/k8s-bake@v4.0.0
+Azure/k8s-create-secret@v6.0.0
+Azure/k8s-deploy@v6.0.0
+Azure/k8s-lint@v4.0.0
+Azure/k8s-set-context@v5.0.0
+Azure/login@v3.0.0
+Azure/setup-helm@v5.0.0
+Azure/setup-kubectl@v5.1.0
+Azure/sql-action@v2.2.1
 ```
 
 </details>
