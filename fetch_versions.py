@@ -617,7 +617,7 @@ def save_ledger(ledger: dict) -> None:
     """Write seen-versions.json with repos and tags sorted for stable diffs."""
     ordered = {
         repo: dict(sorted(tags.items()))
-        for repo, tags in sorted(ledger.items())
+        for repo, tags in sorted(ledger.items(), key=lambda item: item[0].lower())
     }
     get_ledger_file().write_text(json.dumps(ordered, indent=2) + "\n")
 

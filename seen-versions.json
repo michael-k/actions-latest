@@ -1,446 +1,4 @@
 {
-  "Azure/aca-review-apps": {
-    "v0.1.0": {
-      "sha": "6ab3c372a5019d460007651d4574014f2c2343b8",
-      "first_seen": "2026-06-06"
-    },
-    "v0.2.0": {
-      "sha": "95cb320573803aa7ae246a4f19f7700c87fc2739",
-      "first_seen": "2026-06-06"
-    },
-    "v0.2.1": {
-      "sha": "edb566ff1c235496327839df6c82713cbe9e93ac",
-      "first_seen": "2000-01-01"
-    }
-  },
-  "Azure/aks-set-context": {
-    "v4.0.0": {
-      "sha": "37037e33d3a2fc08abe40c887d81c3f6e1eb93b9",
-      "first_seen": "2026-06-06"
-    },
-    "v4.0.1": {
-      "sha": "1cf43fa609aaef0617c6a12deda238b920e926b0",
-      "first_seen": "2026-06-06"
-    },
-    "v4.0.2": {
-      "sha": "feeca6405be94202afcb1c395616ff29b1811b9f",
-      "first_seen": "2026-06-06"
-    },
-    "v4.0.3": {
-      "sha": "c7eb093e5a5d47caa333f64974d5fd1cd4bf069d",
-      "first_seen": "2026-06-06"
-    },
-    "v5.0.0": {
-      "sha": "60623acbdcbbdcf799ad50a1adf8703874339f8b",
-      "first_seen": "2000-01-01"
-    }
-  },
-  "Azure/bicep-build-action": {
-    "v0.0.1": {
-      "sha": "c333f970fb0daae2241062b5b7acf30a97f696c9",
-      "first_seen": "2026-06-06"
-    },
-    "v1.0.0": {
-      "sha": "c333f970fb0daae2241062b5b7acf30a97f696c9",
-      "first_seen": "2026-06-06"
-    },
-    "v1.0.1": {
-      "sha": "d2a88e5c7150cd562f3e8b8f361560db2cb4d5c5",
-      "first_seen": "2000-01-01"
-    }
-  },
-  "Azure/bicep-deploy": {
-    "v2.0.0": {
-      "sha": "aa40b2f84860a5d58606c516da3cfa3044bdb73e",
-      "first_seen": "2026-06-06"
-    },
-    "v2.1.0": {
-      "sha": "b63eaec8b9f6816ac93b70400c64e60fae54530f",
-      "first_seen": "2026-06-06"
-    },
-    "v2.2.0": {
-      "sha": "4d5dc29bf04d05546dd5df9c665c54b9c5213207",
-      "first_seen": "2026-06-06"
-    },
-    "v2.3.0": {
-      "sha": "66910e9c5c7733c33a1cd605030d02234b3bc4ed",
-      "first_seen": "2000-01-01"
-    }
-  },
-  "Azure/data-factory-deploy-action": {
-    "v1.0.0": {
-      "sha": "75e72f293751e52201e20b729e3c8c1c6edc7a7e",
-      "first_seen": "2026-06-06"
-    },
-    "v1.0.1": {
-      "sha": "03dec2a1ec3c9bfaf44fb9ffd8fd3a53cf9592a5",
-      "first_seen": "2026-06-06"
-    },
-    "v1.0.2": {
-      "sha": "df55798bdc673da06400fc290472927c6c8ee304",
-      "first_seen": "2026-06-06"
-    },
-    "v1.0.3": {
-      "sha": "2e3a2a89c0d661320f4964c838c133ca4f57e3fc",
-      "first_seen": "2026-06-06"
-    },
-    "v1.1.0": {
-      "sha": "27ee1c6cf0cd5ce53452afccfa7f634bece1c61a",
-      "first_seen": "2026-06-06"
-    },
-    "v1.2.0": {
-      "sha": "390b7811bd2e99d4b8cef1bff69dab47bb5872ce",
-      "first_seen": "2000-01-01"
-    }
-  },
-  "Azure/data-factory-export-action": {
-    "v1.0.0": {
-      "sha": "f8e4442466325221e36e41496a7717a419186e10",
-      "first_seen": "2026-06-06"
-    },
-    "v1.0.1": {
-      "sha": "ec41277055694045833f93e7aa6bf5e29d8a06dd",
-      "first_seen": "2026-06-06"
-    },
-    "v1.0.2": {
-      "sha": "f6bcce0bb3bf5a0a85221bfeab02ba5fcc7ac60f",
-      "first_seen": "2026-06-06"
-    },
-    "v1.1.0": {
-      "sha": "4cc37b1e2f11180a820a073ded8580e7a52f6b3c",
-      "first_seen": "2026-06-06"
-    },
-    "v1.2.0": {
-      "sha": "f62efee2630382ecc2a6af2cc64fbebdb4a9abbc",
-      "first_seen": "2026-06-06"
-    },
-    "v1.2.1": {
-      "sha": "64109498d635d1ad6b6d78bdae3c1460c8d42d06",
-      "first_seen": "2000-01-01"
-    }
-  },
-  "Azure/data-factory-validate-action": {
-    "v1.0.0": {
-      "sha": "e623b1f2ed08341907219cabf0572898b39b4239",
-      "first_seen": "2026-06-06"
-    },
-    "v1.1.0": {
-      "sha": "81800a2c2b3bb41ba7b650e3e2ce913e4fdc25ea",
-      "first_seen": "2026-06-06"
-    },
-    "v1.1.1": {
-      "sha": "44c3da8278e64c89a73520636e7201d8c0f8ff79",
-      "first_seen": "2026-06-06"
-    },
-    "v1.1.2": {
-      "sha": "08c34c81d78a885fc186c72dd91a0ef4923b2940",
-      "first_seen": "2026-06-06"
-    },
-    "v1.1.3": {
-      "sha": "828f9e09ded33c2245f8b784410d6761408ad6ed",
-      "first_seen": "2026-06-06"
-    },
-    "v1.1.4": {
-      "sha": "5553f61c0405bc20a25d776437324ff733d491e2",
-      "first_seen": "2026-06-06"
-    },
-    "v1.1.5": {
-      "sha": "f10561cb49b1114e03b89a920dc6908026413a9c",
-      "first_seen": "2026-06-06"
-    },
-    "v1.1.6": {
-      "sha": "1a1e93960902bd7de128c22b985fb6256988af4b",
-      "first_seen": "2000-01-01"
-    }
-  },
-  "Azure/deployment-what-if-action": {
-    "v1.0.0": {
-      "sha": "7caef615e35c10abe2d2dd2ec811071697e9d723",
-      "first_seen": "2000-01-01"
-    }
-  },
-  "Azure/k8s-bake": {
-    "v3.0.0": {
-      "sha": "3f17e1158b2821b7c4f6b81af95f8c0ffc7582cc",
-      "first_seen": "2026-06-06"
-    },
-    "v3.0.1": {
-      "sha": "bae218efb451582c89a2effea788924297f1fecf",
-      "first_seen": "2026-06-06"
-    },
-    "v3.0.2": {
-      "sha": "869b84cc0a868fa52d33a1d0747087e41e2855cf",
-      "first_seen": "2026-06-06"
-    },
-    "v3.0.3": {
-      "sha": "95561f3a0651685404a08699d0f2b584c547fb48",
-      "first_seen": "2026-06-06"
-    },
-    "v3.0.4": {
-      "sha": "4bc529dc974251aa82c1ed2bee69fe6e4fbaad03",
-      "first_seen": "2026-06-06"
-    },
-    "v4.0.0": {
-      "sha": "5792a98d71472c1bedd8cae99205dc5e253dd58c",
-      "first_seen": "2000-01-01"
-    }
-  },
-  "Azure/k8s-create-secret": {
-    "v5.0.0": {
-      "sha": "e71ab313fe46c3c1d9cee256178524ddb8c79ca0",
-      "first_seen": "2026-06-06"
-    },
-    "v5.0.1": {
-      "sha": "6e0ba8047235646753f2a3a3b359b4d0006ff218",
-      "first_seen": "2026-06-06"
-    },
-    "v6.0.0": {
-      "sha": "5e49ad902ac755e0815974a44904c728da961747",
-      "first_seen": "2000-01-01"
-    }
-  },
-  "Azure/k8s-deploy": {
-    "v1.1.0": {
-      "sha": "2c8e7a02f5c6da42e90829dd5bb29d65a887e274",
-      "first_seen": "2026-06-06"
-    },
-    "v4.10.0": {
-      "sha": "4438d05de7bc2f9f64e60db25814162a5138c8f6",
-      "first_seen": "2026-06-06"
-    },
-    "v5.0.0": {
-      "sha": "2586e999cf0695a60e1a0ea9dca6799eb70dc944",
-      "first_seen": "2026-06-06"
-    },
-    "v5.0.1": {
-      "sha": "97a78b4bf05988c0f69f28e15496ac090ac00bd6",
-      "first_seen": "2026-06-06"
-    },
-    "v5.0.2": {
-      "sha": "de2e93acbf3fa2bf2459690a7e8d18ffd577381b",
-      "first_seen": "2026-06-06"
-    },
-    "v5.0.3": {
-      "sha": "b0f33712c6b266c3ddd7e96416fcc7a7837d98dc",
-      "first_seen": "2026-06-06"
-    },
-    "v5.0.4": {
-      "sha": "6f7c489cecd8da05646259d9fa3daae92e095c7b",
-      "first_seen": "2026-06-06"
-    },
-    "v5.1.0": {
-      "sha": "c8cfec839dc09896b3b8cc40cd13d04792680771",
-      "first_seen": "2026-06-06"
-    },
-    "v6.0.0": {
-      "sha": "c7ebd0d5f39477a23f1b5dea0f52e6db04adf28e",
-      "first_seen": "2000-01-01"
-    }
-  },
-  "Azure/k8s-lint": {
-    "v3.0.0": {
-      "sha": "280df0b56cc46f0ad278418b826614642fe10d93",
-      "first_seen": "2026-06-06"
-    },
-    "v3.0.1": {
-      "sha": "6aefe5066f95e73d2b140d8835cc95583b886989",
-      "first_seen": "2026-06-06"
-    },
-    "v4.0.0": {
-      "sha": "e4234c50ea835112e72b145bdecd00a94bad42fd",
-      "first_seen": "2000-01-01"
-    }
-  },
-  "Azure/k8s-set-context": {
-    "v4.0.0": {
-      "sha": "27bfb387305b8f0ab5495d692e4a3304db7d0669",
-      "first_seen": "2026-06-06"
-    },
-    "v4.0.1": {
-      "sha": "212a19233d93f03eceaac31ae5a1d1acf650b6ef",
-      "first_seen": "2026-06-06"
-    },
-    "v4.0.2": {
-      "sha": "ae59a723ba9abe7a9655538854a025448dbab4aa",
-      "first_seen": "2026-06-06"
-    },
-    "v5.0.0": {
-      "sha": "89b837d75b40a7bd2ddafde837473c212db8b313",
-      "first_seen": "2000-01-01"
-    }
-  },
-  "Azure/login": {
-    "v1.1.0": {
-      "sha": "a6347e700173fd07eb4cea20d65de3ca2e741533",
-      "first_seen": "2026-06-06"
-    },
-    "v1.1.1": {
-      "sha": "45b10ffd199fcae9620403570d52305a98ac1dfb",
-      "first_seen": "2026-06-06"
-    },
-    "v1.1.2": {
-      "sha": "af38bb3818ae8d2717120d43c2ec683734889d91",
-      "first_seen": "2026-06-06"
-    },
-    "v1.2.2": {
-      "sha": "e2ec7a0d584dd8044a3ecef3e857b51f9d527838",
-      "first_seen": "2026-06-06"
-    },
-    "v1.2.3": {
-      "sha": "9801a35baff5850a97d2f2855092ebea3c579837",
-      "first_seen": "2026-06-06"
-    },
-    "v1.2.4": {
-      "sha": "6786a47b5726030896be70ac35e07bd81673fe81",
-      "first_seen": "2026-06-06"
-    },
-    "v1.3.0": {
-      "sha": "77f1b2e3fb80c0e8645114159d17008b8a2e475a",
-      "first_seen": "2026-06-06"
-    },
-    "v1.4.0": {
-      "sha": "154d5e5db199fc3c11c1832df0446462c9b98ed6",
-      "first_seen": "2026-06-06"
-    },
-    "v1.4.1": {
-      "sha": "89d153571fe9a34ed70fcf9f1d95ab8debea7a73",
-      "first_seen": "2026-06-06"
-    },
-    "v1.4.2": {
-      "sha": "66d2e78565ab7af265d2b627085bc34c73ce6abb",
-      "first_seen": "2026-06-06"
-    },
-    "v1.4.3": {
-      "sha": "1f63701bf3e6892515f1b7ce2d2bf1708b46beaf",
-      "first_seen": "2026-06-06"
-    },
-    "v1.4.4": {
-      "sha": "ec3c14589bd3e9312b3cc8c41e6860e258df9010",
-      "first_seen": "2026-06-06"
-    },
-    "v1.4.5": {
-      "sha": "24848bc889cfc0a8313c2b3e378ac0d625b9bc16",
-      "first_seen": "2026-06-06"
-    },
-    "v1.4.6": {
-      "sha": "92a5484dfaf04ca78a94597f4f19fea633851fa2",
-      "first_seen": "2026-06-06"
-    },
-    "v1.4.7": {
-      "sha": "92a5484dfaf04ca78a94597f4f19fea633851fa2",
-      "first_seen": "2026-06-06"
-    },
-    "v1.5.0": {
-      "sha": "4c88f01b0e3a5600e08a37889921afd060f75cf0",
-      "first_seen": "2026-06-06"
-    },
-    "v1.5.1": {
-      "sha": "de95379fe4dadc2defb305917eaa7e5dde727294",
-      "first_seen": "2026-06-06"
-    },
-    "v1.6.0": {
-      "sha": "e15b166166a8746d1a47596803bd8c1b595455cf",
-      "first_seen": "2026-06-06"
-    },
-    "v1.6.1": {
-      "sha": "cb79c773a3cfa27f31f25eb3f677781210c9ce3d",
-      "first_seen": "2026-06-06"
-    },
-    "v2.0.0": {
-      "sha": "8c334a195cbb38e46038007b304988d888bf676a",
-      "first_seen": "2026-06-06"
-    },
-    "v2.1.0": {
-      "sha": "6b2456866fc08b011acb422a92a4aa20e2c4de32",
-      "first_seen": "2026-06-06"
-    },
-    "v2.1.1": {
-      "sha": "6c251865b4e6290e7b78be643ea2d005bc51f69a",
-      "first_seen": "2026-06-06"
-    },
-    "v2.2.0": {
-      "sha": "a65d910e8af852a8061c627c456678983e180302",
-      "first_seen": "2026-06-06"
-    },
-    "v2.3.0": {
-      "sha": "a457da9ea143d694b1b9c7c869ebb04ebe844ef5",
-      "first_seen": "2026-06-06"
-    },
-    "v3.0.0": {
-      "sha": "532459ea530d8321f2fb9bb10d1e0bcf23869a43",
-      "first_seen": "2000-01-01"
-    }
-  },
-  "Azure/setup-helm": {
-    "v4.0.0": {
-      "sha": "29960d0f5f19214b88e1d9ba750a9914ab0f1a2f",
-      "first_seen": "2026-06-06"
-    },
-    "v4.1.0": {
-      "sha": "b7246b12e77f7134dc2d460a3d5bad15bbe29390",
-      "first_seen": "2026-06-06"
-    },
-    "v4.2.0": {
-      "sha": "fe7b79cd5ee1e45176fcad797de68ecaf3ca4814",
-      "first_seen": "2026-06-06"
-    },
-    "v4.3.0": {
-      "sha": "b9e51907a09c216f16ebe8536097933489208112",
-      "first_seen": "2026-06-06"
-    },
-    "v4.3.1": {
-      "sha": "1a275c3b69536ee54be43f2070a358922e12c8d4",
-      "first_seen": "2026-06-06"
-    },
-    "v5.0.0": {
-      "sha": "dda3372f752e03dde6b3237bc9431cdc2f7a02a2",
-      "first_seen": "2000-01-01"
-    }
-  },
-  "Azure/setup-kubectl": {
-    "v4.0.0": {
-      "sha": "3e0aec4d80787158d308d7b364cb1b702e7feb7f",
-      "first_seen": "2026-06-06"
-    },
-    "v4.0.1": {
-      "sha": "776406bce94f63e41d621b960d78ee25c8b76ede",
-      "first_seen": "2026-06-06"
-    },
-    "v5.0.0": {
-      "sha": "15650b3ad78fff148532a140b8a4c821796b2d7b",
-      "first_seen": "2026-06-06"
-    },
-    "v5.1.0": {
-      "sha": "829323503d1be3d00ca8346e5391ca0b07a9ab0d",
-      "first_seen": "2000-01-01"
-    }
-  },
-  "Azure/sql-action": {
-    "v1.0.0": {
-      "sha": "7bfac90887d40fa70ce19b8e575378ecc8492c6e",
-      "first_seen": "2026-06-06"
-    },
-    "v1.0.1": {
-      "sha": "23e6ac76d21845a8b39bd2fb2141830379d7f557",
-      "first_seen": "2026-06-06"
-    },
-    "v1.0.2": {
-      "sha": "d15f594ff9f94d152267d87af71b69814138a8df",
-      "first_seen": "2026-06-06"
-    },
-    "v1.0.3": {
-      "sha": "f9ff4fa54cc7a5c627afd5fce45ad466065759cf",
-      "first_seen": "2026-06-06"
-    },
-    "v2.1.1": {
-      "sha": "21f0f73180cd4b76af4ba8fa42e82f03784e4655",
-      "first_seen": "2026-06-06"
-    },
-    "v2.2.1": {
-      "sha": "96cea35f2b24c72eb5b6ece33d45e6f60e6b7b87",
-      "first_seen": "2000-01-01"
-    }
-  },
   "actions/add-to-project": {
     "v0.0.1": {
       "sha": "89cc223d97b334440ee14529f45a244674ca7df1",
@@ -6032,6 +5590,448 @@
     },
     "v1.4.2": {
       "sha": "e8668b62b5e6d64db325500b1399c92a42b5fdf0",
+      "first_seen": "2000-01-01"
+    }
+  },
+  "Azure/aca-review-apps": {
+    "v0.1.0": {
+      "sha": "6ab3c372a5019d460007651d4574014f2c2343b8",
+      "first_seen": "2026-06-06"
+    },
+    "v0.2.0": {
+      "sha": "95cb320573803aa7ae246a4f19f7700c87fc2739",
+      "first_seen": "2026-06-06"
+    },
+    "v0.2.1": {
+      "sha": "edb566ff1c235496327839df6c82713cbe9e93ac",
+      "first_seen": "2000-01-01"
+    }
+  },
+  "Azure/aks-set-context": {
+    "v4.0.0": {
+      "sha": "37037e33d3a2fc08abe40c887d81c3f6e1eb93b9",
+      "first_seen": "2026-06-06"
+    },
+    "v4.0.1": {
+      "sha": "1cf43fa609aaef0617c6a12deda238b920e926b0",
+      "first_seen": "2026-06-06"
+    },
+    "v4.0.2": {
+      "sha": "feeca6405be94202afcb1c395616ff29b1811b9f",
+      "first_seen": "2026-06-06"
+    },
+    "v4.0.3": {
+      "sha": "c7eb093e5a5d47caa333f64974d5fd1cd4bf069d",
+      "first_seen": "2026-06-06"
+    },
+    "v5.0.0": {
+      "sha": "60623acbdcbbdcf799ad50a1adf8703874339f8b",
+      "first_seen": "2000-01-01"
+    }
+  },
+  "Azure/bicep-build-action": {
+    "v0.0.1": {
+      "sha": "c333f970fb0daae2241062b5b7acf30a97f696c9",
+      "first_seen": "2026-06-06"
+    },
+    "v1.0.0": {
+      "sha": "c333f970fb0daae2241062b5b7acf30a97f696c9",
+      "first_seen": "2026-06-06"
+    },
+    "v1.0.1": {
+      "sha": "d2a88e5c7150cd562f3e8b8f361560db2cb4d5c5",
+      "first_seen": "2000-01-01"
+    }
+  },
+  "Azure/bicep-deploy": {
+    "v2.0.0": {
+      "sha": "aa40b2f84860a5d58606c516da3cfa3044bdb73e",
+      "first_seen": "2026-06-06"
+    },
+    "v2.1.0": {
+      "sha": "b63eaec8b9f6816ac93b70400c64e60fae54530f",
+      "first_seen": "2026-06-06"
+    },
+    "v2.2.0": {
+      "sha": "4d5dc29bf04d05546dd5df9c665c54b9c5213207",
+      "first_seen": "2026-06-06"
+    },
+    "v2.3.0": {
+      "sha": "66910e9c5c7733c33a1cd605030d02234b3bc4ed",
+      "first_seen": "2000-01-01"
+    }
+  },
+  "Azure/data-factory-deploy-action": {
+    "v1.0.0": {
+      "sha": "75e72f293751e52201e20b729e3c8c1c6edc7a7e",
+      "first_seen": "2026-06-06"
+    },
+    "v1.0.1": {
+      "sha": "03dec2a1ec3c9bfaf44fb9ffd8fd3a53cf9592a5",
+      "first_seen": "2026-06-06"
+    },
+    "v1.0.2": {
+      "sha": "df55798bdc673da06400fc290472927c6c8ee304",
+      "first_seen": "2026-06-06"
+    },
+    "v1.0.3": {
+      "sha": "2e3a2a89c0d661320f4964c838c133ca4f57e3fc",
+      "first_seen": "2026-06-06"
+    },
+    "v1.1.0": {
+      "sha": "27ee1c6cf0cd5ce53452afccfa7f634bece1c61a",
+      "first_seen": "2026-06-06"
+    },
+    "v1.2.0": {
+      "sha": "390b7811bd2e99d4b8cef1bff69dab47bb5872ce",
+      "first_seen": "2000-01-01"
+    }
+  },
+  "Azure/data-factory-export-action": {
+    "v1.0.0": {
+      "sha": "f8e4442466325221e36e41496a7717a419186e10",
+      "first_seen": "2026-06-06"
+    },
+    "v1.0.1": {
+      "sha": "ec41277055694045833f93e7aa6bf5e29d8a06dd",
+      "first_seen": "2026-06-06"
+    },
+    "v1.0.2": {
+      "sha": "f6bcce0bb3bf5a0a85221bfeab02ba5fcc7ac60f",
+      "first_seen": "2026-06-06"
+    },
+    "v1.1.0": {
+      "sha": "4cc37b1e2f11180a820a073ded8580e7a52f6b3c",
+      "first_seen": "2026-06-06"
+    },
+    "v1.2.0": {
+      "sha": "f62efee2630382ecc2a6af2cc64fbebdb4a9abbc",
+      "first_seen": "2026-06-06"
+    },
+    "v1.2.1": {
+      "sha": "64109498d635d1ad6b6d78bdae3c1460c8d42d06",
+      "first_seen": "2000-01-01"
+    }
+  },
+  "Azure/data-factory-validate-action": {
+    "v1.0.0": {
+      "sha": "e623b1f2ed08341907219cabf0572898b39b4239",
+      "first_seen": "2026-06-06"
+    },
+    "v1.1.0": {
+      "sha": "81800a2c2b3bb41ba7b650e3e2ce913e4fdc25ea",
+      "first_seen": "2026-06-06"
+    },
+    "v1.1.1": {
+      "sha": "44c3da8278e64c89a73520636e7201d8c0f8ff79",
+      "first_seen": "2026-06-06"
+    },
+    "v1.1.2": {
+      "sha": "08c34c81d78a885fc186c72dd91a0ef4923b2940",
+      "first_seen": "2026-06-06"
+    },
+    "v1.1.3": {
+      "sha": "828f9e09ded33c2245f8b784410d6761408ad6ed",
+      "first_seen": "2026-06-06"
+    },
+    "v1.1.4": {
+      "sha": "5553f61c0405bc20a25d776437324ff733d491e2",
+      "first_seen": "2026-06-06"
+    },
+    "v1.1.5": {
+      "sha": "f10561cb49b1114e03b89a920dc6908026413a9c",
+      "first_seen": "2026-06-06"
+    },
+    "v1.1.6": {
+      "sha": "1a1e93960902bd7de128c22b985fb6256988af4b",
+      "first_seen": "2000-01-01"
+    }
+  },
+  "Azure/deployment-what-if-action": {
+    "v1.0.0": {
+      "sha": "7caef615e35c10abe2d2dd2ec811071697e9d723",
+      "first_seen": "2000-01-01"
+    }
+  },
+  "Azure/k8s-bake": {
+    "v3.0.0": {
+      "sha": "3f17e1158b2821b7c4f6b81af95f8c0ffc7582cc",
+      "first_seen": "2026-06-06"
+    },
+    "v3.0.1": {
+      "sha": "bae218efb451582c89a2effea788924297f1fecf",
+      "first_seen": "2026-06-06"
+    },
+    "v3.0.2": {
+      "sha": "869b84cc0a868fa52d33a1d0747087e41e2855cf",
+      "first_seen": "2026-06-06"
+    },
+    "v3.0.3": {
+      "sha": "95561f3a0651685404a08699d0f2b584c547fb48",
+      "first_seen": "2026-06-06"
+    },
+    "v3.0.4": {
+      "sha": "4bc529dc974251aa82c1ed2bee69fe6e4fbaad03",
+      "first_seen": "2026-06-06"
+    },
+    "v4.0.0": {
+      "sha": "5792a98d71472c1bedd8cae99205dc5e253dd58c",
+      "first_seen": "2000-01-01"
+    }
+  },
+  "Azure/k8s-create-secret": {
+    "v5.0.0": {
+      "sha": "e71ab313fe46c3c1d9cee256178524ddb8c79ca0",
+      "first_seen": "2026-06-06"
+    },
+    "v5.0.1": {
+      "sha": "6e0ba8047235646753f2a3a3b359b4d0006ff218",
+      "first_seen": "2026-06-06"
+    },
+    "v6.0.0": {
+      "sha": "5e49ad902ac755e0815974a44904c728da961747",
+      "first_seen": "2000-01-01"
+    }
+  },
+  "Azure/k8s-deploy": {
+    "v1.1.0": {
+      "sha": "2c8e7a02f5c6da42e90829dd5bb29d65a887e274",
+      "first_seen": "2026-06-06"
+    },
+    "v4.10.0": {
+      "sha": "4438d05de7bc2f9f64e60db25814162a5138c8f6",
+      "first_seen": "2026-06-06"
+    },
+    "v5.0.0": {
+      "sha": "2586e999cf0695a60e1a0ea9dca6799eb70dc944",
+      "first_seen": "2026-06-06"
+    },
+    "v5.0.1": {
+      "sha": "97a78b4bf05988c0f69f28e15496ac090ac00bd6",
+      "first_seen": "2026-06-06"
+    },
+    "v5.0.2": {
+      "sha": "de2e93acbf3fa2bf2459690a7e8d18ffd577381b",
+      "first_seen": "2026-06-06"
+    },
+    "v5.0.3": {
+      "sha": "b0f33712c6b266c3ddd7e96416fcc7a7837d98dc",
+      "first_seen": "2026-06-06"
+    },
+    "v5.0.4": {
+      "sha": "6f7c489cecd8da05646259d9fa3daae92e095c7b",
+      "first_seen": "2026-06-06"
+    },
+    "v5.1.0": {
+      "sha": "c8cfec839dc09896b3b8cc40cd13d04792680771",
+      "first_seen": "2026-06-06"
+    },
+    "v6.0.0": {
+      "sha": "c7ebd0d5f39477a23f1b5dea0f52e6db04adf28e",
+      "first_seen": "2000-01-01"
+    }
+  },
+  "Azure/k8s-lint": {
+    "v3.0.0": {
+      "sha": "280df0b56cc46f0ad278418b826614642fe10d93",
+      "first_seen": "2026-06-06"
+    },
+    "v3.0.1": {
+      "sha": "6aefe5066f95e73d2b140d8835cc95583b886989",
+      "first_seen": "2026-06-06"
+    },
+    "v4.0.0": {
+      "sha": "e4234c50ea835112e72b145bdecd00a94bad42fd",
+      "first_seen": "2000-01-01"
+    }
+  },
+  "Azure/k8s-set-context": {
+    "v4.0.0": {
+      "sha": "27bfb387305b8f0ab5495d692e4a3304db7d0669",
+      "first_seen": "2026-06-06"
+    },
+    "v4.0.1": {
+      "sha": "212a19233d93f03eceaac31ae5a1d1acf650b6ef",
+      "first_seen": "2026-06-06"
+    },
+    "v4.0.2": {
+      "sha": "ae59a723ba9abe7a9655538854a025448dbab4aa",
+      "first_seen": "2026-06-06"
+    },
+    "v5.0.0": {
+      "sha": "89b837d75b40a7bd2ddafde837473c212db8b313",
+      "first_seen": "2000-01-01"
+    }
+  },
+  "Azure/login": {
+    "v1.1.0": {
+      "sha": "a6347e700173fd07eb4cea20d65de3ca2e741533",
+      "first_seen": "2026-06-06"
+    },
+    "v1.1.1": {
+      "sha": "45b10ffd199fcae9620403570d52305a98ac1dfb",
+      "first_seen": "2026-06-06"
+    },
+    "v1.1.2": {
+      "sha": "af38bb3818ae8d2717120d43c2ec683734889d91",
+      "first_seen": "2026-06-06"
+    },
+    "v1.2.2": {
+      "sha": "e2ec7a0d584dd8044a3ecef3e857b51f9d527838",
+      "first_seen": "2026-06-06"
+    },
+    "v1.2.3": {
+      "sha": "9801a35baff5850a97d2f2855092ebea3c579837",
+      "first_seen": "2026-06-06"
+    },
+    "v1.2.4": {
+      "sha": "6786a47b5726030896be70ac35e07bd81673fe81",
+      "first_seen": "2026-06-06"
+    },
+    "v1.3.0": {
+      "sha": "77f1b2e3fb80c0e8645114159d17008b8a2e475a",
+      "first_seen": "2026-06-06"
+    },
+    "v1.4.0": {
+      "sha": "154d5e5db199fc3c11c1832df0446462c9b98ed6",
+      "first_seen": "2026-06-06"
+    },
+    "v1.4.1": {
+      "sha": "89d153571fe9a34ed70fcf9f1d95ab8debea7a73",
+      "first_seen": "2026-06-06"
+    },
+    "v1.4.2": {
+      "sha": "66d2e78565ab7af265d2b627085bc34c73ce6abb",
+      "first_seen": "2026-06-06"
+    },
+    "v1.4.3": {
+      "sha": "1f63701bf3e6892515f1b7ce2d2bf1708b46beaf",
+      "first_seen": "2026-06-06"
+    },
+    "v1.4.4": {
+      "sha": "ec3c14589bd3e9312b3cc8c41e6860e258df9010",
+      "first_seen": "2026-06-06"
+    },
+    "v1.4.5": {
+      "sha": "24848bc889cfc0a8313c2b3e378ac0d625b9bc16",
+      "first_seen": "2026-06-06"
+    },
+    "v1.4.6": {
+      "sha": "92a5484dfaf04ca78a94597f4f19fea633851fa2",
+      "first_seen": "2026-06-06"
+    },
+    "v1.4.7": {
+      "sha": "92a5484dfaf04ca78a94597f4f19fea633851fa2",
+      "first_seen": "2026-06-06"
+    },
+    "v1.5.0": {
+      "sha": "4c88f01b0e3a5600e08a37889921afd060f75cf0",
+      "first_seen": "2026-06-06"
+    },
+    "v1.5.1": {
+      "sha": "de95379fe4dadc2defb305917eaa7e5dde727294",
+      "first_seen": "2026-06-06"
+    },
+    "v1.6.0": {
+      "sha": "e15b166166a8746d1a47596803bd8c1b595455cf",
+      "first_seen": "2026-06-06"
+    },
+    "v1.6.1": {
+      "sha": "cb79c773a3cfa27f31f25eb3f677781210c9ce3d",
+      "first_seen": "2026-06-06"
+    },
+    "v2.0.0": {
+      "sha": "8c334a195cbb38e46038007b304988d888bf676a",
+      "first_seen": "2026-06-06"
+    },
+    "v2.1.0": {
+      "sha": "6b2456866fc08b011acb422a92a4aa20e2c4de32",
+      "first_seen": "2026-06-06"
+    },
+    "v2.1.1": {
+      "sha": "6c251865b4e6290e7b78be643ea2d005bc51f69a",
+      "first_seen": "2026-06-06"
+    },
+    "v2.2.0": {
+      "sha": "a65d910e8af852a8061c627c456678983e180302",
+      "first_seen": "2026-06-06"
+    },
+    "v2.3.0": {
+      "sha": "a457da9ea143d694b1b9c7c869ebb04ebe844ef5",
+      "first_seen": "2026-06-06"
+    },
+    "v3.0.0": {
+      "sha": "532459ea530d8321f2fb9bb10d1e0bcf23869a43",
+      "first_seen": "2000-01-01"
+    }
+  },
+  "Azure/setup-helm": {
+    "v4.0.0": {
+      "sha": "29960d0f5f19214b88e1d9ba750a9914ab0f1a2f",
+      "first_seen": "2026-06-06"
+    },
+    "v4.1.0": {
+      "sha": "b7246b12e77f7134dc2d460a3d5bad15bbe29390",
+      "first_seen": "2026-06-06"
+    },
+    "v4.2.0": {
+      "sha": "fe7b79cd5ee1e45176fcad797de68ecaf3ca4814",
+      "first_seen": "2026-06-06"
+    },
+    "v4.3.0": {
+      "sha": "b9e51907a09c216f16ebe8536097933489208112",
+      "first_seen": "2026-06-06"
+    },
+    "v4.3.1": {
+      "sha": "1a275c3b69536ee54be43f2070a358922e12c8d4",
+      "first_seen": "2026-06-06"
+    },
+    "v5.0.0": {
+      "sha": "dda3372f752e03dde6b3237bc9431cdc2f7a02a2",
+      "first_seen": "2000-01-01"
+    }
+  },
+  "Azure/setup-kubectl": {
+    "v4.0.0": {
+      "sha": "3e0aec4d80787158d308d7b364cb1b702e7feb7f",
+      "first_seen": "2026-06-06"
+    },
+    "v4.0.1": {
+      "sha": "776406bce94f63e41d621b960d78ee25c8b76ede",
+      "first_seen": "2026-06-06"
+    },
+    "v5.0.0": {
+      "sha": "15650b3ad78fff148532a140b8a4c821796b2d7b",
+      "first_seen": "2026-06-06"
+    },
+    "v5.1.0": {
+      "sha": "829323503d1be3d00ca8346e5391ca0b07a9ab0d",
+      "first_seen": "2000-01-01"
+    }
+  },
+  "Azure/sql-action": {
+    "v1.0.0": {
+      "sha": "7bfac90887d40fa70ce19b8e575378ecc8492c6e",
+      "first_seen": "2026-06-06"
+    },
+    "v1.0.1": {
+      "sha": "23e6ac76d21845a8b39bd2fb2141830379d7f557",
+      "first_seen": "2026-06-06"
+    },
+    "v1.0.2": {
+      "sha": "d15f594ff9f94d152267d87af71b69814138a8df",
+      "first_seen": "2026-06-06"
+    },
+    "v1.0.3": {
+      "sha": "f9ff4fa54cc7a5c627afd5fce45ad466065759cf",
+      "first_seen": "2026-06-06"
+    },
+    "v2.1.1": {
+      "sha": "21f0f73180cd4b76af4ba8fa42e82f03784e4655",
+      "first_seen": "2026-06-06"
+    },
+    "v2.2.1": {
+      "sha": "96cea35f2b24c72eb5b6ece33d45e6f60e6b7b87",
       "first_seen": "2000-01-01"
     }
   },

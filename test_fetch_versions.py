@@ -1590,6 +1590,25 @@ class LedgerIOTests(unittest.TestCase):
             text = (tmp / "seen-versions.json").read_text()
             self.assertLess(text.index("a/a"), text.index("b/b"))
 
+    def test_save_sorts_repos_case_insensitively(self):
+        """Mixed-case orgs (e.g. Azure) sort alphabetically, not ASCII-first."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            ledger = {
+                "Azure/login": {"v2.0.0": {"sha": "s", "first_seen": "x"}},
+                "actions/checkout": {"v4.0.0": {"sha": "t", "first_seen": "y"}},
+                "docker/build-push-action": {
+                    "v6.0.0": {"sha": "u", "first_seen": "z"}
+                },
+            }
+            with patch.object(fetch_versions, "SCRIPT_DIR", tmp):
+                fetch_versions.save_ledger(ledger)
+            saved = json.loads((tmp / "seen-versions.json").read_text())
+            self.assertEqual(
+                list(saved),
+                ["actions/checkout", "Azure/login", "docker/build-push-action"],
+            )
+
     def test_load_ledger_corrupt_json_exits_cleanly(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             tmp = Path(tmpdir)
