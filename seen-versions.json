@@ -5591,6 +5591,10 @@
     "v1.4.2": {
       "sha": "e8668b62b5e6d64db325500b1399c92a42b5fdf0",
       "first_seen": "2000-01-01"
+    },
+    "v1.5.0": {
+      "sha": "f5a63f71de9d790c7c42da74d59efb2c017bdcac",
+      "first_seen": "2026-06-10"
     }
   },
   "Azure/aca-review-apps": {
