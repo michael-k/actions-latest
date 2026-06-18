@@ -5789,6 +5789,10 @@
     "v4.0.0": {
       "sha": "5792a98d71472c1bedd8cae99205dc5e253dd58c",
       "first_seen": "2000-01-01"
+    },
+    "v4.1.0": {
+      "sha": "0191a5ae5126cfe61885d9bd46511caa8e9a9550",
+      "first_seen": "2026-06-18"
     }
   },
   "Azure/k8s-create-secret": {
