@@ -959,6 +959,10 @@
     "v6.0.3": {
       "sha": "df4cb1c069e1874edd31b4311f1884172cec0e10",
       "first_seen": "2000-01-01"
+    },
+    "v7.0.0": {
+      "sha": "9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0",
+      "first_seen": "2026-06-19"
     }
   },
   "actions/configure-pages": {
