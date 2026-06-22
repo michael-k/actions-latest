@@ -6757,6 +6757,196 @@
       "first_seen": "2026-06-16"
     }
   },
+  "docker/docker-agent-action": {
+    "v1.0.0": {
+      "sha": "a768b1458a6497f6ee9d203011fbe1104b6ede43",
+      "first_seen": "2026-06-22"
+    },
+    "v1.0.1": {
+      "sha": "e2c24aa4504f5beb2e2d351810c23170fcf535a1",
+      "first_seen": "2026-06-22"
+    },
+    "v1.0.2": {
+      "sha": "ff311c018fdbeb110149a1f20730012563d39655",
+      "first_seen": "2026-06-22"
+    },
+    "v1.0.3": {
+      "sha": "7db5a1f935868bf27762f001fe3bb609c0932665",
+      "first_seen": "2026-06-22"
+    },
+    "v1.0.4": {
+      "sha": "1f7ec0445e138a587639fc9c046076e22d184349",
+      "first_seen": "2026-06-22"
+    },
+    "v1.0.5": {
+      "sha": "7992ea47ed2446b5a80b01c46b00037c680e35ea",
+      "first_seen": "2026-06-22"
+    },
+    "v1.0.6": {
+      "sha": "eaa2dfa086eed101d15aaf98d64d7860c4659e5e",
+      "first_seen": "2026-06-22"
+    },
+    "v1.0.7": {
+      "sha": "5602cde78415801d2a8efdbdb2e747cedc63b863",
+      "first_seen": "2026-06-22"
+    },
+    "v1.1.0": {
+      "sha": "c60a1bee262bd9b640077d6901bc19ada11e1117",
+      "first_seen": "2026-06-22"
+    },
+    "v1.1.1": {
+      "sha": "41557b371d9f541889cac190d6bd1e4048fa2fa6",
+      "first_seen": "2026-06-22"
+    },
+    "v1.1.2": {
+      "sha": "f8a84b0c8a06a376a92caa6f217fffd60e5d9200",
+      "first_seen": "2026-06-22"
+    },
+    "v1.1.3": {
+      "sha": "09ce7ca293771cd7fa888b12067eb3e3f24c453e",
+      "first_seen": "2026-06-22"
+    },
+    "v1.1.4": {
+      "sha": "bcbb464a9f9a1a904e3c7b0773ac3f9cb993cd59",
+      "first_seen": "2026-06-22"
+    },
+    "v1.1.5": {
+      "sha": "b2ad694dd49dec2b4c354ddcf933efafdca9b6be",
+      "first_seen": "2026-06-22"
+    },
+    "v1.1.6": {
+      "sha": "bd5439a1cabc3c448abf7a0d29b6f9a0d5fd4ec7",
+      "first_seen": "2026-06-22"
+    },
+    "v1.1.7": {
+      "sha": "55cfe03a5c317e299f87d7d51c4fda335e45de2e",
+      "first_seen": "2026-06-22"
+    },
+    "v1.1.8": {
+      "sha": "a893bceeae87a21b91ca2b09459365e51f765e5d",
+      "first_seen": "2026-06-22"
+    },
+    "v1.1.9": {
+      "sha": "d53201d5c0adae9b27bb615beb0a6e45757806ee",
+      "first_seen": "2026-06-22"
+    },
+    "v1.2.0": {
+      "sha": "73c2715dd8746725fcd160a7356096c99376abdb",
+      "first_seen": "2026-06-22"
+    },
+    "v1.2.1": {
+      "sha": "509e7216a9fcdd4400e7750e1046ed8e4bc538f8",
+      "first_seen": "2026-06-22"
+    },
+    "v1.2.10": {
+      "sha": "5d5136ff675bc9f229e1a91e2a2316914ff1e609",
+      "first_seen": "2026-06-22"
+    },
+    "v1.2.11": {
+      "sha": "b6e1c73e1bb475e840842b1f43a4647fcb16b495",
+      "first_seen": "2026-06-22"
+    },
+    "v1.2.12": {
+      "sha": "5cc981100195274e475f436ce5526a219353a984",
+      "first_seen": "2026-06-22"
+    },
+    "v1.2.13": {
+      "sha": "3a12dbd0c6cd7dda3d4e05f24f0143c9701456de",
+      "first_seen": "2026-06-22"
+    },
+    "v1.2.2": {
+      "sha": "3cbf6c7ccebfaecb42ce5175f398668ce7b7a06f",
+      "first_seen": "2026-06-22"
+    },
+    "v1.2.3": {
+      "sha": "6da967cb251a65f9a3261cc05d383aa503829f48",
+      "first_seen": "2026-06-22"
+    },
+    "v1.2.4": {
+      "sha": "0907f9031047bc05644e2416afd54cc3df04c3b2",
+      "first_seen": "2026-06-22"
+    },
+    "v1.2.5": {
+      "sha": "ffc2b73bc414f4b815eebce741afc06b0a03ba85",
+      "first_seen": "2026-06-22"
+    },
+    "v1.2.6": {
+      "sha": "6ee4111d1f2b1078cf438d955d1c1c5cc48c36c7",
+      "first_seen": "2026-06-22"
+    },
+    "v1.2.7": {
+      "sha": "9fb68d5afefc5179248edf51a4ab5f72a166acd1",
+      "first_seen": "2026-06-22"
+    },
+    "v1.2.8": {
+      "sha": "96f9116d79166b7d9fe716bf9b6d0e50418386fd",
+      "first_seen": "2026-06-22"
+    },
+    "v1.2.9": {
+      "sha": "909874fb72ee21132d8319fa60552d0dbf01f2fd",
+      "first_seen": "2026-06-22"
+    },
+    "v1.3.0": {
+      "sha": "6b08361ac8b261c8af58af3a6043cc1cbb3bdfa2",
+      "first_seen": "2026-06-22"
+    },
+    "v1.3.1": {
+      "sha": "dba0ca51938c78afb363625363c50582243218d6",
+      "first_seen": "2026-06-22"
+    },
+    "v1.3.2": {
+      "sha": "b4ccf4cc94f5b34d1760709012c40975f6def2d1",
+      "first_seen": "2026-06-22"
+    },
+    "v1.3.3": {
+      "sha": "a766b340ab840b66e79e77e5f07f75e8ffb8632b",
+      "first_seen": "2026-06-22"
+    },
+    "v1.3.4": {
+      "sha": "f4853bda35d5232d0eaf6fb95ec4ad33ba1c763f",
+      "first_seen": "2026-06-22"
+    },
+    "v1.4.0": {
+      "sha": "da2dc7600994ad04b19e927b6aaf6a1ab5da4984",
+      "first_seen": "2026-06-22"
+    },
+    "v1.4.1": {
+      "sha": "d98096f432f2aea5091c811852c4da804e60623a",
+      "first_seen": "2026-06-22"
+    },
+    "v1.4.2": {
+      "sha": "f3b82c50bfaca431899c1fcd8f9d2fdd4fe40300",
+      "first_seen": "2026-06-22"
+    },
+    "v1.4.3": {
+      "sha": "ec4865576952df6285652f2cf8ffb4ad45ff5f80",
+      "first_seen": "2026-06-22"
+    },
+    "v1.4.4": {
+      "sha": "2369328cd25777eb0a4ff959a399b6d1a5204fc7",
+      "first_seen": "2026-06-22"
+    },
+    "v1.5.0": {
+      "sha": "c22076b8856ee12d9b4c4685bb49cf26eb974079",
+      "first_seen": "2026-06-22"
+    },
+    "v1.5.1": {
+      "sha": "0498757af1c50b084f763d626f571918cf317509",
+      "first_seen": "2026-06-22"
+    },
+    "v1.5.2": {
+      "sha": "2a43a3882401f45e3114df7f6d66eca184993a90",
+      "first_seen": "2026-06-22"
+    },
+    "v1.5.3": {
+      "sha": "f208610469d69f20983cad64c577949a132caa33",
+      "first_seen": "2026-06-22"
+    },
+    "v1.5.4": {
+      "sha": "3f5dc9969f307d3c76acb7e9ccaefdd96bd62f4b",
+      "first_seen": "2026-06-22"
+    }
+  },
   "docker/login-action": {
     "v1.0.0": {
       "sha": "62216b50636a8c8c25d246437857ed84232019ca",

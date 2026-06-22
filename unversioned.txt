@@ -25,11 +25,8 @@ actions/partner-runner-images
 actions/python-versions
 actions/reusable-workflows
 actions/runner-images
-actions/runner-images-PK
 actions/runner-images-PK1
 actions/runner-images-check
-actions/runner-images-sangeeth
-actions/runner-images-temp
 actions/scaleset
 actions/starter-workflows
 actions/toolkit
