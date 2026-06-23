@@ -5811,6 +5811,10 @@
     "v6.0.0": {
       "sha": "5e49ad902ac755e0815974a44904c728da961747",
       "first_seen": "2000-01-01"
+    },
+    "v6.0.1": {
+      "sha": "ba774cded95cc0d795806a986fecd1205a6c2320",
+      "first_seen": "2026-06-23"
     }
   },
   "Azure/k8s-deploy": {
@@ -7491,6 +7495,10 @@
     "v1.21.0": {
       "sha": "cd72f264beff1cd72735de31148b9d3244a0234a",
       "first_seen": "2000-01-01"
+    },
+    "v1.22.0": {
+      "sha": "7520205ff60037fdc436b40b6a1d1e55a839ec2d",
+      "first_seen": "2026-06-23"
     },
     "v1.3.0": {
       "sha": "42a6acc319ac229f86e12bfca3b83de09fb058be",
