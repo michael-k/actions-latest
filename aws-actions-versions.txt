@@ -1,4 +1,4 @@
-aws-actions/amazon-ecr-login@v2.1.5
+aws-actions/amazon-ecr-login@v2.1.6
 aws-actions/amazon-ecs-deploy-express-service@v1.2.1
 aws-actions/amazon-ecs-deploy-task-definition@v2.6.2
 aws-actions/amazon-ecs-render-task-definition@v1.8.5

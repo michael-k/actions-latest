@@ -271,6 +271,10 @@
     "v4.1.0": {
       "sha": "59d89421af93a897026c735860bf21b6eb4f7b26",
       "first_seen": "2000-01-01"
+    },
+    "v4.1.1": {
+      "sha": "a1948c3f048ba23858d222213b7c278aabede763",
+      "first_seen": "2026-06-27"
     }
   },
   "actions/attest-build-provenance": {
@@ -397,6 +401,10 @@
     "v4.1.0": {
       "sha": "a2bbfa25375fe432b6a289bc6b6cd05ecd0c4c32",
       "first_seen": "2000-01-01"
+    },
+    "v4.1.1": {
+      "sha": "0f67c3f4856b2e3261c31976d6725780e5e4c373",
+      "first_seen": "2026-06-27"
     }
   },
   "actions/attest-sbom": {
@@ -754,9 +762,17 @@
       "sha": "27d5ce7f107fe9357f9df03efb73ab90386fccae",
       "first_seen": "2000-01-01"
     },
+    "v5.1.0": {
+      "sha": "caa296126883cff596d87d8935842f9db880ef25",
+      "first_seen": "2026-06-27"
+    },
     "v6.0.0": {
       "sha": "2c8a9bd7457de244a408f35966fab2fb45fda9c8",
       "first_seen": "2026-06-24"
+    },
+    "v6.1.0": {
+      "sha": "55cc8345863c7cc4c66a329aec7e433d2d1c52a9",
+      "first_seen": "2026-06-27"
     }
   },
   "actions/checkout": {
@@ -3984,6 +4000,10 @@
       "sha": "91cba5589c19c6e57e4688208832a1ffd60f9044",
       "first_seen": "2000-01-01"
     },
+    "v0.0.11": {
+      "sha": "79e821562a189d464bb5cca38f596780342036c3",
+      "first_seen": "2026-06-27"
+    },
     "v0.0.2": {
       "sha": "72c349389064ca0c0550f640971537eabc648de4",
       "first_seen": "2026-06-06"
@@ -5505,6 +5525,10 @@
     "v6.2.0": {
       "sha": "e7f100cf4c008499ea8adda475de1042d6975c7b",
       "first_seen": "2000-01-01"
+    },
+    "v6.2.1": {
+      "sha": "254c19bd240aabef8777f48595e9d2d7b972184b",
+      "first_seen": "2026-06-27"
     }
   },
   "aws-actions/setup-sam": {

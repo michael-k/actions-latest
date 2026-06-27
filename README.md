@@ -171,7 +171,7 @@ actions/upload-release-asset@e8f9f06c4b078e705bd2ea027f0926603fc9b4d5 # v1.0.2
 <summary><h3><code>aws-actions</code></h3></summary>
 
 ```
-aws-actions/amazon-ecr-login@v2.1.5
+aws-actions/amazon-ecr-login@v2.1.6
 aws-actions/amazon-ecs-deploy-express-service@v1.2.1
 aws-actions/amazon-ecs-deploy-task-definition@v2.6.2
 aws-actions/amazon-ecs-render-task-definition@v1.8.5
@@ -199,7 +199,7 @@ aws-actions/vulnerability-scan-github-action-for-amazon-inspector@v1.5.0
 <summary><h3><code>aws-actions</code> (SHA-pinned)</h3></summary>
 
 ```
-aws-actions/amazon-ecr-login@fa648b43de3d4d023bcb3f89ed6940096949c419 # v2.1.5
+aws-actions/amazon-ecr-login@d539f0932e70871a027e9d5a9d8fc38589180a64 # v2.1.6
 aws-actions/amazon-ecs-deploy-express-service@2088fb17efe80c13c2e40a6a1a7e4a4b12f88041 # v1.2.1
 aws-actions/amazon-ecs-deploy-task-definition@a310a830f5c14e583e35d84e4e1ec7dd177c3c9c # v2.6.2
 aws-actions/amazon-ecs-render-task-definition@6853cfae8c3a7d978fbf68b5a55453395541dfbb # v1.8.5
