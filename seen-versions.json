@@ -7001,6 +7001,14 @@
     "v1.5.4": {
       "sha": "3f5dc9969f307d3c76acb7e9ccaefdd96bd62f4b",
       "first_seen": "2026-06-22"
+    },
+    "v2.0.0": {
+      "sha": "3c0fa9d282c3f84d08dfd70ab0a28b151d11db70",
+      "first_seen": "2026-06-29"
+    },
+    "v2.0.1": {
+      "sha": "e96a4bb40cac114f64358621e1d08346c8eadc8c",
+      "first_seen": "2026-06-29"
     }
   },
   "docker/login-action": {
