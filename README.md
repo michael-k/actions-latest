@@ -257,7 +257,7 @@ astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39 # v8.2.0
 ```
 docker/bake-action@v7.2.0
 docker/build-push-action@v7.2.0
-docker/cagent-action@v1.5.4
+docker/cagent-action@v1.5.5
 docker/login-action@v4.2.0
 docker/metadata-action@v6.1.0
 docker/scout-action@v1.21.0
@@ -277,7 +277,7 @@ docker/setup-qemu-action@v4.1.0
 ```
 docker/bake-action@6614cfa25eff9a0b2b2697efb0b6159e7680d584 # v7.2.0
 docker/build-push-action@f9f3042f7e2789586610d6e8b85c8f03e5195baf # v7.2.0
-docker/cagent-action@3f5dc9969f307d3c76acb7e9ccaefdd96bd62f4b # v1.5.4
+docker/cagent-action@367a30ddb41e0156459d03750f508eac03f3c38a # v1.5.5
 docker/login-action@650006c6eb7dba73a995cc03b0b2d7f5ca915bee # v4.2.0
 docker/metadata-action@80c7e94dd9b9319bd5eb7a0e0fe9291e23a2a2e9 # v6.1.0
 docker/scout-action@cd72f264beff1cd72735de31148b9d3244a0234a # v1.21.0
