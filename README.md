@@ -112,7 +112,7 @@ actions/setup-dotnet@v5.3.0
 actions/setup-elixir@v1.5.0
 actions/setup-go@v6.4.0
 actions/setup-haskell@v1.1.4
-actions/setup-java@v5.2.0
+actions/setup-java@v5.3.0
 actions/setup-node@v6.4.0
 actions/setup-python@v6.2.0
 actions/setup-ruby@v1.1.3
@@ -152,7 +152,7 @@ actions/setup-dotnet@9a946fdbd5fb07b82b2f5a4466058b876ab72bb2 # v5.3.0
 actions/setup-elixir@3c118cec41f6c3bfc2c7f2aef9bec886ab0b2324 # v1.5.0
 actions/setup-go@4a3601121dd01d1626a1e23e37211e3254c1c06c # v6.4.0
 actions/setup-haskell@048c29979717135f04282c42c2186bb5945b2d8f # v1.1.4
-actions/setup-java@be666c2fcd27ec809703dec50e508c2fdc7f6654 # v5.2.0
+actions/setup-java@ad2b38190b15e4d6bdf0c97fb4fca8412226d287 # v5.3.0
 actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
 actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
 actions/setup-ruby@e932e7af67fc4a8fc77bd86b744acd4e42fe3543 # v1.1.3

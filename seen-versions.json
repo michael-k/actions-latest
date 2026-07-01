@@ -4591,6 +4591,10 @@
     "v1.2.1": {
       "sha": "2088fb17efe80c13c2e40a6a1a7e4a4b12f88041",
       "first_seen": "2000-01-01"
+    },
+    "v1.2.2": {
+      "sha": "7c48a2de16441d528a3c89829831968dc1455010",
+      "first_seen": "2026-07-01"
     }
   },
   "aws-actions/amazon-ecs-deploy-task-definition": {
@@ -4983,6 +4987,10 @@
     "v1.8.5": {
       "sha": "6853cfae8c3a7d978fbf68b5a55453395541dfbb",
       "first_seen": "2000-01-01"
+    },
+    "v1.9.0": {
+      "sha": "138c24f321fdbdf7edee4a685519d253cae2cdea",
+      "first_seen": "2026-07-01"
     }
   },
   "aws-actions/amazon-eks-fargate": {
