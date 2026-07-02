@@ -389,7 +389,7 @@ Azure/data-factory-deploy-action@v1.2.0
 Azure/data-factory-export-action@v1.2.1
 Azure/data-factory-validate-action@v1.1.6
 Azure/deployment-what-if-action@v1.0.0
-Azure/k8s-bake@v4.0.0
+Azure/k8s-bake@v4.1.0
 Azure/k8s-create-secret@v6.0.0
 Azure/k8s-deploy@v6.0.0
 Azure/k8s-lint@v4.0.0
@@ -416,7 +416,7 @@ Azure/data-factory-deploy-action@390b7811bd2e99d4b8cef1bff69dab47bb5872ce # v1.2
 Azure/data-factory-export-action@64109498d635d1ad6b6d78bdae3c1460c8d42d06 # v1.2.1
 Azure/data-factory-validate-action@1a1e93960902bd7de128c22b985fb6256988af4b # v1.1.6
 Azure/deployment-what-if-action@7caef615e35c10abe2d2dd2ec811071697e9d723 # v1.0.0
-Azure/k8s-bake@5792a98d71472c1bedd8cae99205dc5e253dd58c # v4.0.0
+Azure/k8s-bake@0191a5ae5126cfe61885d9bd46511caa8e9a9550 # v4.1.0
 Azure/k8s-create-secret@5e49ad902ac755e0815974a44904c728da961747 # v6.0.0
 Azure/k8s-deploy@c7ebd0d5f39477a23f1b5dea0f52e6db04adf28e # v6.0.0
 Azure/k8s-lint@e4234c50ea835112e72b145bdecd00a94bad42fd # v4.0.0
