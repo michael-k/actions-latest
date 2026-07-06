@@ -1,6 +1,7 @@
 docker/bake-action@v7.2.0
 docker/build-push-action@v7.2.0
 docker/cagent-action@v1.5.5
+docker/docker-agent-action@v1.5.4
 docker/login-action@v4.2.0
 docker/metadata-action@v6.1.0
 docker/scout-action@v1.21.0
