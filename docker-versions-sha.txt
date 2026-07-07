@@ -4,7 +4,7 @@ docker/cagent-action@367a30ddb41e0156459d03750f508eac03f3c38a # v1.5.5
 docker/docker-agent-action@3f5dc9969f307d3c76acb7e9ccaefdd96bd62f4b # v1.5.4
 docker/login-action@650006c6eb7dba73a995cc03b0b2d7f5ca915bee # v4.2.0
 docker/metadata-action@80c7e94dd9b9319bd5eb7a0e0fe9291e23a2a2e9 # v6.1.0
-docker/scout-action@cd72f264beff1cd72735de31148b9d3244a0234a # v1.21.0
+docker/scout-action@7520205ff60037fdc436b40b6a1d1e55a839ec2d # v1.22.0
 docker/setup-buildx-action@d7f5e7f509e45cec5c76c4d5afdd7de93d0b3df5 # v4.1.0
 docker/setup-compose-action@16feee727cbdc83b6a014e6cc26fec4a79bcf30c # v2.2.0
 docker/setup-docker-action@0234bb73ccb40f0c430b795634f9247e2b5c2d23 # v5.2.0

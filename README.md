@@ -261,7 +261,7 @@ docker/cagent-action@v1.5.5
 docker/docker-agent-action@v1.5.4
 docker/login-action@v4.2.0
 docker/metadata-action@v6.1.0
-docker/scout-action@v1.21.0
+docker/scout-action@v1.22.0
 docker/setup-buildx-action@v4.1.0
 docker/setup-compose-action@v2.2.0
 docker/setup-docker-action@v5.2.0
@@ -282,7 +282,7 @@ docker/cagent-action@367a30ddb41e0156459d03750f508eac03f3c38a # v1.5.5
 docker/docker-agent-action@3f5dc9969f307d3c76acb7e9ccaefdd96bd62f4b # v1.5.4
 docker/login-action@650006c6eb7dba73a995cc03b0b2d7f5ca915bee # v4.2.0
 docker/metadata-action@80c7e94dd9b9319bd5eb7a0e0fe9291e23a2a2e9 # v6.1.0
-docker/scout-action@cd72f264beff1cd72735de31148b9d3244a0234a # v1.21.0
+docker/scout-action@7520205ff60037fdc436b40b6a1d1e55a839ec2d # v1.22.0
 docker/setup-buildx-action@d7f5e7f509e45cec5c76c4d5afdd7de93d0b3df5 # v4.1.0
 docker/setup-compose-action@16feee727cbdc83b6a014e6cc26fec4a79bcf30c # v2.2.0
 docker/setup-docker-action@0234bb73ccb40f0c430b795634f9247e2b5c2d23 # v5.2.0
@@ -392,7 +392,7 @@ Azure/data-factory-export-action@v1.2.1
 Azure/data-factory-validate-action@v1.1.6
 Azure/deployment-what-if-action@v1.0.0
 Azure/k8s-bake@v4.1.0
-Azure/k8s-create-secret@v6.0.0
+Azure/k8s-create-secret@v6.0.1
 Azure/k8s-deploy@v6.0.0
 Azure/k8s-lint@v4.0.0
 Azure/k8s-set-context@v5.0.0
@@ -419,7 +419,7 @@ Azure/data-factory-export-action@64109498d635d1ad6b6d78bdae3c1460c8d42d06 # v1.2
 Azure/data-factory-validate-action@1a1e93960902bd7de128c22b985fb6256988af4b # v1.1.6
 Azure/deployment-what-if-action@7caef615e35c10abe2d2dd2ec811071697e9d723 # v1.0.0
 Azure/k8s-bake@0191a5ae5126cfe61885d9bd46511caa8e9a9550 # v4.1.0
-Azure/k8s-create-secret@5e49ad902ac755e0815974a44904c728da961747 # v6.0.0
+Azure/k8s-create-secret@ba774cded95cc0d795806a986fecd1205a6c2320 # v6.0.1
 Azure/k8s-deploy@c7ebd0d5f39477a23f1b5dea0f52e6db04adf28e # v6.0.0
 Azure/k8s-lint@e4234c50ea835112e72b145bdecd00a94bad42fd # v4.0.0
 Azure/k8s-set-context@89b837d75b40a7bd2ddafde837473c212db8b313 # v5.0.0

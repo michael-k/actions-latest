@@ -7,7 +7,7 @@ Azure/data-factory-export-action@v1.2.1
 Azure/data-factory-validate-action@v1.1.6
 Azure/deployment-what-if-action@v1.0.0
 Azure/k8s-bake@v4.1.0
-Azure/k8s-create-secret@v6.0.0
+Azure/k8s-create-secret@v6.0.1
 Azure/k8s-deploy@v6.0.0
 Azure/k8s-lint@v4.0.0
 Azure/k8s-set-context@v5.0.0
