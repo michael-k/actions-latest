@@ -93,7 +93,7 @@ actions/ai-inference@v2.1.1
 actions/attest@v4.1.0
 actions/attest-build-provenance@v4.1.0
 actions/attest-sbom@v4.1.0
-actions/cache@v5.0.5
+actions/cache@v6.0.0
 actions/checkout@v7.0.0
 actions/configure-pages@v6.0.0
 actions/create-github-app-token@v3.2.0
@@ -110,11 +110,11 @@ actions/jekyll-build-pages@v1.0.13
 actions/labeler@v6.1.0
 actions/setup-dotnet@v5.3.0
 actions/setup-elixir@v1.5.0
-actions/setup-go@v6.4.0
+actions/setup-go@v6.5.0
 actions/setup-haskell@v1.1.4
 actions/setup-java@v5.3.0
 actions/setup-node@v6.4.0
-actions/setup-python@v6.2.0
+actions/setup-python@v6.3.0
 actions/setup-ruby@v1.1.3
 actions/stale@v10.3.0
 actions/upload-artifact@v7.0.1
@@ -133,7 +133,7 @@ actions/ai-inference@a7805884c80886efc241e94a5351df715968a0ad # v2.1.1
 actions/attest@59d89421af93a897026c735860bf21b6eb4f7b26 # v4.1.0
 actions/attest-build-provenance@a2bbfa25375fe432b6a289bc6b6cd05ecd0c4c32 # v4.1.0
 actions/attest-sbom@c604332985a26aa8cf1bdc465b92731239ec6b9e # v4.1.0
-actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+actions/cache@2c8a9bd7457de244a408f35966fab2fb45fda9c8 # v6.0.0
 actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
 actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
@@ -150,11 +150,11 @@ actions/jekyll-build-pages@44a6e6beabd48582f863aeeb6cb2151cc1716697 # v1.0.13
 actions/labeler@f27b608878404679385c85cfa523b85ccb86e213 # v6.1.0
 actions/setup-dotnet@9a946fdbd5fb07b82b2f5a4466058b876ab72bb2 # v5.3.0
 actions/setup-elixir@3c118cec41f6c3bfc2c7f2aef9bec886ab0b2324 # v1.5.0
-actions/setup-go@4a3601121dd01d1626a1e23e37211e3254c1c06c # v6.4.0
+actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6.5.0
 actions/setup-haskell@048c29979717135f04282c42c2186bb5945b2d8f # v1.1.4
 actions/setup-java@ad2b38190b15e4d6bdf0c97fb4fca8412226d287 # v5.3.0
 actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
-actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
 actions/setup-ruby@e932e7af67fc4a8fc77bd86b744acd4e42fe3543 # v1.1.3
 actions/stale@eb5cf3af3ac0a1aa4c9c45633dd1ae542a27a899 # v10.3.0
 actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
@@ -354,7 +354,7 @@ google-github-actions/upload-cloud-storage@6397bd7208e18d13ba2619ee21b9873edc944
 hashicorp/actions-slack-status@v2.0.1
 hashicorp/setup-boundary@v1.1.0
 hashicorp/setup-nomad@v1.0.0
-hashicorp/setup-packer@v3.3.0
+hashicorp/setup-packer@v3.4.0
 hashicorp/terraform-cdk-action@v11.0.2
 hashicorp/vault-action@v4.0.0
 ```
@@ -370,7 +370,7 @@ hashicorp/vault-action@v4.0.0
 hashicorp/actions-slack-status@1a3f63b30bd476aee1f3bd6f9d8f2aacc4f14d81 # v2.0.1
 hashicorp/setup-boundary@8373fde01681beb0bfa40e3d3e9a84f3a3cb8283 # v1.1.0
 hashicorp/setup-nomad@ceba9087d4322dbdd7b35dafac5a87a8c459a157 # v1.0.0
-hashicorp/setup-packer@3286471d6cc6756d056a0b199fea5e0becdbc189 # v3.3.0
+hashicorp/setup-packer@ce93c3c08a6c2ff2275bf4b54ff0d9a75f6c9789 # v3.4.0
 hashicorp/terraform-cdk-action@ec317e0c5cebab5b15bd676bbcc8e0afdbc96142 # v11.0.2
 hashicorp/vault-action@892a26828f195e65540a40b4768ae4571f51ebfc # v4.0.0
 ```
@@ -395,9 +395,9 @@ Azure/k8s-bake@v4.1.0
 Azure/k8s-create-secret@v6.0.1
 Azure/k8s-deploy@v6.0.0
 Azure/k8s-lint@v4.0.0
-Azure/k8s-set-context@v5.0.0
+Azure/k8s-set-context@v5.0.1
 Azure/login@v3.0.0
-Azure/setup-helm@v5.0.0
+Azure/setup-helm@v5.0.1
 Azure/setup-kubectl@v5.1.0
 Azure/sql-action@v2.2.1
 ```
@@ -422,9 +422,9 @@ Azure/k8s-bake@0191a5ae5126cfe61885d9bd46511caa8e9a9550 # v4.1.0
 Azure/k8s-create-secret@ba774cded95cc0d795806a986fecd1205a6c2320 # v6.0.1
 Azure/k8s-deploy@c7ebd0d5f39477a23f1b5dea0f52e6db04adf28e # v6.0.0
 Azure/k8s-lint@e4234c50ea835112e72b145bdecd00a94bad42fd # v4.0.0
-Azure/k8s-set-context@89b837d75b40a7bd2ddafde837473c212db8b313 # v5.0.0
+Azure/k8s-set-context@8698eba2499e9012f0d5085f8798077cce4bc526 # v5.0.1
 Azure/login@532459ea530d8321f2fb9bb10d1e0bcf23869a43 # v3.0.0
-Azure/setup-helm@dda3372f752e03dde6b3237bc9431cdc2f7a02a2 # v5.0.0
+Azure/setup-helm@9bc31f4ebc9c6b171d7bfbaa5d006ae7abdb4310 # v5.0.1
 Azure/setup-kubectl@829323503d1be3d00ca8346e5391ca0b07a9ab0d # v5.1.0
 Azure/sql-action@96cea35f2b24c72eb5b6ece33d45e6f60e6b7b87 # v2.2.1
 ```

@@ -1,6 +1,6 @@
 hashicorp/actions-slack-status@1a3f63b30bd476aee1f3bd6f9d8f2aacc4f14d81 # v2.0.1
 hashicorp/setup-boundary@8373fde01681beb0bfa40e3d3e9a84f3a3cb8283 # v1.1.0
 hashicorp/setup-nomad@ceba9087d4322dbdd7b35dafac5a87a8c459a157 # v1.0.0
-hashicorp/setup-packer@3286471d6cc6756d056a0b199fea5e0becdbc189 # v3.3.0
+hashicorp/setup-packer@ce93c3c08a6c2ff2275bf4b54ff0d9a75f6c9789 # v3.4.0
 hashicorp/terraform-cdk-action@ec317e0c5cebab5b15bd676bbcc8e0afdbc96142 # v11.0.2
 hashicorp/vault-action@892a26828f195e65540a40b4768ae4571f51ebfc # v4.0.0
