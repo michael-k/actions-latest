@@ -2313,6 +2313,10 @@
     "v6.1.0": {
       "sha": "f27b608878404679385c85cfa523b85ccb86e213",
       "first_seen": "2000-01-01"
+    },
+    "v6.2.0": {
+      "sha": "b8dd2d9be0f68b860e7dae5dae7d772984eacd6d",
+      "first_seen": "2026-07-09"
     }
   },
   "actions/setup-dotnet": {
@@ -4427,6 +4431,10 @@
     "v8.3.1": {
       "sha": "f98e06938123ccabd21905ea5d0069192241f9f1",
       "first_seen": "2026-07-08"
+    },
+    "v8.3.2": {
+      "sha": "11f9893b081a58869d3b5fccaea48c9e9e46f990",
+      "first_seen": "2026-07-09"
     }
   },
   "aws-actions/amazon-ecr-login": {
@@ -5189,6 +5197,14 @@
     "v1.0.4": {
       "sha": "1f56e4e813ae4eb167e69ca324234c336c1df573",
       "first_seen": "2000-01-01"
+    },
+    "v1.0.5": {
+      "sha": "a5ebe05aa005dc7467a41b6a4a48c5396f0b6588",
+      "first_seen": "2026-07-09"
+    },
+    "v1.0.6": {
+      "sha": "cfad3e5e4452cd9c8923cbee2f862e96ba4b52c4",
+      "first_seen": "2026-07-09"
     }
   },
   "aws-actions/aws-lambda-deploy": {
