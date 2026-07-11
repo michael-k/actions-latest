@@ -1,9 +1,9 @@
 actions/add-to-project@5afcf98fcd03f1c2f92c3c83f58ae24323cc57fd # v2.0.0
 actions/ai-inference@a7805884c80886efc241e94a5351df715968a0ad # v2.1.1
-actions/attest@59d89421af93a897026c735860bf21b6eb4f7b26 # v4.1.0
-actions/attest-build-provenance@a2bbfa25375fe432b6a289bc6b6cd05ecd0c4c32 # v4.1.0
+actions/attest@a1948c3f048ba23858d222213b7c278aabede763 # v4.1.1
+actions/attest-build-provenance@0f67c3f4856b2e3261c31976d6725780e5e4c373 # v4.1.1
 actions/attest-sbom@c604332985a26aa8cf1bdc465b92731239ec6b9e # v4.1.0
-actions/cache@2c8a9bd7457de244a408f35966fab2fb45fda9c8 # v6.0.0
+actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
 actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
 actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0

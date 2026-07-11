@@ -90,10 +90,10 @@ This is a personal fork of [acidghost/actions-latest](https://github.com/acidgho
 ```
 actions/add-to-project@v2.0.0
 actions/ai-inference@v2.1.1
-actions/attest@v4.1.0
-actions/attest-build-provenance@v4.1.0
+actions/attest@v4.1.1
+actions/attest-build-provenance@v4.1.1
 actions/attest-sbom@v4.1.0
-actions/cache@v6.0.0
+actions/cache@v6.1.0
 actions/checkout@v7.0.0
 actions/configure-pages@v6.0.0
 actions/create-github-app-token@v3.2.0
@@ -130,10 +130,10 @@ actions/upload-release-asset@v1.0.2
 ```
 actions/add-to-project@5afcf98fcd03f1c2f92c3c83f58ae24323cc57fd # v2.0.0
 actions/ai-inference@a7805884c80886efc241e94a5351df715968a0ad # v2.1.1
-actions/attest@59d89421af93a897026c735860bf21b6eb4f7b26 # v4.1.0
-actions/attest-build-provenance@a2bbfa25375fe432b6a289bc6b6cd05ecd0c4c32 # v4.1.0
+actions/attest@a1948c3f048ba23858d222213b7c278aabede763 # v4.1.1
+actions/attest-build-provenance@0f67c3f4856b2e3261c31976d6725780e5e4c373 # v4.1.1
 actions/attest-sbom@c604332985a26aa8cf1bdc465b92731239ec6b9e # v4.1.0
-actions/cache@2c8a9bd7457de244a408f35966fab2fb45fda9c8 # v6.0.0
+actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
 actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
 actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
@@ -184,7 +184,7 @@ aws-actions/aws-lambda-deploy@v1.1.2
 aws-actions/aws-secretsmanager-get-secrets@v3.0.1
 aws-actions/cloudformation-aws-iam-policy-validator@v1.0.4
 aws-actions/codeguru-security@v1.2.2
-aws-actions/configure-aws-credentials@v6.2.0
+aws-actions/configure-aws-credentials@v6.2.1
 aws-actions/stale-issue-cleanup@v7.1.1
 aws-actions/sustainability-scanner@v1.3.1
 aws-actions/terraform-aws-iam-policy-validator@v1.0.3
@@ -212,7 +212,7 @@ aws-actions/aws-lambda-deploy@d496277188b89f0be02d7a2216fc912c0427702a # v1.1.2
 aws-actions/aws-secretsmanager-get-secrets@2cb1a461cbd4865ac4299648312e4704c646cd53 # v3.0.1
 aws-actions/cloudformation-aws-iam-policy-validator@aa5ca59693ba89d200db1d2b3af4b60989627bdc # v1.0.4
 aws-actions/codeguru-security@44877802cfee29abce47f8ba12b8417d70d01a9b # v1.2.2
-aws-actions/configure-aws-credentials@e7f100cf4c008499ea8adda475de1042d6975c7b # v6.2.0
+aws-actions/configure-aws-credentials@254c19bd240aabef8777f48595e9d2d7b972184b # v6.2.1
 aws-actions/stale-issue-cleanup@0604f2edf84a3a66bc0dfb4a30eb07814cbdf440 # v7.1.1
 aws-actions/sustainability-scanner@d6067411fc5290a836e3ebcf388c746d83cf0e9f # v1.3.1
 aws-actions/terraform-aws-iam-policy-validator@1cd3c484b95b6c3d9e42ca1797d89ae74eb29ede # v1.0.3
@@ -228,7 +228,7 @@ aws-actions/vulnerability-scan-github-action-for-amazon-inspector@f5a63f71de9d79
 
 ```
 astral-sh/attest-action@v0.0.6
-astral-sh/pyx-auth-action@v0.0.10
+astral-sh/pyx-auth-action@v0.0.11
 astral-sh/ruff-action@v4.0.0
 astral-sh/setup-uv@v8.2.0
 ```
@@ -242,7 +242,7 @@ astral-sh/setup-uv@v8.2.0
 
 ```
 astral-sh/attest-action@f589a42a7efb6fe400b4f400de60b4bc90390027 # v0.0.6
-astral-sh/pyx-auth-action@91cba5589c19c6e57e4688208832a1ffd60f9044 # v0.0.10
+astral-sh/pyx-auth-action@79e821562a189d464bb5cca38f596780342036c3 # v0.0.11
 astral-sh/ruff-action@0ce1b0bf8b818ef400413f810f8a11cdbda0034b # v4.0.0
 astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39 # v8.2.0
 ```
