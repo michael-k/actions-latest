@@ -41,6 +41,8 @@ ORG_BUNDLES: dict[str, dict] = {
     "docker": {"source": "search", "query": "org:docker topic:github-actions"},
     "hashicorp": {"source": "search", "query": "org:hashicorp topic:github-actions"},
     "Azure": {"source": "search", "query": "org:Azure topic:github-actions"},
+    "pnpm": {"source": "search", "query": "org:pnpm topic:github-actions"},
+    "webfactory": {"source": "search", "query": "org:webfactory topic:github-actions"},
 }
 ADDITIONAL_ORGS: list[str] = list(ORG_BUNDLES)
 SKIP_REPOS: list[str] = [
