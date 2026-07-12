@@ -1,6 +1,7 @@
 astral-sh/.github
 astral-sh/RustPython
 astral-sh/archive-in-git-test
+astral-sh/char_str
 astral-sh/claude-code-plugins
 astral-sh/docs
 astral-sh/docstring-adder
@@ -8,6 +9,7 @@ astral-sh/ecosystem-analyzer
 astral-sh/futzed-wheels
 astral-sh/hawk
 astral-sh/image
+astral-sh/lean_string
 astral-sh/lfs-cowsay
 astral-sh/lsp-types
 astral-sh/mirror

@@ -29,6 +29,14 @@
     "hashicorp": {
       "versions_url": "https://michael-k.github.io/quarantined-actions/hashicorp-versions.txt",
       "versions_sha_url": "https://michael-k.github.io/quarantined-actions/hashicorp-versions-sha.txt"
+    },
+    "pnpm": {
+      "versions_url": "https://michael-k.github.io/quarantined-actions/pnpm-versions.txt",
+      "versions_sha_url": "https://michael-k.github.io/quarantined-actions/pnpm-versions-sha.txt"
+    },
+    "webfactory": {
+      "versions_url": "https://michael-k.github.io/quarantined-actions/webfactory-versions.txt",
+      "versions_sha_url": "https://michael-k.github.io/quarantined-actions/webfactory-versions-sha.txt"
     }
   }
 }
