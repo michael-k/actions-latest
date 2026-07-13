@@ -180,7 +180,6 @@ aws-actions/application-observability-for-aws@v1.1.1
 aws-actions/aws-cloudformation-github-deploy@v2.2.0
 aws-actions/aws-codebuild-run-build@v1.0.19
 aws-actions/aws-elasticbeanstalk-deploy@v1.0.4
-aws-actions/aws-lambda-deploy@v1.1.2
 aws-actions/aws-secretsmanager-get-secrets@v3.0.1
 aws-actions/cloudformation-aws-iam-policy-validator@v1.0.4
 aws-actions/codeguru-security@v1.2.2
@@ -208,7 +207,6 @@ aws-actions/application-observability-for-aws@95bb59e4538ba9ef746805d8a2bbbe531b
 aws-actions/aws-cloudformation-github-deploy@81e3b03d2266bcb76c4bcc37a7d71d9cb67838bb # v2.2.0
 aws-actions/aws-codebuild-run-build@7e46c3fa1c1f217e26a73712796b1f78938b534b # v1.0.19
 aws-actions/aws-elasticbeanstalk-deploy@1f56e4e813ae4eb167e69ca324234c336c1df573 # v1.0.4
-aws-actions/aws-lambda-deploy@d496277188b89f0be02d7a2216fc912c0427702a # v1.1.2
 aws-actions/aws-secretsmanager-get-secrets@2cb1a461cbd4865ac4299648312e4704c646cd53 # v3.0.1
 aws-actions/cloudformation-aws-iam-policy-validator@aa5ca59693ba89d200db1d2b3af4b60989627bdc # v1.0.4
 aws-actions/codeguru-security@44877802cfee29abce47f8ba12b8417d70d01a9b # v1.2.2
@@ -258,7 +256,7 @@ astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39 # v8.2.0
 docker/bake-action@v7.2.0
 docker/build-push-action@v7.2.0
 docker/cagent-action@v1.5.5
-docker/docker-agent-action@v1.5.4
+docker/docker-agent-action@v2.0.1
 docker/login-action@v4.2.0
 docker/metadata-action@v6.1.0
 docker/scout-action@v1.22.0
@@ -279,7 +277,7 @@ docker/setup-qemu-action@v4.1.0
 docker/bake-action@6614cfa25eff9a0b2b2697efb0b6159e7680d584 # v7.2.0
 docker/build-push-action@f9f3042f7e2789586610d6e8b85c8f03e5195baf # v7.2.0
 docker/cagent-action@367a30ddb41e0156459d03750f508eac03f3c38a # v1.5.5
-docker/docker-agent-action@3f5dc9969f307d3c76acb7e9ccaefdd96bd62f4b # v1.5.4
+docker/docker-agent-action@e96a4bb40cac114f64358621e1d08346c8eadc8c # v2.0.1
 docker/login-action@650006c6eb7dba73a995cc03b0b2d7f5ca915bee # v4.2.0
 docker/metadata-action@80c7e94dd9b9319bd5eb7a0e0fe9291e23a2a2e9 # v6.1.0
 docker/scout-action@7520205ff60037fdc436b40b6a1d1e55a839ec2d # v1.22.0
