@@ -2511,6 +2511,10 @@
     "v5.4.0": {
       "sha": "26b0ec14cb23fa6904739307f278c14f94c95bf1",
       "first_seen": "2026-06-26"
+    },
+    "v6.0.0": {
+      "sha": "a98b56852c35b8e3190ac28c8c2271da59106c68",
+      "first_seen": "2026-07-16"
     }
   },
   "actions/setup-elixir": {
@@ -2747,6 +2751,10 @@
     "v6.5.0": {
       "sha": "924ae3a1cded613372ab5595356fb5720e22ba16",
       "first_seen": "2026-06-24"
+    },
+    "v7.0.0": {
+      "sha": "b7ad1dad31e06c5925ef5d2fc7ad053ef454303e",
+      "first_seen": "2026-07-16"
     }
   },
   "actions/setup-haskell": {

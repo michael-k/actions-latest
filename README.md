@@ -173,7 +173,7 @@ actions/upload-release-asset@e8f9f06c4b078e705bd2ea027f0926603fc9b4d5 # v1.0.2
 ```
 aws-actions/amazon-ecr-login@v2.1.6
 aws-actions/amazon-ecs-deploy-express-service@v1.2.2
-aws-actions/amazon-ecs-deploy-task-definition@v2.6.2
+aws-actions/amazon-ecs-deploy-task-definition@v2.6.3
 aws-actions/amazon-ecs-render-task-definition@v1.9.0
 aws-actions/amazon-eks-fargate@v0.1.1
 aws-actions/application-observability-for-aws@v1.1.1
@@ -200,7 +200,7 @@ aws-actions/vulnerability-scan-github-action-for-amazon-inspector@v1.5.0
 ```
 aws-actions/amazon-ecr-login@d539f0932e70871a027e9d5a9d8fc38589180a64 # v2.1.6
 aws-actions/amazon-ecs-deploy-express-service@7c48a2de16441d528a3c89829831968dc1455010 # v1.2.2
-aws-actions/amazon-ecs-deploy-task-definition@a310a830f5c14e583e35d84e4e1ec7dd177c3c9c # v2.6.2
+aws-actions/amazon-ecs-deploy-task-definition@c465972ecbd160473f22e683363b422a5412a3de # v2.6.3
 aws-actions/amazon-ecs-render-task-definition@138c24f321fdbdf7edee4a685519d253cae2cdea # v1.9.0
 aws-actions/amazon-eks-fargate@fa91b1ce6e342eb17a1d57df976506d02f074640 # v0.1.1
 aws-actions/application-observability-for-aws@95bb59e4538ba9ef746805d8a2bbbe531ba2a728 # v1.1.1
@@ -253,17 +253,17 @@ astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39 # v8.2.0
 <summary><h3><code>docker</code></h3></summary>
 
 ```
-docker/bake-action@v7.2.0
-docker/build-push-action@v7.2.0
+docker/bake-action@v7.3.0
+docker/build-push-action@v7.3.0
 docker/cagent-action@v1.5.5
 docker/docker-agent-action@v2.0.1
 docker/login-action@v4.2.0
 docker/metadata-action@v6.1.0
 docker/scout-action@v1.22.0
 docker/setup-buildx-action@v4.1.0
-docker/setup-compose-action@v2.2.0
-docker/setup-docker-action@v5.2.0
-docker/setup-qemu-action@v4.1.0
+docker/setup-compose-action@v2.3.0
+docker/setup-docker-action@v5.3.0
+docker/setup-qemu-action@v4.2.0
 ```
 
 </details>
@@ -274,17 +274,17 @@ docker/setup-qemu-action@v4.1.0
 <summary><h3><code>docker</code> (SHA-pinned)</h3></summary>
 
 ```
-docker/bake-action@6614cfa25eff9a0b2b2697efb0b6159e7680d584 # v7.2.0
-docker/build-push-action@f9f3042f7e2789586610d6e8b85c8f03e5195baf # v7.2.0
+docker/bake-action@d3418bd7d0e9324001bca92fa8ba175ea7e6dc9b # v7.3.0
+docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7.3.0
 docker/cagent-action@367a30ddb41e0156459d03750f508eac03f3c38a # v1.5.5
 docker/docker-agent-action@e96a4bb40cac114f64358621e1d08346c8eadc8c # v2.0.1
 docker/login-action@650006c6eb7dba73a995cc03b0b2d7f5ca915bee # v4.2.0
 docker/metadata-action@80c7e94dd9b9319bd5eb7a0e0fe9291e23a2a2e9 # v6.1.0
 docker/scout-action@7520205ff60037fdc436b40b6a1d1e55a839ec2d # v1.22.0
 docker/setup-buildx-action@d7f5e7f509e45cec5c76c4d5afdd7de93d0b3df5 # v4.1.0
-docker/setup-compose-action@16feee727cbdc83b6a014e6cc26fec4a79bcf30c # v2.2.0
-docker/setup-docker-action@0234bb73ccb40f0c430b795634f9247e2b5c2d23 # v5.2.0
-docker/setup-qemu-action@06116385d9baf250c9f4dcb4858b16962ea869c3 # v4.1.0
+docker/setup-compose-action@4eb059ff7f16592f9c84d5ca339c53cb7c5064e2 # v2.3.0
+docker/setup-docker-action@6d7cfa65f60a9dda7b46e5513fa982536f3c9877 # v5.3.0
+docker/setup-qemu-action@96fe6ef7f33517b61c61be40b68a1882f3264fb8 # v4.2.0
 ```
 
 </details>
