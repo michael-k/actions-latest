@@ -275,6 +275,10 @@
     "v4.1.1": {
       "sha": "a1948c3f048ba23858d222213b7c278aabede763",
       "first_seen": "2026-06-27"
+    },
+    "v4.2.0": {
+      "sha": "f7c74d28b9d84cb8768d0b8ca14a4bac6ef463e6",
+      "first_seen": "2026-07-17"
     }
   },
   "actions/attest-build-provenance": {
@@ -2999,6 +3003,10 @@
     "v5.5.0": {
       "sha": "0f481fcb613427c0f801b606911222b5b6f3083a",
       "first_seen": "2026-07-08"
+    },
+    "v5.6.0": {
+      "sha": "03ad4de0992f5dab5e18fcb136590ce7c4a0ac95",
+      "first_seen": "2026-07-17"
     }
   },
   "actions/setup-node": {
@@ -3907,6 +3915,10 @@
     "v1.3.0": {
       "sha": "abb5995db9e0199b0e2bb9dbd136fce4cb1ec4d3",
       "first_seen": "2000-01-01"
+    },
+    "v1.4.0": {
+      "sha": "a72ab75b4dee0e479386fb9bf33c8dcf64b9c772",
+      "first_seen": "2026-07-17"
     }
   },
   "actions/upload-pages-artifact": {
@@ -5975,6 +5987,10 @@
     "v6.0.0": {
       "sha": "c7ebd0d5f39477a23f1b5dea0f52e6db04adf28e",
       "first_seen": "2000-01-01"
+    },
+    "v7.0.0": {
+      "sha": "51ca02a8b7225fbd0924aac359c5b336a5f1e5b4",
+      "first_seen": "2026-07-17"
     }
   },
   "Azure/k8s-lint": {
