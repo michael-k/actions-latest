@@ -257,7 +257,7 @@ docker/bake-action@v7.3.0
 docker/build-push-action@v7.3.0
 docker/cagent-action@v1.5.5
 docker/docker-agent-action@v2.0.1
-docker/login-action@v4.3.0
+docker/login-action@v4.4.0
 docker/metadata-action@v6.2.0
 docker/scout-action@v1.23.0
 docker/setup-buildx-action@v4.2.0
@@ -278,7 +278,7 @@ docker/bake-action@d3418bd7d0e9324001bca92fa8ba175ea7e6dc9b # v7.3.0
 docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7.3.0
 docker/cagent-action@367a30ddb41e0156459d03750f508eac03f3c38a # v1.5.5
 docker/docker-agent-action@e96a4bb40cac114f64358621e1d08346c8eadc8c # v2.0.1
-docker/login-action@c99871dec2022cc055c062a10cc1a1310835ceb4 # v4.3.0
+docker/login-action@af1e73f918a031802d376d3c8bbc3fe56130a9b0 # v4.4.0
 docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
 docker/scout-action@ce97ec1bb85613e8eb35d086fad0c77a6cedf983 # v1.23.0
 docker/setup-buildx-action@bb05f3f5519dd87d3ba754cc423b652a5edd6d2c # v4.2.0
