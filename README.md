@@ -180,6 +180,7 @@ aws-actions/application-observability-for-aws@v1.1.1
 aws-actions/aws-cloudformation-github-deploy@v2.2.0
 aws-actions/aws-codebuild-run-build@v1.0.19
 aws-actions/aws-elasticbeanstalk-deploy@v1.0.4
+aws-actions/aws-lambda-deploy@v1.1.2
 aws-actions/aws-secretsmanager-get-secrets@v3.0.1
 aws-actions/cloudformation-aws-iam-policy-validator@v1.0.4
 aws-actions/codeguru-security@v1.2.2
@@ -207,6 +208,7 @@ aws-actions/application-observability-for-aws@95bb59e4538ba9ef746805d8a2bbbe531b
 aws-actions/aws-cloudformation-github-deploy@81e3b03d2266bcb76c4bcc37a7d71d9cb67838bb # v2.2.0
 aws-actions/aws-codebuild-run-build@7e46c3fa1c1f217e26a73712796b1f78938b534b # v1.0.19
 aws-actions/aws-elasticbeanstalk-deploy@1f56e4e813ae4eb167e69ca324234c336c1df573 # v1.0.4
+aws-actions/aws-lambda-deploy@d496277188b89f0be02d7a2216fc912c0427702a # v1.1.2
 aws-actions/aws-secretsmanager-get-secrets@2cb1a461cbd4865ac4299648312e4704c646cd53 # v3.0.1
 aws-actions/cloudformation-aws-iam-policy-validator@aa5ca59693ba89d200db1d2b3af4b60989627bdc # v1.0.4
 aws-actions/codeguru-security@44877802cfee29abce47f8ba12b8417d70d01a9b # v1.2.2
@@ -227,8 +229,8 @@ aws-actions/vulnerability-scan-github-action-for-amazon-inspector@f5a63f71de9d79
 ```
 astral-sh/attest-action@v0.0.6
 astral-sh/pyx-auth-action@v0.0.11
-astral-sh/ruff-action@v4.0.0
-astral-sh/setup-uv@v8.2.0
+astral-sh/ruff-action@v4.1.0
+astral-sh/setup-uv@v8.3.0
 ```
 
 </details>
@@ -241,8 +243,8 @@ astral-sh/setup-uv@v8.2.0
 ```
 astral-sh/attest-action@f589a42a7efb6fe400b4f400de60b4bc90390027 # v0.0.6
 astral-sh/pyx-auth-action@79e821562a189d464bb5cca38f596780342036c3 # v0.0.11
-astral-sh/ruff-action@0ce1b0bf8b818ef400413f810f8a11cdbda0034b # v4.0.0
-astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39 # v8.2.0
+astral-sh/ruff-action@278981a28ce3188b1e39527901f38254bf3aac89 # v4.1.0
+astral-sh/setup-uv@d31148d669074a8d0a63714ba94f3201e7020bc3 # v8.3.0
 ```
 
 </details>
@@ -256,7 +258,7 @@ astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39 # v8.2.0
 docker/bake-action@v7.3.0
 docker/build-push-action@v7.3.0
 docker/cagent-action@v1.5.5
-docker/docker-agent-action@v2.0.1
+docker/docker-agent-action@v2.0.2
 docker/login-action@v4.4.0
 docker/metadata-action@v6.2.0
 docker/scout-action@v1.23.1
@@ -277,7 +279,7 @@ docker/setup-qemu-action@v4.2.0
 docker/bake-action@d3418bd7d0e9324001bca92fa8ba175ea7e6dc9b # v7.3.0
 docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7.3.0
 docker/cagent-action@367a30ddb41e0156459d03750f508eac03f3c38a # v1.5.5
-docker/docker-agent-action@e96a4bb40cac114f64358621e1d08346c8eadc8c # v2.0.1
+docker/docker-agent-action@774b6e0e60d6c648b0f2dc43bd5221377a0a7420 # v2.0.2
 docker/login-action@af1e73f918a031802d376d3c8bbc3fe56130a9b0 # v4.4.0
 docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
 docker/scout-action@2688993af7bafd6ba8c6a74ec652442be91dd82b # v1.23.1

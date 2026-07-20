@@ -3,6 +3,8 @@ astral-sh/RustPython
 astral-sh/archive-in-git-test
 astral-sh/char_str
 astral-sh/claude-code-plugins
+astral-sh/conveyor-belt
+astral-sh/crates-policies
 astral-sh/docs
 astral-sh/docstring-adder
 astral-sh/ecosystem-analyzer
@@ -36,6 +38,7 @@ astral-sh/uv
 astral-sh/uv-aws-lambda-example
 astral-sh/uv-backwards-path-test
 astral-sh/uv-cloudflare-workers-example
+astral-sh/uv-dev
 astral-sh/uv-docker-example
 astral-sh/uv-dynamic-metadata-test
 astral-sh/uv-dynamic-requires-python-test
