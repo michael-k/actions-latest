@@ -4503,6 +4503,10 @@
     "v8.3.2": {
       "sha": "11f9893b081a58869d3b5fccaea48c9e9e46f990",
       "first_seen": "2026-07-09"
+    },
+    "v9.0.0": {
+      "sha": "c771a70e6277c0a99b617c7a806ffedaca235ff9",
+      "first_seen": "2026-07-22"
     }
   },
   "aws-actions/amazon-ecr-login": {

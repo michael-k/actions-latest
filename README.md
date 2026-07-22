@@ -112,7 +112,7 @@ actions/setup-dotnet@v5.4.0
 actions/setup-elixir@v1.5.0
 actions/setup-go@v6.5.0
 actions/setup-haskell@v1.1.4
-actions/setup-java@v5.4.0
+actions/setup-java@v5.5.0
 actions/setup-node@v6.4.0
 actions/setup-python@v6.3.0
 actions/setup-ruby@v1.1.3
@@ -152,7 +152,7 @@ actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5.4.0
 actions/setup-elixir@3c118cec41f6c3bfc2c7f2aef9bec886ab0b2324 # v1.5.0
 actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6.5.0
 actions/setup-haskell@048c29979717135f04282c42c2186bb5945b2d8f # v1.1.4
-actions/setup-java@1bcf9fb12cf4aa7d266a90ae39939e61372fe520 # v5.4.0
+actions/setup-java@0f481fcb613427c0f801b606911222b5b6f3083a # v5.5.0
 actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
 actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
 actions/setup-ruby@e932e7af67fc4a8fc77bd86b744acd4e42fe3543 # v1.1.3
@@ -184,7 +184,7 @@ aws-actions/aws-lambda-deploy@v1.1.2
 aws-actions/aws-secretsmanager-get-secrets@v3.0.1
 aws-actions/cloudformation-aws-iam-policy-validator@v1.0.4
 aws-actions/codeguru-security@v1.2.2
-aws-actions/configure-aws-credentials@v6.2.1
+aws-actions/configure-aws-credentials@v6.2.2
 aws-actions/stale-issue-cleanup@v7.1.1
 aws-actions/sustainability-scanner@v1.3.1
 aws-actions/terraform-aws-iam-policy-validator@v1.0.3
@@ -212,7 +212,7 @@ aws-actions/aws-lambda-deploy@d496277188b89f0be02d7a2216fc912c0427702a # v1.1.2
 aws-actions/aws-secretsmanager-get-secrets@2cb1a461cbd4865ac4299648312e4704c646cd53 # v3.0.1
 aws-actions/cloudformation-aws-iam-policy-validator@aa5ca59693ba89d200db1d2b3af4b60989627bdc # v1.0.4
 aws-actions/codeguru-security@44877802cfee29abce47f8ba12b8417d70d01a9b # v1.2.2
-aws-actions/configure-aws-credentials@254c19bd240aabef8777f48595e9d2d7b972184b # v6.2.1
+aws-actions/configure-aws-credentials@517a711dbcd0e402f90c77e7e2f81e849156e31d # v6.2.2
 aws-actions/stale-issue-cleanup@0604f2edf84a3a66bc0dfb4a30eb07814cbdf440 # v7.1.1
 aws-actions/sustainability-scanner@d6067411fc5290a836e3ebcf388c746d83cf0e9f # v1.3.1
 aws-actions/terraform-aws-iam-policy-validator@1cd3c484b95b6c3d9e42ca1797d89ae74eb29ede # v1.0.3
@@ -230,7 +230,7 @@ aws-actions/vulnerability-scan-github-action-for-amazon-inspector@f5a63f71de9d79
 astral-sh/attest-action@v0.0.6
 astral-sh/pyx-auth-action@v0.0.11
 astral-sh/ruff-action@v4.1.0
-astral-sh/setup-uv@v8.3.0
+astral-sh/setup-uv@v8.3.1
 ```
 
 </details>
@@ -244,7 +244,7 @@ astral-sh/setup-uv@v8.3.0
 astral-sh/attest-action@f589a42a7efb6fe400b4f400de60b4bc90390027 # v0.0.6
 astral-sh/pyx-auth-action@79e821562a189d464bb5cca38f596780342036c3 # v0.0.11
 astral-sh/ruff-action@278981a28ce3188b1e39527901f38254bf3aac89 # v4.1.0
-astral-sh/setup-uv@d31148d669074a8d0a63714ba94f3201e7020bc3 # v8.3.0
+astral-sh/setup-uv@f98e06938123ccabd21905ea5d0069192241f9f1 # v8.3.1
 ```
 
 </details>

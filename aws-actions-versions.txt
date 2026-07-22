@@ -11,7 +11,7 @@ aws-actions/aws-lambda-deploy@v1.1.2
 aws-actions/aws-secretsmanager-get-secrets@v3.0.1
 aws-actions/cloudformation-aws-iam-policy-validator@v1.0.4
 aws-actions/codeguru-security@v1.2.2
-aws-actions/configure-aws-credentials@v6.2.1
+aws-actions/configure-aws-credentials@v6.2.2
 aws-actions/stale-issue-cleanup@v7.1.1
 aws-actions/sustainability-scanner@v1.3.1
 aws-actions/terraform-aws-iam-policy-validator@v1.0.3
