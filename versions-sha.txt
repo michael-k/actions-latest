@@ -17,7 +17,7 @@ actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
 actions/go-dependency-submission@f35d5c9af13ce9cc32f7930b171e315e878f6921 # v2.0.3
 actions/javascript-action@4be183afbd08ddadedcf09f17e8e112326894107 # v1.0.1
 actions/jekyll-build-pages@44a6e6beabd48582f863aeeb6cb2151cc1716697 # v1.0.13
-actions/labeler@f27b608878404679385c85cfa523b85ccb86e213 # v6.1.0
+actions/labeler@b8dd2d9be0f68b860e7dae5dae7d772984eacd6d # v6.2.0
 actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5.4.0
 actions/setup-elixir@3c118cec41f6c3bfc2c7f2aef9bec886ab0b2324 # v1.5.0
 actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6.5.0
