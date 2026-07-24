@@ -116,7 +116,7 @@ actions/setup-java@v5.5.0
 actions/setup-node@v6.4.0
 actions/setup-python@v6.3.0
 actions/setup-ruby@v1.1.3
-actions/stale@v10.3.0
+actions/stale@v10.4.0
 actions/upload-artifact@v7.0.1
 actions/upload-code-coverage@v1.3.0
 actions/upload-pages-artifact@v5.0.0
@@ -156,7 +156,7 @@ actions/setup-java@0f481fcb613427c0f801b606911222b5b6f3083a # v5.5.0
 actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
 actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
 actions/setup-ruby@e932e7af67fc4a8fc77bd86b744acd4e42fe3543 # v1.1.3
-actions/stale@eb5cf3af3ac0a1aa4c9c45633dd1ae542a27a899 # v10.3.0
+actions/stale@1e223db275d687790206a7acac4d1a11bd6fe629 # v10.4.0
 actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
 actions/upload-code-coverage@abb5995db9e0199b0e2bb9dbd136fce4cb1ec4d3 # v1.3.0
 actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
