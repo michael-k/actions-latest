@@ -185,6 +185,7 @@ aws-actions/aws-secretsmanager-get-secrets@v3.0.1
 aws-actions/cloudformation-aws-iam-policy-validator@v1.0.4
 aws-actions/codeguru-security@v1.2.2
 aws-actions/configure-aws-credentials@v6.2.2
+aws-actions/handle-non-labeled-issues@v1.0.1
 aws-actions/stale-issue-cleanup@v7.1.1
 aws-actions/sustainability-scanner@v1.3.1
 aws-actions/terraform-aws-iam-policy-validator@v1.0.3
@@ -213,6 +214,7 @@ aws-actions/aws-secretsmanager-get-secrets@2cb1a461cbd4865ac4299648312e4704c646c
 aws-actions/cloudformation-aws-iam-policy-validator@aa5ca59693ba89d200db1d2b3af4b60989627bdc # v1.0.4
 aws-actions/codeguru-security@44877802cfee29abce47f8ba12b8417d70d01a9b # v1.2.2
 aws-actions/configure-aws-credentials@517a711dbcd0e402f90c77e7e2f81e849156e31d # v6.2.2
+aws-actions/handle-non-labeled-issues@d6b11a820a09b58180471df5be076df19f05b9dd # v1.0.1
 aws-actions/stale-issue-cleanup@0604f2edf84a3a66bc0dfb4a30eb07814cbdf440 # v7.1.1
 aws-actions/sustainability-scanner@d6067411fc5290a836e3ebcf388c746d83cf0e9f # v1.3.1
 aws-actions/terraform-aws-iam-policy-validator@1cd3c484b95b6c3d9e42ca1797d89ae74eb29ede # v1.0.3
@@ -431,3 +433,47 @@ Azure/sql-action@96cea35f2b24c72eb5b6ece33d45e6f60e6b7b87 # v2.2.1
 
 </details>
 <!-- AZURE_VERSIONS_SHA_END -->
+
+<!-- PNPM_VERSIONS_START -->
+<details>
+<summary><h3><code>pnpm</code></h3></summary>
+
+```
+pnpm/action-setup@v6.0.9
+```
+
+</details>
+<!-- PNPM_VERSIONS_END -->
+
+<!-- PNPM_VERSIONS_SHA_START -->
+<details>
+<summary><h3><code>pnpm</code> (SHA-pinned)</h3></summary>
+
+```
+pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
+```
+
+</details>
+<!-- PNPM_VERSIONS_SHA_END -->
+
+<!-- WEBFACTORY_VERSIONS_START -->
+<details>
+<summary><h3><code>webfactory</code></h3></summary>
+
+```
+webfactory/ssh-agent@v0.10.0
+```
+
+</details>
+<!-- WEBFACTORY_VERSIONS_END -->
+
+<!-- WEBFACTORY_VERSIONS_SHA_START -->
+<details>
+<summary><h3><code>webfactory</code> (SHA-pinned)</h3></summary>
+
+```
+webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555 # v0.10.0
+```
+
+</details>
+<!-- WEBFACTORY_VERSIONS_SHA_END -->
