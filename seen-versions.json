@@ -3608,6 +3608,10 @@
       "sha": "1e223db275d687790206a7acac4d1a11bd6fe629",
       "first_seen": "2026-07-10"
     },
+    "v11.0.0": {
+      "sha": "4391f3da665fdf50b6810c1a66712fb9ba21aa93",
+      "first_seen": "2026-07-28"
+    },
     "v2.0.0": {
       "sha": "a23bda33c4225b647b29bfd95383061ba33dc40d",
       "first_seen": "2026-06-06"
@@ -7159,6 +7163,10 @@
     "v2.0.2": {
       "sha": "774b6e0e60d6c648b0f2dc43bd5221377a0a7420",
       "first_seen": "2026-07-06"
+    },
+    "v2.0.3": {
+      "sha": "baf90543d81f5de59751dfd10e6cf45e21a5a982",
+      "first_seen": "2026-07-28"
     }
   },
   "docker/login-action": {
@@ -7309,6 +7317,10 @@
     "v4.5.1": {
       "sha": "abd2ef45e78c5afb21d64d4ca52ee8550d9572c7",
       "first_seen": "2026-07-25"
+    },
+    "v4.5.2": {
+      "sha": "371161bbe7024a29a25c5e19bfcbc0804fe9ad2c",
+      "first_seen": "2026-07-28"
     }
   },
   "docker/metadata-action": {

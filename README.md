@@ -113,7 +113,7 @@ actions/setup-elixir@v1.5.0
 actions/setup-go@v6.5.0
 actions/setup-haskell@v1.1.4
 actions/setup-java@v5.5.0
-actions/setup-node@v6.4.0
+actions/setup-node@v7.0.0
 actions/setup-python@v6.3.0
 actions/setup-ruby@v1.1.3
 actions/stale@v10.4.0
@@ -153,7 +153,7 @@ actions/setup-elixir@3c118cec41f6c3bfc2c7f2aef9bec886ab0b2324 # v1.5.0
 actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6.5.0
 actions/setup-haskell@048c29979717135f04282c42c2186bb5945b2d8f # v1.1.4
 actions/setup-java@0f481fcb613427c0f801b606911222b5b6f3083a # v5.5.0
-actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
 actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
 actions/setup-ruby@e932e7af67fc4a8fc77bd86b744acd4e42fe3543 # v1.1.3
 actions/stale@1e223db275d687790206a7acac4d1a11bd6fe629 # v10.4.0
