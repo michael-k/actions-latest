@@ -5789,6 +5789,10 @@
     "v1.5.0": {
       "sha": "f5a63f71de9d790c7c42da74d59efb2c017bdcac",
       "first_seen": "2026-06-10"
+    },
+    "v1.6.0": {
+      "sha": "baab69e77b34f244adef1f702d0fd69f2b3bc545",
+      "first_seen": "2026-07-29"
     }
   },
   "Azure/aca-review-apps": {
