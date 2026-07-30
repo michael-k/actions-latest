@@ -18,9 +18,9 @@ actions/go-dependency-submission@f35d5c9af13ce9cc32f7930b171e315e878f6921 # v2.0
 actions/javascript-action@4be183afbd08ddadedcf09f17e8e112326894107 # v1.0.1
 actions/jekyll-build-pages@44a6e6beabd48582f863aeeb6cb2151cc1716697 # v1.0.13
 actions/labeler@b8dd2d9be0f68b860e7dae5dae7d772984eacd6d # v6.2.0
-actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5.4.0
+actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
 actions/setup-elixir@3c118cec41f6c3bfc2c7f2aef9bec886ab0b2324 # v1.5.0
-actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6.5.0
+actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
 actions/setup-haskell@048c29979717135f04282c42c2186bb5945b2d8f # v1.1.4
 actions/setup-java@0f481fcb613427c0f801b606911222b5b6f3083a # v5.5.0
 actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0

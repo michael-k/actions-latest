@@ -18,9 +18,9 @@ actions/go-dependency-submission@v2.0.3
 actions/javascript-action@v1.0.1
 actions/jekyll-build-pages@v1.0.13
 actions/labeler@v6.2.0
-actions/setup-dotnet@v5.4.0
+actions/setup-dotnet@v6.0.0
 actions/setup-elixir@v1.5.0
-actions/setup-go@v6.5.0
+actions/setup-go@v7.0.0
 actions/setup-haskell@v1.1.4
 actions/setup-java@v5.5.0
 actions/setup-node@v7.0.0

@@ -279,6 +279,10 @@
     "v4.2.0": {
       "sha": "f7c74d28b9d84cb8768d0b8ca14a4bac6ef463e6",
       "first_seen": "2026-07-17"
+    },
+    "v4.2.1": {
+      "sha": "508db95dd578ae2727ebd6217d5ba78e4fbda05d",
+      "first_seen": "2026-07-30"
     }
   },
   "actions/attest-build-provenance": {
@@ -7325,6 +7329,10 @@
     "v4.5.2": {
       "sha": "371161bbe7024a29a25c5e19bfcbc0804fe9ad2c",
       "first_seen": "2026-07-28"
+    },
+    "v4.6.0": {
+      "sha": "dbcb813823bdd20940b903addbd779551569679f",
+      "first_seen": "2026-07-30"
     }
   },
   "docker/metadata-action": {
