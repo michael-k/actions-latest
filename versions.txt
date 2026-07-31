@@ -1,6 +1,6 @@
 actions/add-to-project@v2.0.0
 actions/ai-inference@v2.1.1
-actions/attest@v4.1.1
+actions/attest@v4.2.0
 actions/attest-build-provenance@v4.1.1
 actions/attest-sbom@v4.1.0
 actions/cache@v6.1.0
@@ -22,12 +22,12 @@ actions/setup-dotnet@v6.0.0
 actions/setup-elixir@v1.5.0
 actions/setup-go@v7.0.0
 actions/setup-haskell@v1.1.4
-actions/setup-java@v5.5.0
+actions/setup-java@v5.6.0
 actions/setup-node@v7.0.0
 actions/setup-python@v6.3.0
 actions/setup-ruby@v1.1.3
 actions/stale@v10.4.0
 actions/upload-artifact@v7.0.1
-actions/upload-code-coverage@v1.3.0
+actions/upload-code-coverage@v1.4.0
 actions/upload-pages-artifact@v5.0.0
 actions/upload-release-asset@v1.0.2

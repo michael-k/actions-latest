@@ -90,7 +90,7 @@ This is a personal fork of [acidghost/actions-latest](https://github.com/acidgho
 ```
 actions/add-to-project@v2.0.0
 actions/ai-inference@v2.1.1
-actions/attest@v4.1.1
+actions/attest@v4.2.0
 actions/attest-build-provenance@v4.1.1
 actions/attest-sbom@v4.1.0
 actions/cache@v6.1.0
@@ -112,13 +112,13 @@ actions/setup-dotnet@v6.0.0
 actions/setup-elixir@v1.5.0
 actions/setup-go@v7.0.0
 actions/setup-haskell@v1.1.4
-actions/setup-java@v5.5.0
+actions/setup-java@v5.6.0
 actions/setup-node@v7.0.0
 actions/setup-python@v6.3.0
 actions/setup-ruby@v1.1.3
 actions/stale@v10.4.0
 actions/upload-artifact@v7.0.1
-actions/upload-code-coverage@v1.3.0
+actions/upload-code-coverage@v1.4.0
 actions/upload-pages-artifact@v5.0.0
 actions/upload-release-asset@v1.0.2
 ```
@@ -130,7 +130,7 @@ actions/upload-release-asset@v1.0.2
 ```
 actions/add-to-project@5afcf98fcd03f1c2f92c3c83f58ae24323cc57fd # v2.0.0
 actions/ai-inference@a7805884c80886efc241e94a5351df715968a0ad # v2.1.1
-actions/attest@a1948c3f048ba23858d222213b7c278aabede763 # v4.1.1
+actions/attest@f7c74d28b9d84cb8768d0b8ca14a4bac6ef463e6 # v4.2.0
 actions/attest-build-provenance@0f67c3f4856b2e3261c31976d6725780e5e4c373 # v4.1.1
 actions/attest-sbom@c604332985a26aa8cf1bdc465b92731239ec6b9e # v4.1.0
 actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
@@ -152,13 +152,13 @@ actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
 actions/setup-elixir@3c118cec41f6c3bfc2c7f2aef9bec886ab0b2324 # v1.5.0
 actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
 actions/setup-haskell@048c29979717135f04282c42c2186bb5945b2d8f # v1.1.4
-actions/setup-java@0f481fcb613427c0f801b606911222b5b6f3083a # v5.5.0
+actions/setup-java@03ad4de0992f5dab5e18fcb136590ce7c4a0ac95 # v5.6.0
 actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
 actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
 actions/setup-ruby@e932e7af67fc4a8fc77bd86b744acd4e42fe3543 # v1.1.3
 actions/stale@1e223db275d687790206a7acac4d1a11bd6fe629 # v10.4.0
 actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-actions/upload-code-coverage@abb5995db9e0199b0e2bb9dbd136fce4cb1ec4d3 # v1.3.0
+actions/upload-code-coverage@a72ab75b4dee0e479386fb9bf33c8dcf64b9c772 # v1.4.0
 actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
 actions/upload-release-asset@e8f9f06c4b078e705bd2ea027f0926603fc9b4d5 # v1.0.2
 ```
@@ -395,7 +395,7 @@ Azure/data-factory-validate-action@v1.1.6
 Azure/deployment-what-if-action@v1.0.0
 Azure/k8s-bake@v4.1.0
 Azure/k8s-create-secret@v6.0.1
-Azure/k8s-deploy@v6.0.0
+Azure/k8s-deploy@v7.0.0
 Azure/k8s-lint@v4.0.0
 Azure/k8s-set-context@v5.0.1
 Azure/login@v3.0.0
@@ -422,7 +422,7 @@ Azure/data-factory-validate-action@1a1e93960902bd7de128c22b985fb6256988af4b # v1
 Azure/deployment-what-if-action@7caef615e35c10abe2d2dd2ec811071697e9d723 # v1.0.0
 Azure/k8s-bake@0191a5ae5126cfe61885d9bd46511caa8e9a9550 # v4.1.0
 Azure/k8s-create-secret@ba774cded95cc0d795806a986fecd1205a6c2320 # v6.0.1
-Azure/k8s-deploy@c7ebd0d5f39477a23f1b5dea0f52e6db04adf28e # v6.0.0
+Azure/k8s-deploy@51ca02a8b7225fbd0924aac359c5b336a5f1e5b4 # v7.0.0
 Azure/k8s-lint@e4234c50ea835112e72b145bdecd00a94bad42fd # v4.0.0
 Azure/k8s-set-context@8698eba2499e9012f0d5085f8798077cce4bc526 # v5.0.1
 Azure/login@532459ea530d8321f2fb9bb10d1e0bcf23869a43 # v3.0.0
