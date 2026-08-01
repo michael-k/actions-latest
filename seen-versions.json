@@ -3012,6 +3012,10 @@
       "sha": "c1e323688fd81a25caa38c78aa6df2d33d3e20d9",
       "first_seen": "2026-06-06"
     },
+    "v4.9.0": {
+      "sha": "d7793b545071e98d581d3bf084a51c3213318a07",
+      "first_seen": "2026-08-01"
+    },
     "v5.0.0": {
       "sha": "dded0888837ed1f317902acf8a20df0ad188d165",
       "first_seen": "2026-06-06"
@@ -3039,6 +3043,10 @@
     "v5.6.0": {
       "sha": "03ad4de0992f5dab5e18fcb136590ce7c4a0ac95",
       "first_seen": "2026-07-17"
+    },
+    "v5.7.0": {
+      "sha": "b6effb05e454b25005698d916606bdc6ffcbf961",
+      "first_seen": "2026-08-01"
     }
   },
   "actions/setup-node": {
