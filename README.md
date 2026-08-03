@@ -114,7 +114,7 @@ actions/setup-go@v7.0.0
 actions/setup-haskell@v1.1.4
 actions/setup-java@v5.6.0
 actions/setup-node@v7.0.0
-actions/setup-python@v6.3.0
+actions/setup-python@v7.0.0
 actions/setup-ruby@v1.1.3
 actions/stale@v10.4.0
 actions/upload-artifact@v7.0.1
@@ -154,7 +154,7 @@ actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
 actions/setup-haskell@048c29979717135f04282c42c2186bb5945b2d8f # v1.1.4
 actions/setup-java@03ad4de0992f5dab5e18fcb136590ce7c4a0ac95 # v5.6.0
 actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
-actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
 actions/setup-ruby@e932e7af67fc4a8fc77bd86b744acd4e42fe3543 # v1.1.3
 actions/stale@1e223db275d687790206a7acac4d1a11bd6fe629 # v10.4.0
 actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1

@@ -1,6 +1,7 @@
 astral-sh/.github
 astral-sh/RustPython
 astral-sh/archive-in-git-test
+astral-sh/cargo-fixit
 astral-sh/char_str
 astral-sh/claude-code-plugins
 astral-sh/conveyor-belt
