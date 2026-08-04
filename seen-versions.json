@@ -6190,9 +6190,17 @@
       "sha": "a457da9ea143d694b1b9c7c869ebb04ebe844ef5",
       "first_seen": "2026-06-06"
     },
+    "v2.3.1": {
+      "sha": "7184910d9eb2b1c5e48f7073824a90609bb9b6d6",
+      "first_seen": "2026-08-04"
+    },
     "v3.0.0": {
       "sha": "532459ea530d8321f2fb9bb10d1e0bcf23869a43",
       "first_seen": "2000-01-01"
+    },
+    "v3.0.1": {
+      "sha": "f5d393ae46f8fde4be8b75f32e3fc50e654ad0ca",
+      "first_seen": "2026-08-04"
     }
   },
   "Azure/setup-helm": {
@@ -11069,6 +11077,10 @@
     "v6.0.1": {
       "sha": "078e9d416474b29c0c387560859308974f7e9c53",
       "first_seen": "2026-07-12"
+    },
+    "v6.0.10": {
+      "sha": "0977fd99725f1db4007ccb2928dbb4e90d06cc86",
+      "first_seen": "2026-08-04"
     },
     "v6.0.2": {
       "sha": "71c92474e7e4f5bca283fb17ef80fba9cdb2b4b1",

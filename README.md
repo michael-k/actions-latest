@@ -94,7 +94,7 @@ actions/attest@v4.2.0
 actions/attest-build-provenance@v4.1.1
 actions/attest-sbom@v4.1.0
 actions/cache@v6.1.0
-actions/checkout@v7.0.0
+actions/checkout@v7.0.1
 actions/configure-pages@v6.0.0
 actions/create-github-app-token@v3.2.0
 actions/create-release@v1.1.4
@@ -107,7 +107,7 @@ actions/github-script@v9.0.0
 actions/go-dependency-submission@v2.0.3
 actions/javascript-action@v1.0.1
 actions/jekyll-build-pages@v1.0.13
-actions/labeler@v6.2.0
+actions/labeler@v7.0.0
 actions/setup-dotnet@v6.0.0
 actions/setup-elixir@v1.5.0
 actions/setup-go@v7.0.0
@@ -118,7 +118,7 @@ actions/setup-python@v7.0.0
 actions/setup-ruby@v1.1.3
 actions/stale@v10.4.0
 actions/upload-artifact@v7.0.1
-actions/upload-code-coverage@v1.4.0
+actions/upload-code-coverage@v1.4.1
 actions/upload-pages-artifact@v5.0.0
 actions/upload-release-asset@v1.0.2
 ```
@@ -134,7 +134,7 @@ actions/attest@f7c74d28b9d84cb8768d0b8ca14a4bac6ef463e6 # v4.2.0
 actions/attest-build-provenance@0f67c3f4856b2e3261c31976d6725780e5e4c373 # v4.1.1
 actions/attest-sbom@c604332985a26aa8cf1bdc465b92731239ec6b9e # v4.1.0
 actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
-actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
 actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
 actions/create-release@0cb9c9b65d5d1901c1f53e5e66eaf4afd303e70e # v1.1.4
@@ -147,7 +147,7 @@ actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
 actions/go-dependency-submission@f35d5c9af13ce9cc32f7930b171e315e878f6921 # v2.0.3
 actions/javascript-action@4be183afbd08ddadedcf09f17e8e112326894107 # v1.0.1
 actions/jekyll-build-pages@44a6e6beabd48582f863aeeb6cb2151cc1716697 # v1.0.13
-actions/labeler@b8dd2d9be0f68b860e7dae5dae7d772984eacd6d # v6.2.0
+actions/labeler@bf12e9b00b37c5c0ca2b87b79b2daf7891dbda13 # v7.0.0
 actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
 actions/setup-elixir@3c118cec41f6c3bfc2c7f2aef9bec886ab0b2324 # v1.5.0
 actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
@@ -158,7 +158,7 @@ actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
 actions/setup-ruby@e932e7af67fc4a8fc77bd86b744acd4e42fe3543 # v1.1.3
 actions/stale@1e223db275d687790206a7acac4d1a11bd6fe629 # v10.4.0
 actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-actions/upload-code-coverage@a72ab75b4dee0e479386fb9bf33c8dcf64b9c772 # v1.4.0
+actions/upload-code-coverage@1c15be36fc3733ba839b1dd643bd9556e4426dc1 # v1.4.1
 actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
 actions/upload-release-asset@e8f9f06c4b078e705bd2ea027f0926603fc9b4d5 # v1.0.2
 ```
