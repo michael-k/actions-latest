@@ -7,5 +7,5 @@ docker/metadata-action@v6.2.0
 docker/scout-action@v1.23.1
 docker/setup-buildx-action@v4.2.0
 docker/setup-compose-action@v2.3.0
-docker/setup-docker-action@v5.3.0
+docker/setup-docker-action@v5.4.0
 docker/setup-qemu-action@v4.2.0
