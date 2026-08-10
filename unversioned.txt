@@ -29,6 +29,7 @@ actions/runner-images-PK1
 actions/runner-images-check
 actions/scaleset
 actions/setup-java-benchmarks
+actions/setup-java-deprecation-test
 actions/setup-java-v5.5-tests
 actions/starter-workflows
 actions/toolkit

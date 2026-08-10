@@ -20,6 +20,7 @@ astral-sh/multiplay
 astral-sh/mypy_primer
 astral-sh/nginx_pypi_cache
 astral-sh/packse
+astral-sh/peps
 astral-sh/pypi-auth-test-proxy
 astral-sh/python-build-standalone
 astral-sh/pyx-docs-mirror
