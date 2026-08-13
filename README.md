@@ -90,7 +90,7 @@ This is a personal fork of [acidghost/actions-latest](https://github.com/acidgho
 ```
 actions/add-to-project@v2.0.0
 actions/ai-inference@v2.1.1
-actions/attest@v4.2.0
+actions/attest@v4.2.1
 actions/attest-build-provenance@v4.1.1
 actions/attest-sbom@v4.1.0
 actions/cache@v6.1.0
@@ -130,7 +130,7 @@ actions/upload-release-asset@v1.0.2
 ```
 actions/add-to-project@5afcf98fcd03f1c2f92c3c83f58ae24323cc57fd # v2.0.0
 actions/ai-inference@a7805884c80886efc241e94a5351df715968a0ad # v2.1.1
-actions/attest@f7c74d28b9d84cb8768d0b8ca14a4bac6ef463e6 # v4.2.0
+actions/attest@508db95dd578ae2727ebd6217d5ba78e4fbda05d # v4.2.1
 actions/attest-build-provenance@0f67c3f4856b2e3261c31976d6725780e5e4c373 # v4.1.1
 actions/attest-sbom@c604332985a26aa8cf1bdc465b92731239ec6b9e # v4.1.0
 actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
@@ -261,7 +261,7 @@ docker/bake-action@v7.3.0
 docker/build-push-action@v7.3.0
 docker/cagent-action@v1.5.5
 docker/docker-agent-action@v2.0.3
-docker/login-action@v4.5.2
+docker/login-action@v4.6.0
 docker/metadata-action@v6.2.0
 docker/scout-action@v1.23.1
 docker/setup-buildx-action@v4.2.0
@@ -282,7 +282,7 @@ docker/bake-action@d3418bd7d0e9324001bca92fa8ba175ea7e6dc9b # v7.3.0
 docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7.3.0
 docker/cagent-action@367a30ddb41e0156459d03750f508eac03f3c38a # v1.5.5
 docker/docker-agent-action@baf90543d81f5de59751dfd10e6cf45e21a5a982 # v2.0.3
-docker/login-action@371161bbe7024a29a25c5e19bfcbc0804fe9ad2c # v4.5.2
+docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
 docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
 docker/scout-action@2688993af7bafd6ba8c6a74ec652442be91dd82b # v1.23.1
 docker/setup-buildx-action@bb05f3f5519dd87d3ba754cc423b652a5edd6d2c # v4.2.0

@@ -1,6 +1,6 @@
 actions/add-to-project@5afcf98fcd03f1c2f92c3c83f58ae24323cc57fd # v2.0.0
 actions/ai-inference@a7805884c80886efc241e94a5351df715968a0ad # v2.1.1
-actions/attest@f7c74d28b9d84cb8768d0b8ca14a4bac6ef463e6 # v4.2.0
+actions/attest@508db95dd578ae2727ebd6217d5ba78e4fbda05d # v4.2.1
 actions/attest-build-provenance@0f67c3f4856b2e3261c31976d6725780e5e4c373 # v4.1.1
 actions/attest-sbom@c604332985a26aa8cf1bdc465b92731239ec6b9e # v4.1.0
 actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
