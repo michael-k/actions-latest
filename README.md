@@ -398,7 +398,7 @@ Azure/k8s-create-secret@v6.0.1
 Azure/k8s-deploy@v7.0.0
 Azure/k8s-lint@v4.0.0
 Azure/k8s-set-context@v5.0.1
-Azure/login@v3.0.0
+Azure/login@v3.0.1
 Azure/setup-helm@v5.0.1
 Azure/setup-kubectl@v5.1.0
 Azure/sql-action@v2.2.1
@@ -425,7 +425,7 @@ Azure/k8s-create-secret@ba774cded95cc0d795806a986fecd1205a6c2320 # v6.0.1
 Azure/k8s-deploy@51ca02a8b7225fbd0924aac359c5b336a5f1e5b4 # v7.0.0
 Azure/k8s-lint@e4234c50ea835112e72b145bdecd00a94bad42fd # v4.0.0
 Azure/k8s-set-context@8698eba2499e9012f0d5085f8798077cce4bc526 # v5.0.1
-Azure/login@532459ea530d8321f2fb9bb10d1e0bcf23869a43 # v3.0.0
+Azure/login@f5d393ae46f8fde4be8b75f32e3fc50e654ad0ca # v3.0.1
 Azure/setup-helm@9bc31f4ebc9c6b171d7bfbaa5d006ae7abdb4310 # v5.0.1
 Azure/setup-kubectl@829323503d1be3d00ca8346e5391ca0b07a9ab0d # v5.1.0
 Azure/sql-action@96cea35f2b24c72eb5b6ece33d45e6f60e6b7b87 # v2.2.1
@@ -439,7 +439,7 @@ Azure/sql-action@96cea35f2b24c72eb5b6ece33d45e6f60e6b7b87 # v2.2.1
 <summary><h3><code>pnpm</code></h3></summary>
 
 ```
-pnpm/action-setup@v6.0.9
+pnpm/action-setup@v6.0.10
 ```
 
 </details>
@@ -450,7 +450,7 @@ pnpm/action-setup@v6.0.9
 <summary><h3><code>pnpm</code> (SHA-pinned)</h3></summary>
 
 ```
-pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
+pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
 ```
 
 </details>

@@ -1,1 +1,1 @@
-pnpm/action-setup@v6.0.9
+pnpm/action-setup@v6.0.10

@@ -11,7 +11,7 @@ Azure/k8s-create-secret@v6.0.1
 Azure/k8s-deploy@v7.0.0
 Azure/k8s-lint@v4.0.0
 Azure/k8s-set-context@v5.0.1
-Azure/login@v3.0.0
+Azure/login@v3.0.1
 Azure/setup-helm@v5.0.1
 Azure/setup-kubectl@v5.1.0
 Azure/sql-action@v2.2.1

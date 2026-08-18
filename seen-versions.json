@@ -7239,6 +7239,10 @@
     "v2.0.3": {
       "sha": "baf90543d81f5de59751dfd10e6cf45e21a5a982",
       "first_seen": "2026-07-28"
+    },
+    "v2.0.4": {
+      "sha": "b08367e7e9a471822464be2bb9fdaa1c0fb6061b",
+      "first_seen": "2026-08-18"
     }
   },
   "docker/login-action": {
