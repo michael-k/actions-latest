@@ -6,7 +6,7 @@ aws-actions/amazon-eks-fargate@v0.1.1
 aws-actions/application-observability-for-aws@v1.1.1
 aws-actions/aws-cloudformation-github-deploy@v2.2.0
 aws-actions/aws-codebuild-run-build@v1.0.19
-aws-actions/aws-elasticbeanstalk-deploy@v1.0.6
+aws-actions/aws-elasticbeanstalk-deploy@v1.0.7
 aws-actions/aws-lambda-deploy@v1.1.2
 aws-actions/aws-secretsmanager-get-secrets@v3.0.1
 aws-actions/cloudformation-aws-iam-policy-validator@v1.0.4

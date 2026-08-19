@@ -90,7 +90,7 @@ This is a personal fork of [acidghost/actions-latest](https://github.com/acidgho
 ```
 actions/add-to-project@v2.0.0
 actions/ai-inference@v2.1.1
-actions/attest@v4.2.1
+actions/attest@v4.2.2
 actions/attest-build-provenance@v4.1.1
 actions/attest-sbom@v4.1.0
 actions/cache@v6.1.0
@@ -130,7 +130,7 @@ actions/upload-release-asset@v1.0.2
 ```
 actions/add-to-project@5afcf98fcd03f1c2f92c3c83f58ae24323cc57fd # v2.0.0
 actions/ai-inference@a7805884c80886efc241e94a5351df715968a0ad # v2.1.1
-actions/attest@508db95dd578ae2727ebd6217d5ba78e4fbda05d # v4.2.1
+actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
 actions/attest-build-provenance@0f67c3f4856b2e3261c31976d6725780e5e4c373 # v4.1.1
 actions/attest-sbom@c604332985a26aa8cf1bdc465b92731239ec6b9e # v4.1.0
 actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
@@ -179,7 +179,7 @@ aws-actions/amazon-eks-fargate@v0.1.1
 aws-actions/application-observability-for-aws@v1.1.1
 aws-actions/aws-cloudformation-github-deploy@v2.2.0
 aws-actions/aws-codebuild-run-build@v1.0.19
-aws-actions/aws-elasticbeanstalk-deploy@v1.0.6
+aws-actions/aws-elasticbeanstalk-deploy@v1.0.7
 aws-actions/aws-lambda-deploy@v1.1.2
 aws-actions/aws-secretsmanager-get-secrets@v3.0.1
 aws-actions/cloudformation-aws-iam-policy-validator@v1.0.4
@@ -208,7 +208,7 @@ aws-actions/amazon-eks-fargate@fa91b1ce6e342eb17a1d57df976506d02f074640 # v0.1.1
 aws-actions/application-observability-for-aws@95bb59e4538ba9ef746805d8a2bbbe531ba2a728 # v1.1.1
 aws-actions/aws-cloudformation-github-deploy@81e3b03d2266bcb76c4bcc37a7d71d9cb67838bb # v2.2.0
 aws-actions/aws-codebuild-run-build@7e46c3fa1c1f217e26a73712796b1f78938b534b # v1.0.19
-aws-actions/aws-elasticbeanstalk-deploy@cfad3e5e4452cd9c8923cbee2f862e96ba4b52c4 # v1.0.6
+aws-actions/aws-elasticbeanstalk-deploy@84ef204d6cd28ae581cd5d667a162d22a49ce4d1 # v1.0.7
 aws-actions/aws-lambda-deploy@d496277188b89f0be02d7a2216fc912c0427702a # v1.1.2
 aws-actions/aws-secretsmanager-get-secrets@2cb1a461cbd4865ac4299648312e4704c646cd53 # v3.0.1
 aws-actions/cloudformation-aws-iam-policy-validator@aa5ca59693ba89d200db1d2b3af4b60989627bdc # v1.0.4
