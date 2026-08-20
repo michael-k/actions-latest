@@ -4721,6 +4721,10 @@
     "v2.1.6": {
       "sha": "d539f0932e70871a027e9d5a9d8fc38589180a64",
       "first_seen": "2026-06-13"
+    },
+    "v2.1.7": {
+      "sha": "03f1aad4c6c7ffd436567f42f9384779290529bd",
+      "first_seen": "2026-08-20"
     }
   },
   "aws-actions/amazon-ecs-deploy-express-service": {
@@ -8087,6 +8091,10 @@
     "v4.2.0": {
       "sha": "bb05f3f5519dd87d3ba754cc423b652a5edd6d2c",
       "first_seen": "2026-07-03"
+    },
+    "v4.3.0": {
+      "sha": "37fe631027851001ddb9b187196cc803df7f5f0e",
+      "first_seen": "2026-08-20"
     }
   },
   "docker/setup-compose-action": {
