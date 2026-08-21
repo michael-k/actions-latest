@@ -91,7 +91,7 @@ This is a personal fork of [acidghost/actions-latest](https://github.com/acidgho
 actions/add-to-project@v2.0.0
 actions/ai-inference@v2.1.1
 actions/attest@v4.2.2
-actions/attest-build-provenance@v4.1.1
+actions/attest-build-provenance@v4.2.2
 actions/attest-sbom@v4.1.0
 actions/cache@v6.1.0
 actions/checkout@v7.0.1
@@ -118,7 +118,7 @@ actions/setup-python@v7.0.0
 actions/setup-ruby@v1.1.3
 actions/stale@v11.0.0
 actions/upload-artifact@v7.0.1
-actions/upload-code-coverage@v1.4.1
+actions/upload-code-coverage@v1.4.2
 actions/upload-pages-artifact@v5.0.0
 actions/upload-release-asset@v1.0.2
 ```
@@ -131,7 +131,7 @@ actions/upload-release-asset@v1.0.2
 actions/add-to-project@5afcf98fcd03f1c2f92c3c83f58ae24323cc57fd # v2.0.0
 actions/ai-inference@a7805884c80886efc241e94a5351df715968a0ad # v2.1.1
 actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
-actions/attest-build-provenance@0f67c3f4856b2e3261c31976d6725780e5e4c373 # v4.1.1
+actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
 actions/attest-sbom@c604332985a26aa8cf1bdc465b92731239ec6b9e # v4.1.0
 actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
 actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -158,7 +158,7 @@ actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
 actions/setup-ruby@e932e7af67fc4a8fc77bd86b744acd4e42fe3543 # v1.1.3
 actions/stale@4391f3da665fdf50b6810c1a66712fb9ba21aa93 # v11.0.0
 actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-actions/upload-code-coverage@1c15be36fc3733ba839b1dd643bd9556e4426dc1 # v1.4.1
+actions/upload-code-coverage@d8e329117199404bba6fc81efe8093dc7c015e34 # v1.4.2
 actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
 actions/upload-release-asset@e8f9f06c4b078e705bd2ea027f0926603fc9b4d5 # v1.0.2
 ```
@@ -179,7 +179,7 @@ aws-actions/amazon-eks-fargate@v0.1.1
 aws-actions/application-observability-for-aws@v1.1.1
 aws-actions/aws-cloudformation-github-deploy@v2.2.0
 aws-actions/aws-codebuild-run-build@v1.0.19
-aws-actions/aws-elasticbeanstalk-deploy@v1.0.7
+aws-actions/aws-elasticbeanstalk-deploy@v1.0.8
 aws-actions/aws-lambda-deploy@v1.1.2
 aws-actions/aws-secretsmanager-get-secrets@v3.0.1
 aws-actions/cloudformation-aws-iam-policy-validator@v1.0.4
@@ -208,7 +208,7 @@ aws-actions/amazon-eks-fargate@fa91b1ce6e342eb17a1d57df976506d02f074640 # v0.1.1
 aws-actions/application-observability-for-aws@95bb59e4538ba9ef746805d8a2bbbe531ba2a728 # v1.1.1
 aws-actions/aws-cloudformation-github-deploy@81e3b03d2266bcb76c4bcc37a7d71d9cb67838bb # v2.2.0
 aws-actions/aws-codebuild-run-build@7e46c3fa1c1f217e26a73712796b1f78938b534b # v1.0.19
-aws-actions/aws-elasticbeanstalk-deploy@84ef204d6cd28ae581cd5d667a162d22a49ce4d1 # v1.0.7
+aws-actions/aws-elasticbeanstalk-deploy@7883cdd454c162051bf6fc13389536b045149b4c # v1.0.8
 aws-actions/aws-lambda-deploy@d496277188b89f0be02d7a2216fc912c0427702a # v1.1.2
 aws-actions/aws-secretsmanager-get-secrets@2cb1a461cbd4865ac4299648312e4704c646cd53 # v3.0.1
 aws-actions/cloudformation-aws-iam-policy-validator@aa5ca59693ba89d200db1d2b3af4b60989627bdc # v1.0.4
