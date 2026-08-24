@@ -1,5 +1,6 @@
 astral-sh/.github
 astral-sh/RustPython
+astral-sh/actionlint
 astral-sh/archive-in-git-test
 astral-sh/cargo-fixit
 astral-sh/char_str
