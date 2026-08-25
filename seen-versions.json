@@ -3071,6 +3071,10 @@
     "v5.7.0": {
       "sha": "b6effb05e454b25005698d916606bdc6ffcbf961",
       "first_seen": "2026-08-01"
+    },
+    "v6.0.0": {
+      "sha": "dd06d9cba3e5552c54d9f8ea23572deb30010f7c",
+      "first_seen": "2026-08-25"
     }
   },
   "actions/setup-node": {
@@ -7247,6 +7251,10 @@
     "v2.0.4": {
       "sha": "b08367e7e9a471822464be2bb9fdaa1c0fb6061b",
       "first_seen": "2026-08-18"
+    },
+    "v2.0.5": {
+      "sha": "06e1767af06263c93d712449cbf859778d9392ee",
+      "first_seen": "2026-08-25"
     }
   },
   "docker/login-action": {
