@@ -5171,6 +5171,10 @@
     "v1.1.1": {
       "sha": "95bb59e4538ba9ef746805d8a2bbbe531ba2a728",
       "first_seen": "2000-01-01"
+    },
+    "v1.2.0": {
+      "sha": "8a45f947c9e9f2b1bc7288beb74c7444fdf74240",
+      "first_seen": "2026-08-26"
     }
   },
   "aws-actions/aws-cloudformation-github-deploy": {
@@ -6257,6 +6261,10 @@
     "v3.0.1": {
       "sha": "f5d393ae46f8fde4be8b75f32e3fc50e654ad0ca",
       "first_seen": "2026-08-04"
+    },
+    "v3.0.2": {
+      "sha": "7ddb5af1ef8758cf1353cf3b42f940aee27ba21c",
+      "first_seen": "2026-08-26"
     }
   },
   "Azure/setup-helm": {
