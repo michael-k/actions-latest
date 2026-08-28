@@ -5175,6 +5175,10 @@
     "v1.2.0": {
       "sha": "8a45f947c9e9f2b1bc7288beb74c7444fdf74240",
       "first_seen": "2026-08-26"
+    },
+    "v1.2.1": {
+      "sha": "3ad2bc7d604dc6853b503f18ad4d5495dcf4ee08",
+      "first_seen": "2026-08-28"
     }
   },
   "aws-actions/aws-cloudformation-github-deploy": {
