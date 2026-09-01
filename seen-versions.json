@@ -5729,6 +5729,10 @@
     "v6.2.3": {
       "sha": "e6de054238d6b7531b4efff3b6587d9aade6a06c",
       "first_seen": "2026-07-23"
+    },
+    "v6.2.4": {
+      "sha": "cbe3b392738ccf3f987d68400dafcf4b0624a56c",
+      "first_seen": "2026-09-01"
     }
   },
   "aws-actions/handle-non-labeled-issues": {
@@ -6119,6 +6123,10 @@
     "v7.0.0": {
       "sha": "51ca02a8b7225fbd0924aac359c5b336a5f1e5b4",
       "first_seen": "2026-07-17"
+    },
+    "v7.0.1": {
+      "sha": "bf1ec05e1d736ac4ac70bae889d3ec48c79e2213",
+      "first_seen": "2026-09-01"
     }
   },
   "Azure/k8s-lint": {
