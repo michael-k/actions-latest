@@ -171,7 +171,7 @@ actions/upload-release-asset@e8f9f06c4b078e705bd2ea027f0926603fc9b4d5 # v1.0.2
 <summary><h3><code>aws-actions</code></h3></summary>
 
 ```
-aws-actions/amazon-ecr-login@v2.1.6
+aws-actions/amazon-ecr-login@v2.1.7
 aws-actions/amazon-ecs-deploy-express-service@v1.2.2
 aws-actions/amazon-ecs-deploy-task-definition@v2.6.3
 aws-actions/amazon-ecs-render-task-definition@v1.9.0
@@ -200,7 +200,7 @@ aws-actions/vulnerability-scan-github-action-for-amazon-inspector@v1.6.0
 <summary><h3><code>aws-actions</code> (SHA-pinned)</h3></summary>
 
 ```
-aws-actions/amazon-ecr-login@d539f0932e70871a027e9d5a9d8fc38589180a64 # v2.1.6
+aws-actions/amazon-ecr-login@03f1aad4c6c7ffd436567f42f9384779290529bd # v2.1.7
 aws-actions/amazon-ecs-deploy-express-service@7c48a2de16441d528a3c89829831968dc1455010 # v1.2.2
 aws-actions/amazon-ecs-deploy-task-definition@c465972ecbd160473f22e683363b422a5412a3de # v2.6.3
 aws-actions/amazon-ecs-render-task-definition@138c24f321fdbdf7edee4a685519d253cae2cdea # v1.9.0
@@ -264,7 +264,7 @@ docker/docker-agent-action@v2.0.4
 docker/login-action@v4.6.0
 docker/metadata-action@v6.2.0
 docker/scout-action@v1.24.0
-docker/setup-buildx-action@v4.2.0
+docker/setup-buildx-action@v4.3.0
 docker/setup-compose-action@v2.3.0
 docker/setup-docker-action@v5.4.0
 docker/setup-qemu-action@v4.2.0
@@ -285,7 +285,7 @@ docker/docker-agent-action@b08367e7e9a471822464be2bb9fdaa1c0fb6061b # v2.0.4
 docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
 docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
 docker/scout-action@7c6b6c3f7844478ace1ffd4e7aef649053d1f87d # v1.24.0
-docker/setup-buildx-action@bb05f3f5519dd87d3ba754cc423b652a5edd6d2c # v4.2.0
+docker/setup-buildx-action@37fe631027851001ddb9b187196cc803df7f5f0e # v4.3.0
 docker/setup-compose-action@4eb059ff7f16592f9c84d5ca339c53cb7c5064e2 # v2.3.0
 docker/setup-docker-action@77e84dbf09b47d1e29270283c22f16145aa85ca1 # v5.4.0
 docker/setup-qemu-action@96fe6ef7f33517b61c61be40b68a1882f3264fb8 # v4.2.0
