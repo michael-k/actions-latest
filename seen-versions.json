@@ -7279,6 +7279,10 @@
     "v2.0.5": {
       "sha": "06e1767af06263c93d712449cbf859778d9392ee",
       "first_seen": "2026-08-25"
+    },
+    "v2.0.6": {
+      "sha": "4dcb32aa716addc5ce33f8b4d33cb635ae174d7e",
+      "first_seen": "2026-09-05"
     }
   },
   "docker/login-action": {
@@ -11209,6 +11213,10 @@
     "v6.0.9": {
       "sha": "0ebf47130e4866e96fce0953f49152a61190b271",
       "first_seen": "2026-07-12"
+    },
+    "v6.1.0": {
+      "sha": "ea17c68df8912ef543352723c149a84f56e3d413",
+      "first_seen": "2026-09-05"
     }
   },
   "webfactory/ssh-agent": {
