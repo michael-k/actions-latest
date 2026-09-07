@@ -1,6 +1,7 @@
 astral-sh/.github
 astral-sh/RustPython
 astral-sh/actionlint
+astral-sh/aghs-testbed
 astral-sh/archive-in-git-test
 astral-sh/cargo-fixit
 astral-sh/char_str
@@ -11,6 +12,7 @@ astral-sh/docs
 astral-sh/docstring-adder
 astral-sh/ecosystem-analyzer
 astral-sh/futzed-wheels
+astral-sh/github-actions
 astral-sh/hawk
 astral-sh/image
 astral-sh/lean_string
