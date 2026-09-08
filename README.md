@@ -112,7 +112,7 @@ actions/setup-dotnet@v6.0.0
 actions/setup-elixir@v1.5.0
 actions/setup-go@v7.0.0
 actions/setup-haskell@v1.1.4
-actions/setup-java@v5.7.0
+actions/setup-java@v6.0.0
 actions/setup-node@v7.0.0
 actions/setup-python@v7.0.0
 actions/setup-ruby@v1.1.3
@@ -152,7 +152,7 @@ actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
 actions/setup-elixir@3c118cec41f6c3bfc2c7f2aef9bec886ab0b2324 # v1.5.0
 actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
 actions/setup-haskell@048c29979717135f04282c42c2186bb5945b2d8f # v1.1.4
-actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
+actions/setup-java@dd06d9cba3e5552c54d9f8ea23572deb30010f7c # v6.0.0
 actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
 actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
 actions/setup-ruby@e932e7af67fc4a8fc77bd86b744acd4e42fe3543 # v1.1.3
@@ -260,7 +260,7 @@ astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
 docker/bake-action@v7.3.0
 docker/build-push-action@v7.3.0
 docker/cagent-action@v1.5.5
-docker/docker-agent-action@v2.0.4
+docker/docker-agent-action@v2.0.5
 docker/login-action@v4.6.0
 docker/metadata-action@v6.2.0
 docker/scout-action@v1.24.0
@@ -281,7 +281,7 @@ docker/setup-qemu-action@v4.2.0
 docker/bake-action@d3418bd7d0e9324001bca92fa8ba175ea7e6dc9b # v7.3.0
 docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7.3.0
 docker/cagent-action@367a30ddb41e0156459d03750f508eac03f3c38a # v1.5.5
-docker/docker-agent-action@b08367e7e9a471822464be2bb9fdaa1c0fb6061b # v2.0.4
+docker/docker-agent-action@06e1767af06263c93d712449cbf859778d9392ee # v2.0.5
 docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
 docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
 docker/scout-action@7c6b6c3f7844478ace1ffd4e7aef649053d1f87d # v1.24.0
